@@ -35,6 +35,6 @@ app.get('*', (req, res) => {
 //테이블 생성
 db.sequelize.sync({ force: false }).then(() => {
     server.listen(PORT, () => {
-        console.log(`http://localhost:${PORT}`);
+        console.log(`http://localhost:${PORT}/intro`);
     });
 });
