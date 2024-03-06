@@ -20,10 +20,10 @@
             <div class="banner">
                 <div class="bannerleft">
                     <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community';">커뮤니티</span>
+                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
                     <span>My 구인구직</span>
                 </div>
             </div>
@@ -127,14 +127,14 @@
             </tbody>
         </table>
         <div class="btnCollection">
-            <div><button type="button" onclick="window.location.href = '/market';">목록</button></div>
+            <div><button type="button" onclick="window.location.href = '/market/market';">목록</button></div>
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
                 <button type="button">글쓰기</button>
             </div>
         </div>
-        <%- include('sidebar.ejs') %> <%- include('footer.ejs') %>
+        <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
         <script src="../public/market-writing.js"></script>
     </body>
 </html>
