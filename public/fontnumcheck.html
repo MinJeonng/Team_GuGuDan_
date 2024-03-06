@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            .fontnumhead {
+                border: 1px solid gray;
+                background-color: #edd6ef;
+                text-align: center;
+                line-height: 50px;
+            }
+            .intro > textarea {
+                margin: 20px;
+            }
+            .resultfontnum {
+                text-align: right;
+                margin-right: 50px;
+            }
+            .resultfontnum > span {
+                color: blueviolet;
+                margin-right: 20px;
+            }
+        </style>
+        <h1>글자수 체크</h1>
+        <div class="fontnumhead">
+            <div class="font">글자수 체크</div>
+        </div>
+        <div class="intro">
+            <div style="margin: 20px">자기소개서 작성 시 글자 수 또는 Byte 수에 맞는지 확인 할 수 있습니다.</div>
+            <textarea cols="40 " rows="10" oninput="countCharacters()" id="inputText"></textarea>
+            <div class="resultfontnum">
+                글자 수 &nbsp;&nbsp;<span class="resfontnum"></span> Bytes &nbsp;&nbsp;<span class="resbitenum"></span>
+            </div>
+        </div>
+        <script>
+            function countCharacters() {
+                // textarea에서 입력된 내용 가져오기
+                var text = document.getElementById('inputText').value;
+
+                // 글자 수 계산
+                var charCount = text.length;
+
+                // Byte 수 계산 (UTF-8 인코딩 기준)
+                var byteCount = new Blob([text]).size;
+
+                // 결과 표시
+                document.querySelector('.resfontnum').textContent = charCount + ' 자';
+                document.querySelector('.resbitenum').textContent = byteCount + ' 자';
+            }
+        </script>
+    </body>
+</html>

@@ -21,10 +21,10 @@
             <div class="banner">
                 <div class="bannerleft">
                     <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community';">커뮤니티</span>
+                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
                     <span>My 구인구직</span>
                 </div>
             </div>
@@ -133,10 +133,10 @@
         </table>
         <div style="text-align: center">페이지네이션</div>
         <div class="markwrBtn">
-            <button type="button" onclick="window.location.href = '/market-writing';">글쓰기</button>
+            <button type="button" onclick="window.location.href = '/market/market-writing';">글쓰기</button>
         </div>
 
-        <%- include('sidebar.ejs') %> <%- include('footer.ejs') %>
+        <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
         <script>
             $(document).ready(function () {
                 $('.wrtable tbody td:nth-child(4)').click(function () {

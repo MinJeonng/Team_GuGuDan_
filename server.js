@@ -9,23 +9,25 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/', function (req, res) {
+
     res.render('employ_main');
 });
 
 app.get('/market', (req, res) => {
     res.render('market');
+
 });
-app.get('/employ-writing', (req, res) => {
-    res.render('employ-writing');
+app.get('/employ/employ-writing', (req, res) => {
+    res.render('employ/employ-writing');
 });
-app.get('/market-writing', (req, res) => {
-    res.render('market-writing');
+app.get('/market/market-writing', (req, res) => {
+    res.render('market/market-writing');
 });
-app.get('/community', (req, res) => {
-    res.render('community');
+app.get('/community/community', (req, res) => {
+    res.render('community/community');
 });
-app.get('/community-writing', (req, res) => {
-    res.render('community-writing');
+app.get('/community/community-writing', (req, res) => {
+    res.render('community/community-writing');
 });
 
 app.listen(PORT, () => {

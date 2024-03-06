@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="../public/css/market-detail.css" />
+        <link rel="stylesheet" href="/public/css/market-detail.css" />
     </head>
     <body>
         <header>
@@ -14,16 +14,16 @@
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="../public/img/꽃.png" alt="꽃" />
+                <img src="/public/img/꽃.png" alt="꽃" />
                 벼룩 시장
             </div>
             <div class="banner">
                 <div class="bannerleft">
                     <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span>커뮤니티</span>
+                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
                     <span>My 구인구직</span>
                 </div>
             </div>
@@ -96,6 +96,6 @@
                 />
             </svg>
         </div>
-        <%- include('sidebar.ejs') %> <%- include('footer.ejs') %>
+        <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
     </body>
 </html>
