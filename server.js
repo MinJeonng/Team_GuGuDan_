@@ -1,45 +1,33 @@
-// const express = require('express');
-// const app = express();
-// const PORT = 8000;
-// const path = require('path');
+const express = require('express');
+const app = express();
+const PORT = 8000;
+const path = require('path');
 
-// app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
-// app.set('view engine', 'ejs');
-// app.set('views', './views');
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
-// app.get('/', function (req, res) {
-//     res.render('employ');
-// });
+app.get('/', function (req, res) {
+    res.render('employ');
+});
 
-<<<<<<< HEAD
-// app.get('/market', (req, res) => {
-//     res.render('market');
-// });
-// app.get('/employ-writing', (req, res) => {
-//     res.render('employ-writing');
-// });
-// app.get('/market-writing', (req, res) => {
-//     res.render('market-writing');
-// });
-=======
-app.get('/market', (req, res) => {
-    res.render('market');
+app.get('/market/market', (req, res) => {
+    res.render('market/market');
 });
-app.get('/employ-writing', (req, res) => {
-    res.render('employ-writing');
+app.get('/employ/employ-writing', (req, res) => {
+    res.render('employ/employ-writing');
 });
-app.get('/market-writing', (req, res) => {
-    res.render('market-writing');
+app.get('/market/market-writing', (req, res) => {
+    res.render('market/market-writing');
 });
-app.get('/community', (req, res) => {
-    res.render('community');
+app.get('/community/community', (req, res) => {
+    res.render('community/community');
 });
-app.get('/community-writing', (req, res) => {
-    res.render('community-writing');
+app.get('/community/community-writing', (req, res) => {
+    res.render('community/community-writing');
 });
->>>>>>> devel
 
-// app.listen(PORT, () => {
-//     console.log(`http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`http://localhost:${PORT}`);
+});

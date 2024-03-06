@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../public/css/employ-writing.css" />
+    </head>
+    <body>
+        <div class="emhead">교사 구인</div>
+        <div class="notifhead">공지</div>
+        <div class="notifbox">
+            <div>
+                <p>
+                    유료 구인 서비스로 신청하실 경우에는
+                    <span style="color: red">구인란 첫 화면 상단에 굵은 글씨</span>로 공고됩니다.
+                </p>
+            </div>
+            <div class="notifbank">
+                <div>서비스 가격 : 33000원(15일)</div>
+                <div>입금계좌번호:국민은행 123456789</div>
+            </div>
+            <div class="notifbank">
+                <div>예금주 : 고재용</div>
+                <div>문의전화 : 02-832-1346</div>
+                <div></div>
+            </div>
+        </div>
+        <div class="notiffont"><span style="color: red">*</span>&nbsp;표시는 필수항목입니다.</div>
+        <div class="writingbox">
+            <div>
+                <span style="color: red">*</span>&nbsp;&nbsp;<input type="text" placeholder="글 제목" size="50" />
+            </div>
+            <div><span style="color: red">*</span>&nbsp;&nbsp;<input type="text" placeholder="시설명" /></div>
+            <div class="adress">
+                <span style="color: red">*</span>&nbsp;&nbsp;
+                <select class="waselect1">
+                    <option>지역 선택</option>
+                    <option>서울</option>
+                    <option>경기</option>
+                    <option>인천</option>
+                    <option>부산</option>
+                    <option>대전</option>
+                    <option>대구</option>
+                    <option>광주</option>
+                    <option>울산</option>
+                    <option>세종시</option>
+                    <option>강원</option>
+                    <option>경남</option>
+                    <option>경북</option>
+                    <option>전남</option>
+                    <option>전북</option>
+                    <option>충남</option>
+                    <option>충북</option>
+                    <option>제주</option>
+                    <option>해외</option></select
+                ><span class="waselect2box" style="display: none"
+                    >&nbsp;&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;<select class="waselect2"></select
+                ></span>
+
+                <div>
+                    &nbsp;&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;
+                    <input type="text" placeholder="상세 주소" class="detailadress" />
+                </div>
+            </div>
+            <div class="selectedbox">
+                <span style="color: red">*</span>&nbsp;&nbsp; 전체 주소 :
+                <input type="text" class="selectedresult" size="50" />
+            </div>
+            <div><span style="color: red">*</span>&nbsp;&nbsp;<input type="text" placeholder="구인 직종" /></div>
+            <div>
+                <span style="color: red">*</span>&nbsp;&nbsp; 경력
+                <label>
+                    <input type="radio" name="career" />유 <input type="radio" name="career" />신입
+                    <input type="radio" name="career" />무관</label
+                >
+            </div>
+            <div><input type="text" placeholder="희망 급여" /></div>
+            <div><input type="text" placeholder="마감일" /></div>
+            <div><input type="text" placeholder="학력 정도" /></div>
+            <div><textarea placeholder="세부 내용" cols="110" rows="10"></textarea></div>
+            <div class="photopw">
+                <div>사진 (나중에)</div>
+                <div class="empw">
+                    <span style="color: red">*</span>&nbsp;&nbsp;<input type="password" placeholder="비밀 번호" />
+                </div>
+            </div>
+        </div>
+        <div class="perinf">
+            <div class="perinffont">개인 정보 수집 이용 및 제공 동의서</div>
+            <div class="perinfcontent">내용ㅇㅇㅇㅇㅇㅇㅇㅇ</div>
+            <div class="perinffont">개인 정보 수집, 이용 및 제공동의서에 동의합니다 <input type="checkbox" /></div>
+        </div>
+        <div class="embtn">
+            <button type="button" class="regbtn">등록하기</button
+            ><button type="button" class="cancbtn">입력 취소</button>
+        </div>
+        <div class="warmsg">
+            유아교육관련 교사구인 성격과 맞지 않는 글 및 시설 매매 관련글은 경고없이 바로 삭제됩니다.
+        </div>
+        <script src="../public/employ-writing.js"></script>
+    </body>
+</html>
