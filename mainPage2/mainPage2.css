@@ -1,0 +1,79 @@
+.container {
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.btn.left {
+    left: 0;
+}
+
+.btn.right {
+    right: 0;
+}
+.slider-container {
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    width: 100%;
+}
+
+.login-container {
+    float: right;
+}
+.job-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.job {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+.container {
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.btn.left {
+    left: 0;
+}
+
+.btn.right {
+    right: 0;
+}
