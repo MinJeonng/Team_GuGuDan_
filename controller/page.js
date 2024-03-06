@@ -1,5 +1,8 @@
 exports.main = (req, res) => {
-    res.render('main'); //가장 첫 번째 메인 페이지
+    res.render('mainPage'); //가장 첫 번째 메인 페이지
+};
+exports.intro = (req, res) => {
+    res.render('intro'); //인트로 화면
 };
 exports.member = (req, res) => {
     res.render('user/index');
