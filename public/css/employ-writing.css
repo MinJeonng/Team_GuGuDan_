@@ -73,3 +73,9 @@ body {
     text-align: center;
     margin-bottom: 200px;
 }
+#phoneNum {
+    width: 170px;
+}
+#salary {
+    width: 170px;
+}

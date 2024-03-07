@@ -3,7 +3,7 @@ const controller = require('../controller/page');
 
 const router = express.Router();
 
-router.get('/', controller.main); //메인페이지
+router.get('/', controller.main); //메인페이지, main homepage
 router.get('/intro', controller.intro);
 router.get('/user', controller.member);
 router.get('/user/login', controller.login);
