@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="membership.css" />
+        <title>회원가입</title>
+    </head>
+    <body>
+        <div class="center">
+            <div class="container purple-box">
+                <form id="signup-form" class="signup-form">
+                    <body>
+                        <div class="row">
+                            <h2>회원가입</h2>
+                        </div>
+                        <form name="signup-form">
+                            <input type="text" id="user_id" placeholder="아이디" required /><br />
+                            <input type="text" id="user_nickname" placeholder="닉네임" required><br />
+                            <input type="password" id="user_pw" placeholder="비밀번호" required /><br />
+                            <input type="password" id="check_pw" placeholder="비밀번호 확인" required />
+                            <input type="button" onclick="pwCheck()" value="비밀번호 검사" /><br />
+                            <input type="text" id="user_name" placeholder="이름" required /><br />
+                            <input type="number" id="user_age" placeholder="나이" /><br />
+                            <input type="email" id="user_email" placeholder="이메일" /><br />
+                            <input type="text" id="user_gender" placeholder="성별" /><br />
+                        </form>
+                        <div>
+                            <input type="text" id="sample4_postcode" placeholder="우편번호" />
+                            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" /><br />
+                            <input type="text" id="sample4_roadAddress" placeholder="도로명주소" />
+                            <input type="text" id="sample4_jibunAddress" placeholder="지번주소" />
+                            <span id="guide" style="color: #999; display: none"></span><br />
+                            <input type="text" id="sample4_detailAddress" placeholder="상세주소" />
+                            <input type="text" id="sample4_extraAddress" placeholder="참고항목" />
+                        </div>
+                        <button type="button" onclick="signupFunc()">회원가입</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

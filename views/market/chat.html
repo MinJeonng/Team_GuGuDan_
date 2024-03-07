@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chat Window</title>
+        <link rel="stylesheet" href="chat.css" />
+    </head>
+    <body>
+        <div class="chat-container">
+            <div class="chat-title">
+                <div class="profile-info">
+                    <img src="chatProfileImage.jpeg" alt="프로필 사진" />
+                    <span class="profile-name">홍길동</span>
+                </div>
+                <div class="exit-icon">나가기</div>
+            </div>
+            <div class="chat-box" id="chat-box"></div>
+            <input type="text" id="message-input" placeholder="메세지를 입력하세요." />
+            <button onclick="sendMessage()">전송</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
