@@ -30,6 +30,10 @@ const employRouter = require('./routes/employ_board');
 app.use('/api/employ/board', employRouter);
 const resumeRouter = require('./routes/resume');
 app.use('/api/resume', resumeRouter);
+const marketRouter = require('./routes/market');
+app.use('/api/market', marketRouter);
+const communityRouter = require('./routes/community');
+app.use('/api/community', communityRouter);
 // const memberRouter = require('./routes/member'); //수정해야함
 // app.use('/api/member', memberRouter);
 
@@ -42,11 +46,8 @@ app.get('*', (req, res) => {
 });
 
 //테이블 생성
-// db.sequelize.sync({ force: false }).then(() => {
-//     server.listen(PORT, () => {
-//         console.log(`http://localhost:${PORT}`);
-//     });
-// });
-app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
+db.sequelize.sync({ force: false }).then(() => {
+    server.listen(PORT, () => {
+        console.log(`http://localhost:${PORT}/intro`);
+    });
 });

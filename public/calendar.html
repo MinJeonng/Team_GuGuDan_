@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>달력</title>
+        <link rel="stylesheet" href="css/calendar.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
+    </head>
+    <body>
+        <h2 style="text-align: center">달력</h2>
+        <div class="container">
+            <div class="calendarhead">
+                <div class="dateNum" onclick="showDateCal()">근무일수</div>
+                <div class="headcareer" onclick="showCareerCal()">경력</div>
+            </div>
+            <div class="datecal">
+                <div class="btn-container">
+                    <button id="prevMonthBtn">&lt;</button>
+                    <span id="currentMonth"></span>
+                    <button id="nextMonthBtn">&gt;</button>
+                </div>
+                <table id="calendar">
+                    <caption></caption>
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="clicked">
+                    기준년월일 <span class="clickedDate hidden"></span
+                    ><button type="button" class="resetBtn">초기화</button>
+                </div>
+                <div class="added">
+                    <input type="number" class="addedInput" style="width: 50px" min="0" /> &nbsp;일 째 되는 날은?
+                    <button type="button" class="addedBtn">계산하기</button><span class="addedDate hidden"></span>
+                </div>
+                <div class="minus">
+                    <input type="text" class="minusInput" style="width: 50px" min="0" value="D-" /> 일은?
+                    <button type="button" class="minusBtn">계산하기</button><span class="minusDate hidden"></span>
+                </div>
+            </div>
+            <div class="careercal hidden">
+                <div class="inputdate">
+                    <select id="yearStart">
+                        <option>년도</option>
+                    </select>
+                    년
+                    <select id="monthStart">
+                        <option>월</option>
+                    </select>
+                    월~
+                    <select id="yearEnd">
+                        <option>년도</option>
+                    </select>
+                    년
+                    <select id="monthEnd">
+                        <option>월</option>
+                    </select>
+                    월
+                    <select id="employmentStatus">
+                        <option>퇴사</option>
+                        <option>재직중</option>
+                    </select>
+                </div>
+                <div class="retcareerbtn"><button type="button" onclick="calculateCareer()">변환하기</button></div>
+                <div class="rescareer">
+                    총 경력은 <input type="text" class="resyear" readonly style="width: 50px" /> 년
+                    <input type="text" class="resmonth" readonly style="width: 50px" /> 개월 입니다.
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function showDateCal() {
+                var dateCal = document.querySelector('.datecal');
+                var careerCal = document.querySelector('.careercal');
+
+                // datecal 보이기
+                dateCal.classList.remove('hidden');
+                // careercal 숨기기
+                careerCal.classList.add('hidden');
+            }
+
+            function showCareerCal() {
+                var dateCal = document.querySelector('.datecal');
+                var careerCal = document.querySelector('.careercal');
+
+                // datecal 숨기기
+                dateCal.classList.add('hidden');
+                // careercal 보이기
+                careerCal.classList.remove('hidden');
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                //초기화 버튼
+                var refreshButton = document.querySelector('.resetBtn');
+
+                refreshButton.addEventListener('click', function () {
+                    location.reload();
+                });
+            }); //음수 못치게 하기
+            const positiveInput = document.querySelector('.addedInput');
+
+            positiveInput.addEventListener('input', function () {
+                if (this.value < 0) {
+                    this.value = 0;
+                }
+            });
+        </script>
+        <script src="js/calendar.js"></script>
+    </body>
+</html>

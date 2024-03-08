@@ -1,0 +1,141 @@
+.calendarhead {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    border: 1px solid gray;
+    background-color: blueviolet;
+    line-height: 70px;
+    color: white;
+}
+.calendarhead > .dateNum {
+    margin-left: 120px;
+    cursor: pointer;
+}
+.calendarhead > .headcareer {
+    margin-right: 120px;
+    cursor: pointer;
+}
+#prevMonthBtn,
+#nextMonthBtn {
+    border: 1px solid #edd6ef;
+    background: #c08fff;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+table {
+    width: 300px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-left: 150px;
+}
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #edd6ef;
+}
+caption {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.btn-container {
+    margin-bottom: 20px;
+}
+.btn-container > #nextMonthBtn {
+    margin-left: 50px;
+}
+.clicked,
+.added {
+    margin-bottom: 20px;
+}
+.clickedDate,
+.addedDate,
+.minusDate {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 8px;
+}
+.addedBtn,
+.minusBtn,
+.resetBtn {
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid purple;
+    background: #c08fff;
+    color: #fff;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+.datecal {
+    margin-bottom: 50px;
+    text-align: center;
+}
+.careercal {
+    width: 500px;
+    margin-left: 50px;
+}
+.inputdate {
+    border: 0.1px solid gray;
+    margin-bottom: 50px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+.retcareerbtn {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.retcareerbtn > button {
+    border: 1px solid purple;
+    background: #c08fff;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.rescareer {
+    text-align: center;
+    margin-bottom: 50px;
+    border: 0.1px solid gray;
+    height: 40px;
+    line-height: 40px;
+}
+.rescareer > input {
+    text-align: center;
+    color: red;
+}
+select {
+    width: 50px;
+    padding: 0.2em 0.3em;
+    border: 1px solid #999;
+    font-family: inherit;
+    background: url('/public/img/icon/arrow.jpeg') no-repeat 95% 50%;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: gray;
+    margin-top: -5px;
+}
+select::-ms-expand {
+    display: none;
+}

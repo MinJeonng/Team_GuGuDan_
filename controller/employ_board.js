@@ -1,6 +1,41 @@
 const { Content } = require('../models');
 
+//페이지네이션
+// exports.paginate = async function paginate(model, where, order, page = 1, limit = 8) {
+//     try {
+//         const offset = (page - 1) * limit;
+//         const result = await model.findAll({
+//             where: where,
+//             order: order,
+//             limit: limit,
+//             offset: offset,
+//         });
+//         const totalCount = await model.count({ where: where });
+//         const lastPage = Math.ceil(totalCount / limit);
+//         const startPage = Math.floor((page - 1) / 8) * 8 + 1;
+//         return { result, startPage, lastPage, currentPage: page };
+//     } catch (error) {
+//         console.error(error);
+//         throw error;
+//     }
+// };
+
 //전체 글 조회
+// exports.boardAll = async (req, res) => {
+//     const page = Number(req.query.page) || 1;
+//     console.log(req.query.page);
+
+//     // console.log(`Page: ${page}`);
+//     try {
+//         const pagination = await paginate(Content, {}, [['id', 'desc']], page);
+//         // res.render('employ/employ_main', pagination);
+//         res.json(pagination);
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ success: false, message: error.message });
+//     }
+// };
+
 exports.boardAll = async (req, res) => {
     try {
         const result = await Content.findAll({ order: [['id', 'desc']] });
@@ -11,7 +46,68 @@ exports.boardAll = async (req, res) => {
         res.json({ success: false, result: error });
     }
 };
+// exports.searchEmploy = async (req, res) => {
+//     const { page = 1, job, city_name, town_name } = req.query;
+//     const where = {};
+//     if (job) where.job = job;
+//     if (city_name) where.city_name = city_name;
+//     if (town_name) where.town_name = town_name;
+//     try {
+//         const pagination = await paginate(Content, where, page);
+//         // res.render('employ/employ_main', pagination);
+//         res.json(pagination);
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ success: false, message: error.message });
+//     }
+// };
+exports.searchEmploy = async (req, res) => {
+    const { career, job, city_name, town_name } = req.query;
+    const where = {
+        job,
+        city_name,
+    };
+    if (town_name) where.town_name = town_name;
+    if (career) where.career = career;
 
+    try {
+        const result = await Content.findAll({ where });
+        res.json({ success: true, result: result });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+
+    // const limit = 8;
+    // const offset = (page - 1) * limit;
+    // try {
+    //     const result = await Content.findAll({
+    //         where: {
+    //             job,
+    //             city_name,
+    //             town_name,
+    //             career,
+    //         },
+    // where: where,
+    // limit: limit,
+    // offset: offset,
+    // });
+    // const totalCount = await Content.count({ where: where });
+    // const lastPage = Math.ceil(totalCount / limit);
+    // const startPage = Math.floor((page - 1) / 8) * 8 + 1;
+    // console.log(startPage);
+    // res.json({ success: true, result: result }); //lastPage: lastPage, startPage: startPage
+    // res.render('employ/employ_main', {
+    //     result: result,
+    //     startPage: startPage,
+    //     lastPage: lastPage,
+    //     // currentPage: page,
+    // });
+    // } catch (error) {
+    //     console.log(error);
+    //     res.json({ success: false, message: error.message });
+    // }
+};
 //게시글 클릭하면 들어가서 구인글 볼 수 있게 하나만 조회하는 것
 //1개 조회
 exports.boardDetail = async (req, res) => {
@@ -29,7 +125,7 @@ exports.boardDetail = async (req, res) => {
 
 //하나 생성
 exports.boardWrite = async (req, res) => {
-    userId = req.userId;
+    const id = req.userId; //이게 말그대로 content db에 있는 id를 외래키 userId로 하겠다는 의미!
     // console.log('write_id', write_id);
     try {
         const {
@@ -44,12 +140,15 @@ exports.boardWrite = async (req, res) => {
             career,
             salary,
             deadline,
-            content,
+            contents,
+            phoneNum,
+            education,
             //password,
         } = req.body;
+        console.log(req.body); //이걸로 프론트에서 주는값 받아오는지 확인가능
         const result = await Content.create({
             //boardId: Number(boardId),
-            userId: Number(userId),
+            id: Number(id),
             title,
             place_name,
             city_name,
@@ -60,7 +159,9 @@ exports.boardWrite = async (req, res) => {
             career,
             salary,
             deadline,
-            content,
+            contents,
+            phoneNum,
+            education,
         });
         console.log('result', result);
         res.json({ success: true, result: '' }); //result: result.id

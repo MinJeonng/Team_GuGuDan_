@@ -1,0 +1,101 @@
+body {
+    padding: 0 200px;
+}
+/* 헤더 */
+header {
+    padding-bottom: 50px;
+}
+.headbtn {
+    position: absolute;
+    right: 200px;
+    display: flex;
+}
+.headbtn > div {
+    cursor: pointer;
+}
+.sign {
+    margin: 0 20px;
+}
+.headertitle {
+    font-weight: bold;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.headertitle > img {
+    width: 20px;
+    height: 20px;
+}
+.banner {
+    background-color: blueviolet;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    line-height: 40px;
+}
+.bannerleft > span {
+    margin-left: 30px;
+    cursor: pointer;
+}
+.bannerright > span {
+    margin-right: 30px;
+    cursor: pointer;
+}
+/* 헤더 */
+.notiffont {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+.loginrevisetable {
+    margin-bottom: 50px;
+}
+.loginrevisetable > table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+}
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+caption {
+    border: 1px solid #000;
+    background-color: pink;
+    height: 40px;
+    line-height: 40px;
+}
+.loginrevisetable > table > tbody td:nth-child(1) {
+    width: 20%;
+    text-align: center;
+}
+.btnBox {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.inputBtn {
+    margin-right: 20px;
+    border: 1px solid purple;
+    background: #c08fff;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.delBtn {
+    border: 1px solid #c08fff;
+    background: lightskyblue;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
