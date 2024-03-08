@@ -17,20 +17,22 @@ img {
     height: auto;
     margin-bottom: 2rem;
     border-radius: 50%;
-}
-
-a {
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 25px bold;
-    border: none;
+}
+span {
     background-color: #f0e8ff;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-decoration: none;
 }
+/* a {
+    text-decoration: none;
+} */
 
-button:hover {
-    background-color: #f0e8ff;
+span:hover {
+    /* background-color: #f0e8ff; */
+    color: plum;
+    /* text-decoration: color(plum); */
 }

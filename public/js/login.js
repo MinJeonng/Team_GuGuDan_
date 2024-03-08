@@ -1,19 +1,23 @@
-const sign_in_btn = document.querySelector('#sign-in-btn');
-const sign_up_btn = document.querySelector('#sign-up-btn');
-const container = document.querySelector('.container');
-const sign_in_btn2 = document.querySelector('#sign-in-btn2');
-const sign_up_btn2 = document.querySelector('#sign-up-btn2');
-
-sign_up_btn.addEventListener('click', () => {
-    container.classList.add('sign-up-mode');
-});
-
-sign_in_btn.addEventListener('click', () => {
-    container.classList.remove('sign-up-mode');
-});
-sign_up_btn2.addEventListener('click', () => {
-    container.classList.add('sign-up-mode');
-});
-sign_in_btn2.addEventListener('click', () => {
-    container.classList.remove('sign-up-mode');
-});
+async function loginFunc() {
+    const res = await axios({
+        method: 'POST',
+        url: '/api/user/login',
+        data: {
+            user_id: document.querySelector('#user_id').value,
+            user_pw: document.querySelector('#user_pw').value,
+            user_name: document.querySelector('#user_name').value,
+        },
+    });
+    console.log(res);
+    if (res.data.success) {
+        alert('환영합니다!');
+        //localStorage: 브라우저에 정보를 저장, 브라우저닫혀도 계속유지
+        //sessionStroage: 브라우저 정보를 저장. 단, 브라우저가 닫히면 정보삭제
+        localStorage.setItem('token', res.data.token); //프론트에서 저장해두겠다.
+        localStorage.setItem('user_name', res.data.user_name);
+        document.location.href = '/';
+        // 수정해야함 페이지 이동.
+    } else {
+        alert('아이디와 비밀번호가 일치하지 않습니다.');
+    }
+}
