@@ -1,59 +1,184 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+select {
+    width: 200px;
+    padding: 0.8em 0.5em;
+    border: 1px solid #999;
+    font-family: inherit;
+    background: url('/public/img/icon/arrow.jpeg') no-repeat 95% 50%;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: gray;
+}
+
+select::-ms-expand {
+    display: none;
+}
+.select_box {
+    margin-bottom: 5px;
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    padding: 0 200px;
+    font-family: 'NanumSquareRound';
 }
-
+/* 헤더 */
 header {
-    background-color: purple;
-    color: #fff;
-    padding: 20px;
+    /* display: flex;
+    justify-content: center; */
+    padding-bottom: 50px;
 }
-
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-.hero {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #f0f0f0;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.features {
+.headbtn {
+    position: absolute;
+    right: 200px;
     display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
+}
+.headbtn > a {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+.sign {
+    margin: 0 20px;
+}
+.headerImg {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-.feature {
-    flex-basis: 30%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.banner {
+    background-color: blueviolet;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    line-height: 40px;
+}
+.bannerleft > span {
+    margin-left: 30px;
+    cursor: pointer;
+}
+.bannerright > span {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.second_body {
+    /* flex-direction: column; */
+    display: flex;
+    /* justify-content: space-between; */
+    margin-bottom: 50px;
+}
+.findEmploy {
+    border: solid 1px rgb(136, 30, 136);
+    flex: 1;
+    margin-right: 5px;
+    border-radius: 3px;
+    text-align: center;
+}
+.slideImg {
+    border: solid 1px rgb(30, 51, 136);
+    flex: 2;
+    margin-left: 5px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+* {
+    box-sizing: border-box;
+}
+.searchbtn {
+    margin: 5px;
+}
+.searchbtn {
+    position: relative;
+    border: 0;
+    padding: 15px 25px;
+    display: inline-block;
+    text-align: center;
+    font-family: inherit;
+    color: white;
+    cursor: pointer;
+}
+.searchbtn {
+    box-shadow: 0px 4px 0px #b745de;
+    background-color: #b745de;
+}
+.searchbtn:active {
+    /* box-shadow: 0 0 #ff4c4b; */
+    background-color: #895eab;
+}
+/* 메인슬라이드 */
+.second_body {
+    display: flex;
+    width: 100%;
+    height: 220px;
+    position: relative;
+}
+.slideImg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.main-slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* box-shadow: rgb(40, 40, 40) 5px 5px 5px; */
+    /* border-radius: 12px; */
+    /* margin-right: 20px; */
+}
+.main-slide > img {
+    width: 100%;
+    height: 100%;
+    /* border-radius: 2%; */
+    box-shadow: rgb(130, 129, 129) 5px 5px 5px;
+}
+
+.main-slide.active {
+    display: block;
+}
+.employInfo {
+    width: 100%;
+}
+.galleryFirst {
+    display: flex;
+    justify-content: space-between;
+}
+.card > a > img {
+    width: 100%; /* 이미지가 카드의 너비에 맞게 조정되도록 설정 */
+    height: 230px;
+}
+.card {
+    border: solid 1px rgb(30, 51, 136);
+    flex: 1;
+    text-align: center;
+    /* text-decoration: none; */
+    /* margin: 0 10px; */
+}
+.card > a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+.card > a:hover {
+    color: rgb(240, 197, 240);
+}
+.card > p {
+    font-size: 14px;
+}
+.gallerySecond {
+    display: flex;
 }

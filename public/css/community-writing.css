@@ -1,5 +1,12 @@
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     padding: 0 200px;
+    font-family: 'NanumSquareRound';
 }
 /* 헤더 */
 header {
@@ -78,4 +85,20 @@ td {
     height: 30px;
     border-radius: 5px;
     cursor: pointer;
+}
+select {
+    width: 100px;
+    padding: 0.5em 0.5em;
+    border: 1px solid #999;
+    font-family: inherit;
+    background: url('/public/img/icon/arrow.jpeg') no-repeat 95% 50%;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: gray;
+    margin-top: -5px;
+}
+select::-ms-expand {
+    display: none;
 }

@@ -40,10 +40,38 @@ td {
     text-align: left;
 }
 th {
-    background-color: #f2f2f2;
+    background-color: #edd6ef;
 }
 .fivebtn {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+textarea {
+    font-size: 16px;
+}
+.prebtn,
+.revisebtn,
+.listbtn {
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid purple;
+    background: #c08fff;
+    color: #fff;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.nextbtn,
+.delbtn {
+    border: 1px solid #c08fff;
+    background: pink;
+    color: #fff;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
 }

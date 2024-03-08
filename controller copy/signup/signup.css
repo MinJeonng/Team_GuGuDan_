@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 700px;
+    /* display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center; */
+}
+.top {
+    display: flex;
+}
+.member {
+    color: #8a2fff;
+}
+.main {
+    text-align: center;
+}
+.user-options {
+}
+.container {
+    width: 600px;
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 60px auto;
+    border-radius: 10px;
+    background-color: #edd6ef;
+}
+.container input[type='text'],
+.container input[type='password'],
+.container input[type='email'],
+.container input[type='tel'],
+.container input[type='url'] {
+    width: 500px;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border-color: #c08fff;
+}
+.button2 {
+    display: flex;
+}
+button {
+    border-radius: 5px;
+    background-color: #673ab7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Square+Round&display=swap');
+
+body {
+    font-family: 'Nanum Square Round', sans-serif;
+}
+
+.container {
+    font-family: 'Nanum Square Round', sans-serif;
+}
+/* .links2 a img {
+    font-size: 24px;
+    margin-right: 10px;
+} */

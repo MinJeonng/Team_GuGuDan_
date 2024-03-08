@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
         <title>Main Page</title>
         <link rel="stylesheet" href="mainPage.css" />
     </head>
@@ -48,5 +49,158 @@
         </footer>
 
         <script src="script.js"></script>
+=======
+        <title>Document</title>
+        <link rel="icon" href="/public/img/icon/logoico.ico">
+        <link rel="stylesheet" href="/public/css/mainPage.css" />
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="headbtn">
+                <a href="" class="login">로그인</a>
+                <a href = "" class="sign">회원가입</a>
+                <a href="" class="mypage">마이페이지</a>
+            </div>
+
+            <div class="headerImg">
+                <img src="/public/img/mainpageImg.jpeg" alt="home사진" />
+            </div>
+            <div class="banner">
+                <div class="bannerleft">
+                    <span class = "employBtn" onclick = "window.location.href = '/employ/board'; ">채용정보</span>
+                    <span class="marketBtn" onclick="window.location.href = '/market/market';">벼룩시장</span>
+                </div>
+                <div class="bannerright">
+                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
+                    <span>My 구인구직</span>
+                </div>
+            </div>
+        </header>
+        <div class = "second_body">
+            <div class = "findEmploy">
+                <h3>빠른 검색</h3>
+                <div class = "select_container">
+                    <select class = "select_box waselect1">
+                        <option disabled selected>지역 선택</option>
+                                <option>서울</option>
+                                <option>경기</option>
+                                <option>인천</option>
+                                <option>부산</option>
+                                <option>대전</option>
+                                <option>대구</option>
+                                <option>광주</option>
+                                <option>울산</option>
+                                <option>세종시</option>
+                                <option>강원</option>
+                                <option>경남</option>
+                                <option>경북</option>
+                                <option>전남</option>
+                                <option>전북</option>
+                                <option>충남</option>
+                                <option>충북</option>
+                                <option>제주</option>
+                    </select>
+                    <select class = "select_box waselect2">
+                        <option disabled selected>모집분야 선택</option>
+                            <option>원장</option>
+                            <option>시설장</option>
+                            <option>부원장</option>
+                            <option>원감</option>
+                            <option>부장교사</option>
+                            <option>주임교사</option>
+                            <option>정교사</option>
+                            <option>보육교사</option>
+                            <option>보조교사</option>
+                            <option>종일반교사</option>
+                            <option>반일반교사</option>
+                            <option>에듀케어</option>
+                            <option>실습교사</option>
+                            <option>야간교사</option>
+                            <option>미술교사</option>
+                            <option>영어교사</option>
+                            <option>영양·조리사</option>
+                            <option>피아노교사</option>
+                            <option>방과후교사</option>
+                            <option>한글교사</option>
+                            <option>수학교사</option>
+                            <option>체육교사</option>
+                            <option>특수교사</option>
+                            <option>특기교사</option>
+                            <option>보습교사</option>
+                            <option>학습지교사</option>
+                            <option>보육도우미</option>
+                            <option>하모니</option>
+                            <option>베이비시터</option>
+                            <option>조리사</option>
+                            <option>차량안전원</option>
+                            <option>간호사</option>
+                            <option>운전기사</option>
+                            <option>사무직원</option>
+                            <option>기타</option>
+                            <option>중국어교사</option>
+                    </select>
+                    <br />
+                    <button type="button" class="searchbtn" onclick="searchMainEmploy()">채용공고 검색</button>
+                </div>
+            </div>
+            <div class = "slideImg">
+                <div class="main-slide active"><img src="/public/img/main_Img/구인구직 광고베너.png" alt="배너1" /></div>
+                <div class="main-slide"><img src="/public/img/main_Img/mainslide1.png" alt="배너2" /></div>
+                <div class="main-slide"><img src="/public/img/main_Img/mainslide2.png" alt="배너3" /></div>
+                
+            </div>
+        </div>
+       
+        </div>
+        <div class = "employInfo">
+            <div class="galleryFirst">
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergartenImage.jpg" alt="채용공고 1" />
+                    <h4>해피아이숲 어린이집</h4></a>
+                    <p>따뜻한 보육교사 영아반 담임선생님 모십니다.</p>
+                </div>
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergartenImage2.jpg" alt="채용공고 2" />
+                    <h4>국공립 새봄빛 어린이집</h4></a>
+                    <p>보조교사 (6시간) 공개 채용</p>
+                </div>
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergartenImage3.jpg" alt="채용공고 3" />
+                    <h4>한그루 유치원</h5></a>
+                    <p>[급구] 만2세 담임선생님 모십니다.</p>
+                </div>
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergartenImage4.jpg" alt="채용공고 4" />
+                    <h4>숲 자람터</h4></a>
+                    <p>[2024] 연장반 교사 채용</p>
+                </div>
+            </div>
+            <div class = "gallerySecond">
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergartenImage5jpg.jpg" alt="채용공고 5" />
+                    <h4>행복 어린이집</h4></a>
+                    <p>유아반 담임교사 모십니다.</p>
+                </div>
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergartenImage6.jpg" alt="채용공고 6" />
+                    <h4>소담 어린이집</h4></a>
+                    <p>야간연장교사 채용공고</p>
+                </div>
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergarden7.avif" alt="채용공고 7" /><h4>해나라 유치원</h4></a>
+                    <p>방과후 체육강사 채용공고</p>
+                </div>
+                <div class="card">
+                    <a href=""><img src="/public/img/main_Img/kindergarden8.jpeg" alt="채용공고 8" /><h4>코딩온 어린이집</h4></a>
+                    <p>웹 개발자 채용 축</p>
+                </div>
+            </div>
+        </div>
+
+        <%- include('footer.ejs') %> <%- include('sidebar.ejs') %>
+        <script src="/public/js/mainPage.js"></script>
+>>>>>>> d36e0f4d2eaff4237fb841f85cc1b04ca2042c78
     </body>
 </html>

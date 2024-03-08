@@ -224,3 +224,23 @@ td input {
     font-size: 14px;
     cursor: pointer;
 }
+select {
+    width: 70px;
+    padding: 0.2em 0.3em;
+    border: 1px solid #999;
+    font-family: inherit;
+    background: url('/public/img/icon/arrow.jpeg') no-repeat 95% 50%;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: gray;
+    margin-top: -5px;
+}
+select::-ms-expand {
+    display: none;
+}
+#eduselect,
+#hopesaleselect {
+    width: 100px;
+}

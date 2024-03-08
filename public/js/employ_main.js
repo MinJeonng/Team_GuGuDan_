@@ -369,8 +369,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 버튼을 클릭할 때 페이지를 새로고침합니다.
     refreshButton.addEventListener('click', function () {
-        location.reload();
+        // location.reload();
+        location.href = location.pathname;
     });
+
     // refreshButton2.addEventListener('click', function () {
     //     location.reload();
     // });
@@ -379,12 +381,22 @@ document.addEventListener('DOMContentLoaded', function () {
 const tbody = document.querySelector('tbody');
 (async function () {
     try {
+        // URL의 쿼리 문자열 파싱
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // city-name, job 값 가져오기
+        const cityName = urlParams.get('city-name');
+        const job = urlParams.get('job');
+
+        // 만약 쿼리 문자열에 city-name과 job이 모두 있으면 함수를 빠져나감
+        if (cityName && job) {
+            return;
+        }
+
         const res = await axios({
             method: 'GET',
             url: '/api/employ/board/all',
-            // params: {
-            //     page,
-            // },
+
             // headers: {
             //     //로그인해야 접근
             //     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -473,6 +485,64 @@ async function searchEmploy() {
     console.log(res.data);
     if (success) {
         //기존내용 삭제
+        tbody.innerHTML = '';
+
+        // 검색 결과를 추가합니다.
+        for (let i = 0; i < result.length; i++) {
+            const html = `
+            <tr>
+                <td>${result[i].city_name.substring(0, 2)} ${result[i].town_name.substring(0, 2)}</td>
+                <td>${result[i].job}</td>
+                <td class = "title-td" ><a href="/employ/board/${result[i].id}" class="title-link">${
+                result[i].title
+            }</a></td>
+                <td>${result[i].place_name}</td>
+                <td>${result[i].career}</td>
+                <td>${result[i].createdAt.substring(5, 10)}</td>
+            </tr>
+            `;
+            tbody.insertAdjacentHTML('beforeend', html);
+        }
+    }
+}
+window.onload = async function () {
+    // URL의 쿼리 문자열 파싱
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // city_name, job 값 가져오기
+    const city_name = urlParams.get('city-name');
+    const job = urlParams.get('job');
+
+    // 가져온 값으로 select box 설정
+    if (city_name) {
+        document.querySelector('.waselect1').value = city_name;
+    }
+    if (job) {
+        document.querySelector('.recselect').value = job;
+    }
+
+    // 선택된 결과를 selectedresult에 표시
+    if (city_name || job) {
+        document.querySelector('.selectedresult').innerText = ` ${city_name}, ${job}`;
+    }
+
+    // 쿼리값에 따라 검색 결과 출력
+    await searchMainEmploy(city_name, job);
+};
+
+async function searchMainEmploy(city_name, job) {
+    const res = await axios({
+        method: 'GET',
+        url: '/api/employ/board/search',
+        params: {
+            city_name: city_name,
+            job: job,
+        },
+    });
+
+    const { success, result } = res.data;
+    if (success) {
+        // 기존내용 삭제
         tbody.innerHTML = '';
 
         // 검색 결과를 추가합니다.

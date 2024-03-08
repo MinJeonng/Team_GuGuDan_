@@ -46,13 +46,30 @@
                     <td><span style="color: red">*</span>&nbsp;제품상태</td>
                     <td>
                         <select style="width: 100px" id="pd_status">
-                            <option>선택</option>
+                            <option>선택하세요</option>
+                            <option>신품</option>
+                            <option>아주좋음</option>
+                            <option>좋음</option>
+                            <option>보통</option>
+                            <option>나쁨</option>
                         </select>
                     </td>
                     <td><span style="color: red">*</span>&nbsp;분류</td>
                     <td>
                         <select style="width: 100px" id="category">
-                            <option>선택</option>
+                            <option>선택하세요</option>
+                            <option>교구교재</option>
+                            <option>유아용품</option>
+                            <option>육아용품</option>
+                            <option>장난감</option>
+                            <option>환경용품</option>
+                            <option>놀이기구</option>
+                            <option>서비스</option>
+                            <option>서적</option>
+                            <option>차량</option>
+                            <option>인테리어</option>
+                            <option>시설비품</option>
+                            <option>기타</option>
                         </select>
                     </td>
                 </tr>
@@ -65,6 +82,12 @@
                     <td>
                         <select style="width: 100px" id="pd_division">
                             <option>선택</option>
+                            <option>홍보</option>
+                            <option>팝니다</option>
+                            <option>삽니다</option>
+                            <option>교환</option>
+                            <option>무료</option>
+                            <option>기타</option>
                         </select>
                     </td>
                     <td><span style="color: red">*</span>&nbsp;가격</td>
@@ -137,6 +160,7 @@
             </div>
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
+        <script src="/public/js/market-writing.js"></script>
         <script src="/public/js/market-writing.js"></script>
     </body>
 </html>
