@@ -20,8 +20,14 @@ db.Content.belongsTo(db.User, { foreignKey: 'userId', onDelete: 'CASCADE' });
 db.User.hasMany(db.ChatMessage, { foreignKey: 'chatId', onDelete: 'CASCADE' });
 db.ChatMessage.belongsTo(db.User, { foreignKey: 'chatId', onDelete: 'CASCADE' });
 
-db.User.hasMany(db.Resume, { foreignKey: 'resumeId', onDelete: 'CASCADE' });
-db.Resume.belongsTo(db.User, { foreignKey: 'resumeId', onDelete: 'CASCADE' });
+db.User.hasMany(db.Resume, { foreignKey: 'userId', onDelete: 'CASCADE' });
+db.Resume.belongsTo(db.User, { foreignKey: 'userId', onDelete: 'CASCADE' });
+
+db.User.hasMany(db.Market, { foreignKey: 'userId', onDelete: 'CASCADE' });
+db.Market.belongsTo(db.User, { foreignKey: 'userId', onDelete: 'CASCADE' });
+
+db.User.hasMany(db.Community, { foreignKey: 'userId', onDelete: 'CASCADE' });
+db.Community.belongsTo(db.User, { foreignKey: 'userId', onDelete: 'CASCADE' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

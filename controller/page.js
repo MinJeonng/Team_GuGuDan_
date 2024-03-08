@@ -26,10 +26,6 @@ exports.board_detail = (req, res) => {
     res.render('employ/board_detail');
 };
 
-exports.resume_register = (req, res) => {
-    res.render('resume/register'); //이력서 등록페이지
-};
-
 exports.market_main = (req, res) => {
     res.render('market/market');
 };
@@ -51,4 +47,8 @@ exports.community_detail = (req, res) => {
 };
 exports.community_write = (req, res) => {
     res.render('community/community-writing');
+};
+
+exports.resume_register = (req, res) => {
+    res.render('resume/resume'); //이력서 등록페이지
 };
