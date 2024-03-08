@@ -79,3 +79,6 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+#content {
+    font-size: 16px;
+}

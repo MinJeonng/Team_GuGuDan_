@@ -15,8 +15,8 @@ app.get('/', function (req, res) {
 app.get('/market/market', (req, res) => {
     res.render('market/market');
 });
-app.get('/employ/employ-writing', (req, res) => {
-    res.render('employ/employ-writing');
+app.get('/employ/employ_writing', (req, res) => {
+    res.render('employ/employ_writing');
 });
 app.get('/market/market-writing', (req, res) => {
     res.render('market/market-writing');
