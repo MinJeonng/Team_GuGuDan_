@@ -11,6 +11,8 @@ db.Content = require('./content')(sequelize);
 db.User = require('./user')(sequelize);
 db.Resume = require('./resume')(sequelize);
 db.ChatMessage = require('./chatmessage')(sequelize);
+db.Market = require('./market')(sequelize);
+db.Community = require('./community')(sequelize);
 
 db.User.hasMany(db.Content, { foreignKey: 'userId', onDelete: 'CASCADE' });
 db.Content.belongsTo(db.User, { foreignKey: 'userId', onDelete: 'CASCADE' });

@@ -15,7 +15,7 @@
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="../public/img/꽃.png" alt="꽃" />
+                <img src="../../public/img/꽃.png" alt="꽃" />
                 벼룩 시장
             </div>
             <div class="banner">
@@ -36,42 +36,42 @@
         <table class="marktable">
             <thead>
                 <th><span style="color: red">*</span>&nbsp;이름</th>
-                <th><input type="text" /></th>
+                <th><input type="text" id="seller_id" /></th>
                 <th><span style="color: red">*</span>&nbsp;휴대폰 번호</th>
-                <th><input type="text" /></th>
+                <th><input type="text" id="phoneNum" /></th>
             </thead>
             <tbody>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;제품상태</td>
                     <td>
-                        <select style="width: 100px">
+                        <select style="width: 100px" id="pd_status">
                             <option>선택</option>
                         </select>
                     </td>
                     <td><span style="color: red">*</span>&nbsp;분류</td>
                     <td>
-                        <select style="width: 100px">
+                        <select style="width: 100px" id="category">
                             <option>선택</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;제목</td>
-                    <td colspan="3"><input type="text" style="width: 90%" /></td>
+                    <td colspan="3"><input type="text" id="pd_title" style="width: 90%" /></td>
                 </tr>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;구분</td>
                     <td>
-                        <select style="width: 100px">
+                        <select style="width: 100px" id="pd_division">
                             <option>선택</option>
                         </select>
                     </td>
                     <td><span style="color: red">*</span>&nbsp;가격</td>
-                    <td><input type="text" /></td>
+                    <td><input type="text" id="pd_price" /></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
-                    <td colspan="3"><input type="email" style="width: 80%" /></td>
+                    <td colspan="3"><input type="email" id="pd_mail" style="width: 80%" /></td>
                 </tr>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;거래지역</td>
@@ -132,10 +132,10 @@
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
-                <button type="button">글쓰기</button>
+                <button type="button" onclick="mWriting()">글쓰기</button>
             </div>
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
-        <script src="../public/market-writing.js"></script>
+        <script src="../../public/js/market-writing.js"></script>
     </body>
 </html>

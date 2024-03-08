@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('.');
+// const { sequelize } = require('.');
 
 const ContentModel = (sequelize) => {
     return sequelize.define('content', {
