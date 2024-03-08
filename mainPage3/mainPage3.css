@@ -2,7 +2,6 @@
     display: none;
 }
 .section .slidewrap {
-    padding-top: 150px;
     max-width: 700px;
     margin: 0 auto;
     overflow: hidden;
@@ -34,13 +33,22 @@
 }
 .section .slidelist .left {
     left: 30px;
-    background-color: url('./왼쪽\ 화살표.png') center center / 100% no-repeat;
+    background: url(../mainPage3/img/왼쪽\ 화살표.png) center center / 100 no-repeat;
 }
 .section .slidelist .right {
     right: 30px;
-    background-color: url('./오른쪽\ 화살표.png') center center/ 100 no-repeat;
+    background: url(../mainPage3/img/오른쪽\ 화살표.png) center center / 100 no-repeat;
 }
-.section .slide-control [class='control'] {
+.section [id='slide01']:checked ~ .slidewrap .slidelist > li {
+    transform: translateX(0%);
+}
+.section [id='slide02']:checked ~ .slidewrap .slidelist > li {
+    transform: translateX(-100%);
+}
+.section [id='slide03']:checked ~ .slidewrap .slidelist > li {
+    transform: translateX(-200%);
+}
+.section .slide-control [class*='control'] {
     display: none;
 }
 .section [id='slide01']:checked ~ .slidewrap .control01 {
@@ -51,14 +59,4 @@
 }
 .section [id='slide03']:checked ~ .slidewrap .control03 {
     display: block;
-}
-
-.section [id='slide01']:checked ~ .slidewrap .slidelist > li {
-    transform: translateX(0%);
-}
-.section [id='slide02']:checked ~ .slidewrap .slidelist > li {
-    transform: translateX(-100%);
-}
-.section [id='slide03']:checked ~ .slidewrap .slidelist > li {
-    transform: translateX(-200%);
 }

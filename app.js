@@ -15,6 +15,15 @@ const server = http.createServer(app);
 websocket(server);
 
 //router
+app.get('/', function (req, res) {
+    res.render('intro');
+});
+app.get('/main', function (req, res) {
+    res.render('mainPage');
+});
+// app.post('/', function (req, res) {
+//     res.render('login2');
+// });
 const pageRouter = require('./routes/page');
 app.use('/', pageRouter);
 const employRouter = require('./routes/employ_board');
@@ -33,8 +42,11 @@ app.get('*', (req, res) => {
 });
 
 //테이블 생성
-db.sequelize.sync({ force: false }).then(() => {
-    server.listen(PORT, () => {
-        console.log(`http://localhost:${PORT}`);
-    });
+// db.sequelize.sync({ force: false }).then(() => {
+//     server.listen(PORT, () => {
+//         console.log(`http://localhost:${PORT}`);
+//     });
+// });
+app.listen(PORT, () => {
+    console.log(`http://localhost:${PORT}`);
 });

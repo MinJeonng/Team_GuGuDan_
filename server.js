@@ -12,17 +12,6 @@
 //     res.render('employ');
 // });
 
-<<<<<<< HEAD
-// app.get('/market', (req, res) => {
-//     res.render('market');
-// });
-// app.get('/employ-writing', (req, res) => {
-//     res.render('employ-writing');
-// });
-// app.get('/market-writing', (req, res) => {
-//     res.render('market-writing');
-// });
-=======
 app.get('/market', (req, res) => {
     res.render('market');
 });
@@ -38,7 +27,6 @@ app.get('/community', (req, res) => {
 app.get('/community-writing', (req, res) => {
     res.render('community-writing');
 });
->>>>>>> devel
 
 // app.listen(PORT, () => {
 //     console.log(`http://localhost:${PORT}`);
