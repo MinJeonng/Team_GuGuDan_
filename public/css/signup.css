@@ -34,7 +34,7 @@ body {
 .container input[type='text'],
 .container input[type='password'],
 .container input[type='email'],
-.container input[type='tel'],
+.container input[type='number'],
 .container input[type='url'] {
     width: 500px;
     padding: 8px;
@@ -53,15 +53,7 @@ button {
     border: none;
     cursor: pointer;
 }
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Square+Round&display=swap');
 
-body {
-    font-family: 'Nanum Square Round', sans-serif;
-}
-
-.container {
-    font-family: 'Nanum Square Round', sans-serif;
-}
 /* .links2 a img {
     font-size: 24px;
     margin-right: 10px;
