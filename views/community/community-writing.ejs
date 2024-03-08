@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>커뮤니티 글쓰는 페이지</title>
-        <link rel="stylesheet" href="../public/css/community-writing.css" />
+        <link rel="stylesheet" href="../../public/css/community-writing.css" />
     </head>
     <body>
         <header>
@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <td><span style="color: red">*</span>&nbsp;글 제목</td>
-                        <td><input type="text" id="id" style="width: 80%" id="title" /></td>
+                        <td><input type="text" style="width: 80%" id="title" /></td>
                     </tr>
                     <tr>
                         <td><span style="color: red">*</span>&nbsp;내용</td>
@@ -73,9 +73,35 @@
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
-                <button type="button">등록하기</button>
+                <button type="button" onclick="submit()">등록하기</button>
             </div>
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
+        <script>
+            async function submit() {
+                const res = await axios({
+                    method: 'POST',
+                    url: '/api/community/write',
+                    data: {
+                        community_id: document.querySelector('#id').value,
+                        com_mail: document.querySelector('#email"').value,
+                        com_division: document.querySelector('#group').value,
+                        com_title: document.querySelector('#title').value,
+                        con_content: document.querySelector('#content').value,
+                        // pd_picture
+                    },
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                });
+                console.log('res', res);
+                const { success, result } = res.data;
+                console.log(res.data);
+                if (success) {
+                    alert('등록되었습니다');
+                    document.location.href = '/community/board';
+                }
+            }
+        </script>
     </body>
 </html>

@@ -29,3 +29,26 @@ exports.board_detail = (req, res) => {
 exports.resume_register = (req, res) => {
     res.render('resume/register'); //이력서 등록페이지
 };
+
+exports.market_main = (req, res) => {
+    res.render('market/market');
+};
+
+exports.market_detail = (req, res) => {
+    res.render('market/market-detail');
+};
+
+exports.market_write = (req, res) => {
+    res.render('market/market-writing');
+};
+
+exports.community_main = (req, res) => {
+    res.render('community/community');
+};
+
+exports.community_detail = (req, res) => {
+    res.render('community/community-detail');
+};
+exports.community_write = (req, res) => {
+    res.render('community/community-writing');
+};

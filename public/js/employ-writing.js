@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 const [_, url] = document.location.href.split('board/');
-console.log(url);
+console.log(url); // 이 두줄 필요한가요?
 async function register() {
     const res = await axios({
         method: 'POST',
