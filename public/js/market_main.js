@@ -35,9 +35,9 @@ const tbody = document.querySelector('tbody');
             )}</td>
                 <td>${res.data.result[i].pd_division}</td>
                 <td class = "title-td" ><a href="/market/board/${res.data.result[i].id}" class="title-link">${
-                res.data.result[i].cathegory
+                res.data.result[i].category
             }</a></td>
-                <td>${res.data.result[i].place_title}</td>
+                <td>${res.data.result[i].pd_title}</td>
                 <td>${res.data.result[i].seller_id}</td>
                 <td>${res.data.result[i].pd_status}</td>
                 <td>${res.data.result[i].createdAt.substring(5, 10)}</td>
