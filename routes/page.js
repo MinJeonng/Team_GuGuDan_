@@ -15,6 +15,7 @@ router.get('/employ/board', controller.board_main); //채용공고 게시판 페
 router.get('/employ/board/:id', controller.board_detail); //상세 페이지
 router.get('/employ/write', controller.board_write); //글쓰기 페이지
 //이력서
+router.get('/resume/mypage', controller.mypage); // 마이페이지
 router.get('/resume/register', controller.resume_register); // 이력서 등록
 //벼룩시장
 router.get('/market/board', controller.market_main); //벼룩시장 게시판전체.

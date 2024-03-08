@@ -10,8 +10,8 @@
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="employtitle">
@@ -73,6 +73,6 @@
             </div>
             <div><button type="button" class="listbtn">목록</button></div>
         </div>
-        <%- include('footer.ejs') %>
+        <%- include('../footer.ejs') %>
     </body>
 </html>
