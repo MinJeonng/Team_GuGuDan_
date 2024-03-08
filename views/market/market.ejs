@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/public/css/market.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <header>
@@ -57,80 +58,7 @@
                 <th>상태</th>
                 <th>등록일</th>
             </thead>
-            <tbody>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-                <tr>
-                    <td>서울 경기</td>
-                    <td>홍보</td>
-                    <td>차량</td>
-                    <td>학원 유치원 어린이집 보호차랑셔틀상담</td>
-                    <td>스쿨버스</td>
-                    <td>진행중</td>
-                    <td>02/26</td>
-                </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
         <div style="text-align: center">페이지네이션</div>
         <div class="markwrBtn">
@@ -138,6 +66,7 @@
         </div>
 
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
+        <script src="/public/js/market_main.js"></script>
         <script>
             $(document).ready(function () {
                 $('.wrtable tbody td:nth-child(4)').click(function () {
