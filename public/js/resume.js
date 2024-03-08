@@ -303,6 +303,9 @@ document.addEventListener('DOMContentLoaded', function () {
             case '제주':
                 addOptions(['시/군/구 선택', '서귀포시', '제주시']);
                 break;
+            case '해외':
+                addOptions(['나라 선택', '중국', '홍콩', '일본']);
+                break;
         }
     });
 
@@ -318,78 +321,32 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     var waselect1 = document.querySelector('.waselect1');
     var waselect2 = document.querySelector('.waselect2');
-    var detailAddressInput = document.querySelector('.detailadress');
+
     var selectedResult = document.querySelector('.selectedresult');
 
     // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
     waselect1.addEventListener('change', updateSelected);
     waselect2.addEventListener('change', updateSelected);
-    detailAddressInput.addEventListener('input', updateSelected);
+    var selectedResult = document.querySelector('.selectedresult');
+    var selectedValues = [];
 
     function updateSelected() {
-        var selectedValues = [];
-
+        if (waselect1.value !== '지역 선택' && waselect2.value === '시/군/구 선택') {
+            selectedResult.push('');
+        }
         if (waselect1.value !== '지역 선택') {
             selectedValues.push(waselect1.value);
+            if (waselect2.value !== '시/군/구 선택') {
+                selectedValues.push(waselect2.value);
+            }
         }
-        if (waselect2.value !== '시/군/구 선택') {
-            selectedValues.push(waselect2.value);
-        }
-
-        var detailAddress = detailAddressInput.value.trim();
-        if (detailAddress !== '') {
-            selectedValues.push(detailAddress);
+        if (selectedValues.length > 10) {
+            // 5개 이상 선택 시 마지막 항목을 제거합니다.
+            selectedValues.pop();
+            selectedValues.pop();
+            alert('최대 5개까지 선택할 수 있습니다.');
         }
 
         selectedResult.value = selectedValues.join(' '); //
     }
 });
-
-const [_, url] = document.location.href.split('board/');
-console.log(url); // 이 두줄 필요한가요?
-async function register() {
-    const res = await axios({
-        method: 'POST',
-        url: '/api/employ/board/write',
-        data: {
-            title: document.querySelector('#title').value,
-            place_name: document.querySelector('#place_name').value,
-            city_name: document.querySelector('.waselect1').value,
-            town_name: document.querySelector('.waselect2').value,
-            place_address: document.querySelector('.detailadress').value,
-            job: document.querySelector('.recselect').value,
-            career: document.querySelector('input[name="career"]:checked').value,
-            phoneNum: document.querySelector('#phoneNum').value,
-            salary: document.querySelector('#salary').value,
-            deadline: document.querySelector('#deadline').value,
-            education: document.querySelector('#education').value,
-            homepage: document.querySelector('#homepage').value,
-            contents: document.querySelector('#contents').value,
-        },
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-    });
-    console.log('res', res);
-    const { success, result } = res.data;
-    console.log(res.data);
-    if (success) {
-        alert('등록되었습니다');
-        // document.location.href = `/api/employ/board/${url}`; //다시
-        document.location.href = '/employ/board';
-        // document.location.href = `/employ/board/${result}`;
-        //document.location.href = `/employ/board`; 이렇게 해야할듯c
-        //등록을 하면 상세 페이지로 해당 글이 올라간 상세페이지로 이동하게 해야할듯
-    }
-}
-//급여 정규표현식으로 세 자 마다 , 표신
-function addCommaToSalary(input) {
-    let salary = input.value;
-    salary = salary.replace(/,/g, ''); // 기존에 찍힌 콤마를 모두 제거
-    salary = salary.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 천 단위로 콤마 추가
-    input.value = salary;
-}
-//전화번호 11자로 제한
-function maxLengthCheck(object) {
-    if (object.value.length > 11) object.value = object.value.slice(0, 11);
-}

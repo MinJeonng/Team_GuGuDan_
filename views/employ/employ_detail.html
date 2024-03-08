@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>구인 상세 페이지</title>
         <link rel="stylesheet" href="/public/css/employ-detail.css" />
     </head>
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="employtitle">
@@ -60,18 +60,18 @@
                 <td>이력서.pdf</td>
             </tr>
         </table>
-        <textarea rows="30" cols="123" placeholder="내용을 입력하세요"></textarea>
+        <textarea rows="30" cols="100" placeholder="내용을 입력하세요"></textarea>
         <div class="fivebtn">
             <div class="leftbtn">
                 <button type="button" class="prebtn">이전글</button>
                 <button type="button" class="nextbtn">다음글</button>
             </div>
             <div class="centerbtn">
-                <button type="button" class="revicebtn">수정</button>
+                <button type="button" class="revisebtn">수정</button>
                 <button type="button" class="delbtn">삭제</button>
             </div>
             <div><button type="button" class="listbtn">목록</button></div>
         </div>
-        <%- include('footer.ejs') %>
+        <%- include('../footer.ejs') %>
     </body>
 </html>

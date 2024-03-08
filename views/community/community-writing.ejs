@@ -4,7 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>커뮤니티 글쓰는 페이지</title>
-        <link rel="stylesheet" href="../public/css/community-writing.css" />
+        <link rel="stylesheet" href="/public/css/community-writing.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
     </head>
     <body>
         <header>
@@ -14,17 +15,17 @@
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="../public/img/꽃.png" alt="꽃" />
+                <img src="/public/img/꽃.png" alt="꽃" />
                 글 등록
             </div>
             <div class="banner">
                 <div class="bannerleft">
-                    <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
+                    <span onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
-                    <span>My 구인구직</span>
+                    <span onclick="window.location.href = '/community/board';">커뮤니티</span>
+                    <span onclick="window.location.href = '/resume/mypage';">My 구인구직</span>
                 </div>
             </div>
         </header>
@@ -47,13 +48,19 @@
                         <td><span style="color: red">*</span>&nbsp;분류</td>
                         <td>
                             <select class="groupselecect" id="group">
+                                <option>전체</option>
                                 <option>유치원</option>
+                                <option>어린이집</option>
+                                <option>놀이학교</option>
+                                <option>미술학원</option>
+                                <option>놀이학원</option>
+                                <option>기타</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td><span style="color: red">*</span>&nbsp;글 제목</td>
-                        <td><input type="text" id="id" style="width: 80%" id="title" /></td>
+                        <td><input type="text" style="width: 80%" id="title" /></td>
                     </tr>
                     <tr>
                         <td><span style="color: red">*</span>&nbsp;내용</td>
@@ -73,9 +80,35 @@
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
-                <button type="button">등록하기</button>
+                <button type="button" onclick="submit()">등록하기</button>
             </div>
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
+        <script>
+            async function submit() {
+                const res = await axios({
+                    method: 'POST',
+                    url: '/api/community/write',
+                    data: {
+                        community_id: document.querySelector('#id').value,
+                        com_mail: document.querySelector('#email"').value,
+                        com_division: document.querySelector('#group').value,
+                        com_title: document.querySelector('#title').value,
+                        con_content: document.querySelector('#content').value,
+                        // pd_picture
+                    },
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                });
+                console.log('res', res);
+                const { success, result } = res.data;
+                console.log(res.data);
+                if (success) {
+                    alert('등록되었습니다');
+                    document.location.href = '/community/board';
+                }
+            }
+        </script>
     </body>
 </html>

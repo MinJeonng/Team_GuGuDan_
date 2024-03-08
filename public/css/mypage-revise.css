@@ -1,12 +1,5 @@
-@font-face {
-    font-family: 'NanumSquareRound';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 body {
     padding: 0 200px;
-    font-family: 'NanumSquareRound';
 }
 /* 헤더 */
 header {
@@ -53,10 +46,13 @@ header {
 /* 헤더 */
 .notiffont {
     margin-top: 20px;
-    text-align: right;
     margin-bottom: 20px;
+    text-align: right;
 }
-.comwrtable {
+.loginrevisetable {
+    margin-bottom: 50px;
+}
+.loginrevisetable > table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #000;
@@ -66,39 +62,40 @@ th,
 td {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: left;
+}
+caption {
+    border: 1px solid #000;
+    background-color: pink;
+    height: 40px;
+    line-height: 40px;
+}
+.loginrevisetable > table > tbody td:nth-child(1) {
+    width: 20%;
     text-align: center;
 }
-.groupselect {
-    width: 100px;
+.btnBox {
     text-align: center;
-}
-.btnCollection {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 50px;
 }
-.btnCollection div button {
-    border: 1px solid #c08fff;
-    background: pink;
+.inputBtn {
+    margin-right: 20px;
+    border: 1px solid purple;
+    background: #c08fff;
     color: #fff;
-    width: 75px;
-    height: 30px;
+    width: 100px;
+    height: 40px;
     border-radius: 5px;
+    font-size: 14px;
     cursor: pointer;
 }
-select {
+.delBtn {
+    border: 1px solid #c08fff;
+    background: lightskyblue;
+    color: #fff;
     width: 100px;
-    padding: 0.5em 0.5em;
-    border: 1px solid #999;
-    font-family: inherit;
-    background: url('/public/img/icon/arrow.jpeg') no-repeat 95% 50%;
-    border-radius: 0px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    color: gray;
-    margin-top: -5px;
-}
-select::-ms-expand {
-    display: none;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
 }

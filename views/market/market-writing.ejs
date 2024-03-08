@@ -4,27 +4,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="../public/css/market-writing.css" />
+        <link rel="stylesheet" href="/public/css/market-writing.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
     </head>
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="../public/img/꽃.png" alt="꽃" />
+                <img src="/public/img/꽃.png" alt="꽃" />
                 벼룩 시장
             </div>
             <div class="banner">
                 <div class="bannerleft">
-                    <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
+                    <span onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
-                    <span>My 구인구직</span>
+                    <span onclick="window.location.href = '/community/board';">커뮤니티</span>
+                    <span onclick="window.location.href = '/resume/mypage';">My 구인구직</span>
                 </div>
             </div>
         </header>
@@ -35,42 +36,65 @@
         <table class="marktable">
             <thead>
                 <th><span style="color: red">*</span>&nbsp;이름</th>
-                <th><input type="text" /></th>
+                <th><input type="text" id="seller_id" /></th>
                 <th><span style="color: red">*</span>&nbsp;휴대폰 번호</th>
-                <th><input type="text" /></th>
+                <th><input type="text" id="phoneNum" /></th>
             </thead>
             <tbody>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;제품상태</td>
                     <td>
-                        <select style="width: 100px">
-                            <option>선택</option>
+                        <select style="width: 100px" id="pd_status">
+                            <option>선택하세요</option>
+                            <option>신품</option>
+                            <option>아주좋음</option>
+                            <option>좋음</option>
+                            <option>보통</option>
+                            <option>나쁨</option>
                         </select>
                     </td>
                     <td><span style="color: red">*</span>&nbsp;분류</td>
                     <td>
-                        <select style="width: 100px">
-                            <option>선택</option>
+                        <select style="width: 100px" id="category">
+                            <option>선택하세요</option>
+                            <option>교구교재</option>
+                            <option>유아용품</option>
+                            <option>육아용품</option>
+                            <option>장난감</option>
+                            <option>환경용품</option>
+                            <option>놀이기구</option>
+                            <option>서비스</option>
+                            <option>서적</option>
+                            <option>차량</option>
+                            <option>인테리어</option>
+                            <option>시설비품</option>
+                            <option>기타</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;제목</td>
-                    <td colspan="3"><input type="text" style="width: 90%" /></td>
+                    <td colspan="3"><input type="text" id="pd_title" style="width: 90%" /></td>
                 </tr>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;구분</td>
                     <td>
-                        <select style="width: 100px">
+                        <select style="width: 100px" id="pd_division">
                             <option>선택</option>
+                            <option>홍보</option>
+                            <option>팝니다</option>
+                            <option>삽니다</option>
+                            <option>교환</option>
+                            <option>무료</option>
+                            <option>기타</option>
                         </select>
                     </td>
                     <td><span style="color: red">*</span>&nbsp;가격</td>
-                    <td><input type="text" /></td>
+                    <td><input type="text" id="pd_price" /></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
-                    <td colspan="3"><input type="email" style="width: 80%" /></td>
+                    <td colspan="3"><input type="email" id="pd_mail" style="width: 80%" /></td>
                 </tr>
                 <tr>
                     <td><span style="color: red">*</span>&nbsp;거래지역</td>
@@ -131,10 +155,11 @@
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
-                <button type="button">글쓰기</button>
+                <button type="button" onclick="mWriting()">글쓰기</button>
             </div>
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
-        <script src="../public/market-writing.js"></script>
+        <script src="/public/js/market-writing.js"></script>
+        <script src="/public/js/market-writing.js"></script>
     </body>
 </html>

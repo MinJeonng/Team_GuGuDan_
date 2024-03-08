@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>달력</title>
         <link rel="stylesheet" href="css/calendar.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
     </head>
     <body>
-        <h1>달력</h1>
+        <h2 style="text-align: center">달력</h2>
         <div class="container">
             <div class="calendarhead">
                 <div class="dateNum" onclick="showDateCal()">근무일수</div>
@@ -39,7 +40,7 @@
                     ><button type="button" class="resetBtn">초기화</button>
                 </div>
                 <div class="added">
-                    <input type="number" class="addedInput" style="width: 50px" min="0" />일 째 되는 날은?
+                    <input type="number" class="addedInput" style="width: 50px" min="0" /> &nbsp;일 째 되는 날은?
                     <button type="button" class="addedBtn">계산하기</button><span class="addedDate hidden"></span>
                 </div>
                 <div class="minus">

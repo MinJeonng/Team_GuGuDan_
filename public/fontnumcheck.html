@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>글자 수 계산기</title>
+        <link rel="stylesheet" href="/public/css/font.css" />
     </head>
     <body>
         <style>
@@ -14,7 +15,8 @@
                 line-height: 50px;
             }
             .intro #inputText {
-                margin: 20px;
+                margin-top: 20px;
+                margin-bottom: 20px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -39,7 +41,7 @@
         </div>
         <div class="intro">
             <div class="info">자기소개서 작성 시 글자 수 또는 Byte 수에 맞는지 확인 할 수 있습니다.</div>
-            <textarea cols="60 " rows="10" oninput="countCharacters()" id="inputText"></textarea>
+            <textarea cols="50 " rows="10" oninput="countCharacters()" id="inputText"></textarea>
             <div class="resultfontnum">
                 글자 수 &nbsp;&nbsp;<span class="resfontnum"></span> Bytes &nbsp;&nbsp;<span class="resbitenum"></span>
             </div>
