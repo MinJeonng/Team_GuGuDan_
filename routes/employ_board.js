@@ -9,11 +9,11 @@ const router = express.Router();
 router.get('/all', controller.boardAll);
 //검색하기
 router.get('/search', controller.searchEmploy);
-// router.get('/mainSearch', controller.searchMainEmploy);
+
 //GET /post/:id 게시판글 하나 조회
 router.get('/:id', controller.boardDetail); //board/1 이렇게 쓰임
 //POST /write 게시판 글 하나 생성
-router.post('/write', controller.boardWrite); // auth 써줘야함!!!!
+router.post('/write', auth, controller.boardWrite);
 //PATCH /update 게시판 글 하나 수정
 router.patch('/:id/update', auth, controller.boardUpdate);
 //DELETE /delete 게시판 글 하나 삭제

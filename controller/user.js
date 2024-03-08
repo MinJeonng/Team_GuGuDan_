@@ -6,7 +6,19 @@ const bcrypt = require('bcrypt'); //비밀번호를 암호화 시키면서 가�
 //회원가입
 
 exports.signup = async (req, res) => {
-    const { user_id, user_pw, user_name, user_age, user_email, user_gender, user_nick } = req.body;
+    const {
+        user_personal,
+        user_id,
+        user_pw,
+        user_name,
+        user_email,
+        user_nick,
+        user_phoneNum,
+        user_website,
+        user_postCode,
+        user_roadAddress,
+        user_detailAddress,
+    } = req.body;
 
     // // 입력값이 없는 경우 처리
     // if (!user_id || !user_pw || !user_name || !user_age || !user_email || !user_gender) {
@@ -24,13 +36,20 @@ exports.signup = async (req, res) => {
             const password = await bcrypt.hash(String(user_pw), 11); //await 쓰면 hashSync 안씀.
             //생성 create
             const result = await User.create({
+                user_personal,
                 user_id,
                 user_pw: password,
                 user_name,
-                user_age,
+                // user_age,
                 user_email,
-                user_gender,
+                // user_gender,
                 user_nick,
+                user_phoneNum,
+                user_website,
+                user_postCode,
+                user_roadAddress,
+                user_detailAddress,
+
                 // UserId: result.id,
             });
             console.log('signup', result);
@@ -52,17 +71,16 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
     const { user_id, user_pw: pw } = req.body;
 
-    //검색 findOne
+    // 검색 findOne
     try {
         const loginResult = await User.findOne({ where: { user_id } });
-        //console.log('login', result);
 
         const password = await bcrypt.compare(pw, loginResult.user_pw);
-        //비밀번호 일치 시
+        // 비밀번호 일치 시
         if (password) {
-            //jwt토큰 발행
+            // jwt토큰 발행
             const token = jwt.sign({ id: loginResult.id }, process.env.SECRET, { expiresIn: '1h' });
-            res.json({ success: true, token });
+            res.json({ success: true, token, user_name: loginResult.user_name });
         } else {
             res.json({ success: false, message: '비밀번호가 틀립니다.' });
         }
@@ -71,6 +89,7 @@ exports.login = async (req, res) => {
         res.json(error);
     }
 };
+
 //회원조회
 //회원조회랑, 수정, 탈퇴는 모두 로그인을 하면 나타나게 하면 된다.
 exports.findUser = async (req, res) => {
