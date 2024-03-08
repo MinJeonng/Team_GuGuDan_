@@ -6,12 +6,13 @@
         <title>커뮤니티 글쓰는 페이지</title>
         <link rel="stylesheet" href="/public/css/community-writing.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
@@ -75,7 +76,7 @@
         </div>
         <div class="btnCollection">
             <div>
-                <button type="button" onclick="window.location.href = '/community/community';">목록</button>
+                <button type="button" onclick="window.location.href = '/community/board';">목록</button>
             </div>
             <div>
                 <button type="button">수정</button>
@@ -91,10 +92,10 @@
                     url: '/api/community/write',
                     data: {
                         community_id: document.querySelector('#id').value,
-                        com_mail: document.querySelector('#email"').value,
+                        com_mail: document.querySelector('#email').value,
                         com_division: document.querySelector('#group').value,
                         com_title: document.querySelector('#title').value,
-                        con_content: document.querySelector('#content').value,
+                        com_content: document.querySelector('#content').value,
                         // pd_picture
                     },
                     headers: {
