@@ -49,6 +49,10 @@ exports.community_write = (req, res) => {
     res.render('community/community-writing');
 };
 
+exports.mypage = (req, res) => {
+    res.render('resume/resume-mypage');
+};
+
 exports.resume_register = (req, res) => {
     res.render('resume/resume'); //이력서 등록페이지
 };
