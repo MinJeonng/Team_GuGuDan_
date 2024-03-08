@@ -354,7 +354,7 @@ async function register() {
         url: '/api/market/write',
         data: {
             seller_id: document.querySelector('#seller_id').value,
-            seller_ph: document.querySelector('#phoneNum"').value,
+            seller_ph: document.querySelector('#phoneNum').value,
             pd_status: document.querySelector('#pd_status').value,
             category: document.querySelector('#category').value,
             pd_title: document.querySelector('#pd_title').value,

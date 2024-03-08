@@ -1,9 +1,9 @@
-const { Content } = require('../models');
+const { Market } = require('../models');
 
 //게시글 전체 조회  => 경로 ?
 exports.boardAll = async (req, res) => {
     try {
-        const result = await Content.findAll({ order: [['id', 'desc']] });
+        const result = await Market.findAll({ order: [['id', 'desc']] });
         console.log('all', result);
         res.json({ success: true, result: result });
     } catch (error) {
@@ -32,7 +32,7 @@ exports.marketWrite = async (req, res) => {
             // pd_picture
         } = req.body;
         console.log(req.body); //이걸로 프론트에서 주는값 받아오는지 확인가능
-        const result = await Content.create({
+        const result = await Market.create({
             //boardId: Number(boardId),
             id: Number(id),
             seller_id,
