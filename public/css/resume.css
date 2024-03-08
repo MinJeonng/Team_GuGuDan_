@@ -1,0 +1,226 @@
+body {
+    padding: 0 200px;
+}
+.mypage {
+    text-align: right;
+    cursor: pointer;
+}
+.mypage > img {
+    width: 20px;
+    height: 20px;
+}
+.mypageBtn {
+    border: 1px solid #c08fff;
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #edd6ef;
+    color: darkgreen;
+}
+.resumeBox {
+    margin-top: 50px;
+}
+.resumehead {
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    height: 40px;
+    line-height: 40px;
+}
+.notice {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.mypageBox {
+    margin-bottom: 50px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+.inputMypage div input,
+select {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.inputMypage {
+    padding: 10px;
+}
+.inputMypage1 {
+    margin-bottom: 10px;
+}
+.inputMypage2 {
+    margin-left: 6px;
+}
+.mypageBox2,
+.mypageBox3,
+.mypageBox4,
+.mypageBox5,
+.mypageBox6,
+.mypageBox7,
+.mypageBox8,
+.mypageBox9,
+.mypageBox10,
+.agreeBox,
+.buttonBox {
+    margin-bottom: 50px;
+}
+.mypageBox2-title {
+    display: flex;
+    justify-content: space-between;
+}
+.mypageBox2-select {
+    display: flex;
+    justify-content: space-between;
+}
+.mypageBox2-select div select {
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.edutitle {
+    margin-left: 20px;
+}
+.comwaytitle {
+    margin-right: 200px;
+}
+.careertitle {
+    margin-left: 120px;
+}
+.comcheckBox {
+    text-align: center;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    width: 250px;
+    line-height: 40px;
+    height: 40px;
+    margin-top: 20px;
+}
+.licensetable {
+    border: 1px solid gray;
+    width: 100%;
+    border-collapse: collapse;
+}
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+td input {
+    width: 90%;
+}
+
+.emptitle,
+.hopeworktitle,
+.hopejobtitle,
+.hopesaletitle,
+.licensetitle,
+.resumetitle,
+.contenttitle,
+.filetitle {
+    margin-bottom: 20px;
+}
+.regcheckBox {
+    display: flex;
+    justify-content: space-between;
+}
+.regularBox {
+    border: 1px solid #ddd;
+    width: 20%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+.irregularBox {
+    border: 1px solid #ddd;
+    width: 80%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+
+.hopeworkBox {
+    border: 1px solid #ddd;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.hopejobBox {
+    border: 1px solid #ddd;
+    height: 100px;
+    line-height: 30px;
+    padding: 20px;
+    text-align: center;
+}
+.hopesalearea {
+    display: flex;
+}
+.hopesaleBox {
+    border: 1px solid #ddd;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+}
+.hopeareatitle {
+    margin-left: 200px;
+}
+.hopeareaBox {
+    margin-left: 40px;
+    border: 1px solid #ddd;
+    height: 40px;
+    line-height: 40px;
+    width: 300px;
+    display: flex;
+}
+.hopeareaBox > div select {
+    margin-left: 30px;
+}
+.selectedBox {
+    margin-left: 40px;
+    border: 1px solid #ddd;
+    height: 50px;
+    width: 300px;
+    text-align: center;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+}
+.resumetitleBox {
+    border: 1px solid #ddd;
+    height: 30px;
+    text-align: center;
+}
+#resumetitle {
+    width: 99%;
+    height: 22px;
+}
+
+.fileBox {
+    border: 1px solid #ddd;
+    height: 30px;
+}
+.buttonBox {
+    text-align: center;
+}
+.listBtn {
+    margin-right: 20px;
+    border: 1px solid purple;
+    background: #c08fff;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.registBtn {
+    border: 1px solid #c08fff;
+    background: pink;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
