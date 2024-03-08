@@ -1,8 +1,8 @@
 .calendarhead {
     display: flex;
     justify-content: space-between;
-    width: 500px;
-    margin-bottom: 70px;
+    width: 600px;
+    margin-bottom: 40px;
     margin-top: 30px;
     border: 1px solid gray;
     background-color: blueviolet;
@@ -21,6 +21,7 @@ table {
     width: 300px;
     border-collapse: collapse;
     margin-bottom: 20px;
+    margin-left: 150px;
 }
 th,
 td {
@@ -37,7 +38,6 @@ caption {
     font-weight: bold;
 }
 .btn-container {
-    margin-left: 100px;
     margin-bottom: 20px;
 }
 .btn-container > #nextMonthBtn {
@@ -68,9 +68,11 @@ caption {
 }
 .datecal {
     margin-bottom: 50px;
+    text-align: center;
 }
 .careercal {
     width: 500px;
+    margin-left: 50px;
 }
 .inputdate {
     border: 0.1px solid gray;
