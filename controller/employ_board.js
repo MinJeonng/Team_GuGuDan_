@@ -63,42 +63,51 @@ exports.boardAll = async (req, res) => {
 // };
 exports.searchEmploy = async (req, res) => {
     const { career, job, city_name, town_name } = req.query;
-    const where = {};
-    if (job) where.job = job;
-    if (city_name) where.city_name = city_name;
+    const where = {
+        job,
+        city_name,
+    };
     if (town_name) where.town_name = town_name;
     if (career) where.career = career;
-    // const limit = 8;
-    // const offset = (page - 1) * limit;
+
     try {
-        const result = await Content.findAll({
-            where: {
-                job,
-                city_name,
-                town_name,
-                career,
-            },
-            // where: where,
-            // limit: limit,
-            // offset: offset,
-        });
-        // const totalCount = await Content.count({ where: where });
-        // const lastPage = Math.ceil(totalCount / limit);
-        // const startPage = Math.floor((page - 1) / 8) * 8 + 1;
-        // console.log(startPage);
-        res.json({ success: true, result: result }); //lastPage: lastPage, startPage: startPage
-        // res.render('employ/employ_main', {
-        //     result: result,
-        //     startPage: startPage,
-        //     lastPage: lastPage,
-        //     // currentPage: page,
-        // });
+        const result = await Content.findAll({ where });
+        res.json({ success: true, result: result });
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: error.message });
     }
-};
 
+    // const limit = 8;
+    // const offset = (page - 1) * limit;
+    // try {
+    //     const result = await Content.findAll({
+    //         where: {
+    //             job,
+    //             city_name,
+    //             town_name,
+    //             career,
+    //         },
+    // where: where,
+    // limit: limit,
+    // offset: offset,
+    // });
+    // const totalCount = await Content.count({ where: where });
+    // const lastPage = Math.ceil(totalCount / limit);
+    // const startPage = Math.floor((page - 1) / 8) * 8 + 1;
+    // console.log(startPage);
+    // res.json({ success: true, result: result }); //lastPage: lastPage, startPage: startPage
+    // res.render('employ/employ_main', {
+    //     result: result,
+    //     startPage: startPage,
+    //     lastPage: lastPage,
+    //     // currentPage: page,
+    // });
+    // } catch (error) {
+    //     console.log(error);
+    //     res.json({ success: false, message: error.message });
+    // }
+};
 //게시글 클릭하면 들어가서 구인글 볼 수 있게 하나만 조회하는 것
 //1개 조회
 exports.boardDetail = async (req, res) => {
