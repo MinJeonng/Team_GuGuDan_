@@ -17,10 +17,10 @@ exports.info = (req, res) => {
     res.render('user/profile');
 };
 exports.board_main = (req, res) => {
-    res.render('employ/board_main'); //이게 board의 메인화면
+    res.render('employ/employ_main'); //이게 board의 메인화면
 };
 exports.board_write = (req, res) => {
-    res.render('employ/board_write');
+    res.render('employ/employ_writing');
 };
 exports.board_detail = (req, res) => {
     res.render('employ/board_detail');

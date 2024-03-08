@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // waselect2 요소 선택
     var waselect2 = document.querySelector('.waselect2');
 
-    var waselect2box = document.querySelector('.waselect2box');
-
     // waselect1의 변경 이벤트 감지
     waselect1.addEventListener('change', function () {
         // 현재 선택된 지역
@@ -16,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
         waselect2.innerHTML = '';
 
         if (selectedRegion !== '지역 선택') {
-            waselect2box.style.display = 'block';
+            waselect2.style.display = 'block';
         } else {
             // '지역 선택'인 경우 숨깁니다.
-            waselect2box.style.display = 'none';
+            waselect2.style.display = 'none';
         }
 
         // 선택된 지역에 따라 waselect2의 옵션을 설정
@@ -315,18 +313,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+// 2. 선택한 항목 결과 나오게 하기
 document.addEventListener('DOMContentLoaded', function () {
+    // 필요한 요소들을 가져옵니다.
     var waselect1 = document.querySelector('.waselect1');
     var waselect2 = document.querySelector('.waselect2');
-    var detailAddressInput = document.querySelector('.detailadress');
+    var career = document.querySelectorAll('.careerselect input[type="radio"]');
+    var recselect = document.querySelector('.recselect');
     var selectedResult = document.querySelector('.selectedresult');
 
-    // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
+    // 각 select 요소와 체크박스의 change 이벤트를 감지하고, 선택된 항목을 표시합니다.
     waselect1.addEventListener('change', updateSelected);
     waselect2.addEventListener('change', updateSelected);
-    detailAddressInput.addEventListener('input', updateSelected);
+    recselect.addEventListener('change', updateSelected);
+    career.forEach(function (radio) {
+        radio.addEventListener('change', updateSelected);
+    });
 
+    // 선택된 항목을 업데이트하는 함수
     function updateSelected() {
+        // 선택된 값들을 모두 가져옵니다.
         var selectedValues = [];
 
         if (waselect1.value !== '지역 선택') {
@@ -335,61 +341,155 @@ document.addEventListener('DOMContentLoaded', function () {
         if (waselect2.value !== '시/군/구 선택') {
             selectedValues.push(waselect2.value);
         }
-
-        var detailAddress = detailAddressInput.value.trim();
-        if (detailAddress !== '') {
-            selectedValues.push(detailAddress);
+        if (recselect.value !== '직종분류') {
+            selectedValues.push(recselect.value);
         }
+        career.forEach(function (radio) {
+            if (radio.checked) {
+                selectedValues.push(radio.nextSibling.textContent.trim());
+            }
+        });
 
-        selectedResult.value = selectedValues.join(' '); //
+        // selectedresult를 비웁니다.
+        selectedResult.innerHTML = '';
+
+        // 선택된 값들을 selectedresult에 추가합니다.
+        selectedValues.forEach(function (value) {
+            var selectedOption = document.createElement('div');
+            selectedOption.textContent = value;
+            selectedResult.appendChild(selectedOption);
+        });
     }
 });
+// 3.새로고침 버튼
+document.addEventListener('DOMContentLoaded', function () {
+    // 새로고침 버튼 요소를 가져옵니다.
+    var refreshButton = document.querySelector('.resetbtn');
+    // var refreshButton2 = document.querySelector('.employtitle');
 
-const [_, url] = document.location.href.split('board/');
-console.log(url);
-async function register() {
+    // 버튼을 클릭할 때 페이지를 새로고침합니다.
+    refreshButton.addEventListener('click', function () {
+        location.reload();
+    });
+    // refreshButton2.addEventListener('click', function () {
+    //     location.reload();
+    // });
+});
+
+const tbody = document.querySelector('tbody');
+(async function () {
+    try {
+        const res = await axios({
+            method: 'GET',
+            url: '/api/employ/board/all',
+            // params: {
+            //     page,
+            // },
+            // headers: {
+            //     //로그인해야 접근
+            //     Authorization: `Bearer ${localStorage.getItem('token')}`,
+            // },
+        });
+        // console.log(res.data.startPage, res.data.lastPage, res.data.currentPage);
+
+        console.log('res', res);
+
+        for (let i = 0; i < res.data.result.length; i++) {
+            const html = `
+            <tr>
+                <td>${res.data.result[i].city_name.substring(0, 2)} ${res.data.result[i].town_name.substring(0, 2)}</td>
+                <td>${res.data.result[i].job}</td>
+                <td class = "title-td" ><a href="/employ/board/${res.data.result[i].id}" class="title-link">${
+                res.data.result[i].title
+            }</a></td>
+                <td>${res.data.result[i].place_name}</td>
+                <td>${res.data.result[i].career}</td>
+                <td>${res.data.result[i].createdAt.substring(5, 10)}</td>
+            </tr>
+        `;
+            tbody.insertAdjacentHTML('beforeend', html);
+        }
+        // // 페이지네이션 만들기
+        // const { startPage, lastPage, currentPage } = res.data;
+        // const paginationArea = document.querySelector('nav[aria-label="board page navigation"] ul');
+
+        // // 이전 페이지
+        // const prevPage = startPage - 1;
+        // if (startPage > 1) {
+        //     paginationArea.insertAdjacentHTML(
+        //         'beforeend',
+        //         `<li class="page-item"><a class="page-link" href="/employ/board/${prevPage}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>`
+        //     );
+        // }
+
+        // // 페이지 번호
+        // for (let i = startPage; i <= lastPage; i++) {
+        //     if (i === currentPage) {
+        //         paginationArea.insertAdjacentHTML(
+        //             'beforeend',
+        //             `<li class="page-item active"><a class="page-link" href="/employ/board/${i}"><b>${i}</b></a></li>`
+        //         );
+        //     } else {
+        //         paginationArea.insertAdjacentHTML(
+        //             'beforeend',
+        //             `<li class="page-item"><a class="page-link" href="/employ/board/${i}">${i}</a></li>`
+        //         );
+        //     }
+        // }
+
+        // // 다음 페이지
+        // const nextPage = startPage + 10;
+        // if (nextPage <= lastPage) {
+        //     paginationArea.insertAdjacentHTML(
+        //         'beforeend',
+        //         `<li class="page-item"><a class="page-link" href="/employ/board/${nextPage}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>`
+        //     );
+        // }
+    } catch (error) {
+        console.log(error);
+        //document.location.href = '/login';
+    }
+    // <td><a href="/employ/${res.data.result[i].employ_id}">${res.data.result[i].title}</a></td>
+})();
+
+//검색하기 함수
+
+// 페이지 번호 변수 추가
+// let currentPage = 1;
+async function searchEmploy() {
     const res = await axios({
-        method: 'POST',
-        url: '/api/employ/board/write',
-        data: {
-            title: document.querySelector('#title').value,
-            place_name: document.querySelector('#place_name').value,
+        method: 'GET',
+        url: '/api/employ/board/search',
+        params: {
+            // page,
             city_name: document.querySelector('.waselect1').value,
             town_name: document.querySelector('.waselect2').value,
-            place_address: document.querySelector('.detailadress').value,
+            career: document.querySelector('input[name="radiocareer"]:checked').value,
             job: document.querySelector('.recselect').value,
-            career: document.querySelector('input[name="career"]:checked').value,
-            phoneNum: document.querySelector('#phoneNum').value,
-            salary: document.querySelector('#salary').value,
-            deadline: document.querySelector('#deadline').value,
-            education: document.querySelector('#education').value,
-            homepage: document.querySelector('#homepage').value,
-            contents: document.querySelector('#contents').value,
-        },
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
     });
     console.log('res', res);
     const { success, result } = res.data;
     console.log(res.data);
     if (success) {
-        alert('등록되었습니다');
-        // document.location.href = `/api/employ/board/${url}`; //다시
-        document.location.href = '/employ/board';
-        // document.location.href = `/employ/board/${result}`;
-        //document.location.href = `/employ/board`; 이렇게 해야할듯c
-        //등록을 하면 상세 페이지로 해당 글이 올라간 상세페이지로 이동하게 해야할듯
+        //기존내용 삭제
+        tbody.innerHTML = '';
+
+        // 검색 결과를 추가합니다.
+        for (let i = 0; i < result.length; i++) {
+            const html = `
+            <tr>
+                <td>${result[i].city_name.substring(0, 2)} ${result[i].town_name.substring(0, 2)}</td>
+                <td>${result[i].job}</td>
+                <td class = "title-td" ><a href="/employ/board/${result[i].id}" class="title-link">${
+                result[i].title
+            }</a></td>
+                <td>${result[i].place_name}</td>
+                <td>${result[i].career}</td>
+                <td>${result[i].createdAt.substring(5, 10)}</td>
+            </tr>
+            `;
+            tbody.insertAdjacentHTML('beforeend', html);
+        }
     }
-}
-//급여 정규표현식으로 세 자 마다 , 표신
-function addCommaToSalary(input) {
-    let salary = input.value;
-    salary = salary.replace(/,/g, ''); // 기존에 찍힌 콤마를 모두 제거
-    salary = salary.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 천 단위로 콤마 추가
-    input.value = salary;
-}
-//전화번호 11자로 제한
-function maxLengthCheck(object) {
-    if (object.value.length > 11) object.value = object.value.slice(0, 11);
 }
