@@ -11,22 +11,22 @@
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="/public/img/꽃.png" alt="꽃" />
+                <img src="/public/img/꽃.png" alt="꽃" />
                 채용 공고
             </div>
             <div class="banner">
                 <div class="bannerleft">
-                    <span>채용정보</span>
-                    <span class="marketBtn" onclick="window.location.href = '/market/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
+                    <span class="marketBtn" onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
-                    <span>My 구인구직</span>
+                    <span onclick="window.location.href = '/community/board';">커뮤니티</span>
+                    <span onclick="window.location.href = '/resume/mypage';">My 구인구직</span>
                 </div>
             </div>
         </header>

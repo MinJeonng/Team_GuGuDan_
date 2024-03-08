@@ -4,28 +4,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>커뮤니티</title>
-        <link rel="stylesheet" href="../public/css/community.css" />
+        <link rel="stylesheet" href="/public/css/community.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
     </head>
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="../public/img/꽃.png" alt="꽃" />
+                <img src="/public/img/꽃.png" alt="꽃" />
                 커뮤니티
             </div>
             <div class="banner">
                 <div class="bannerleft">
-                    <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
+                    <span onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
-                    <span>My 구인구직</span>
+                    <span onclick="window.location.href = '/community/board';">커뮤니티</span>
+                    <span onclick="window.location.href = '/resume/mypage';">My 구인구직</span>
                 </div>
             </div>
         </header>
@@ -131,7 +131,7 @@
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
-                <button type="button" onclick="window.location.href = '/community/community-writing';">글쓰기</button>
+                <button type="button" onclick="window.location.href = '/community/write';">글쓰기</button>
             </div>
         </div>
         <div style="margin-bottom: 50px">페이지네이션</div>

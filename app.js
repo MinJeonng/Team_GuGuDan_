@@ -21,6 +21,10 @@ const employRouter = require('./routes/employ_board');
 app.use('/api/employ/board', employRouter);
 const resumeRouter = require('./routes/resume');
 app.use('/api/resume', resumeRouter);
+const marketRouter = require('./routes/market');
+app.use('/api/market', marketRouter);
+const communityRouter = require('./routes/community');
+app.use('/api/community', communityRouter);
 // const memberRouter = require('./routes/member'); //수정해야함
 // app.use('/api/member', memberRouter);
 

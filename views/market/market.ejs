@@ -4,29 +4,29 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="../public/css/market.css" />
+        <link rel="stylesheet" href="/public/css/market.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
-                <div class="sign">회원가입</div>
+                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
                 <div class="mypage">마이페이지</div>
             </div>
             <div class="headertitle">
-                <img src="../public/img/꽃.png" alt="꽃" />
+                <img src="/public/img/꽃.png" alt="꽃" />
                 벼룩 시장
             </div>
             <div class="banner">
                 <div class="bannerleft">
-                    <span onclick="window.location.href = '/';">채용정보</span>
-                    <span onclick="window.location.href = '/market/market';">벼룩시장</span>
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
+                    <span onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
-                    <span>My 구인구직</span>
+                    <span onclick="window.location.href = '/community/board';">커뮤니티</span>
+                    <span onclick="window.location.href = '/resume/mypage';">My 구인구직</span>
                 </div>
             </div>
         </header>
@@ -134,7 +134,7 @@
         </table>
         <div style="text-align: center">페이지네이션</div>
         <div class="markwrBtn">
-            <button type="button" onclick="window.location.href = '/market/market-writing';">글쓰기</button>
+            <button type="button" onclick="window.location.href = '/market/write';">글쓰기</button>
         </div>
 
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>

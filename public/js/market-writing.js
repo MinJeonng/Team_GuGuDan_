@@ -347,3 +347,39 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedResult.value = selectedValues.join(' '); //
     }
 });
+
+async function register() {
+    const res = await axios({
+        method: 'POST',
+        url: '/api/market/write',
+        data: {
+            seller_id: document.querySelector('#seller_id').value,
+            seller_ph: document.querySelector('#phoneNum"').value,
+            pd_status: document.querySelector('#pd_status').value,
+            category: document.querySelector('#category').value,
+            pd_title: document.querySelector('#pd_title').value,
+            pd_division: document.querySelector('#pd_division').value,
+            pd_price: document.querySelector('#pd_price').value,
+            pd_mail: document.querySelector('#pd_mail').value,
+            location_city: document.querySelector('.waselect1').value,
+            location_detail: document.querySelector('.detailadress').value,
+            pd_content: document.querySelector('#pd_content').value,
+            // pd_picture
+        },
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+    });
+    console.log('res', res);
+    const { success, result } = res.data;
+    console.log(res.data);
+    if (success) {
+        alert('등록되었습니다');
+        document.location.href = '/market/board';
+    }
+}
+
+//전화번호 11자로 제한  (우선 주석처리)
+// function maxLengthCheck(object) {
+//     if (object.value.length > 11) object.value = object.value.slice(0, 11);
+// }
