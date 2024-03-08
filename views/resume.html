@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이력서 등록페이지</title>
+        <link rel="stylesheet" href="/public/css/resume.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
+    </head>
+    <style></style>
+    <body>
+        <header>
+            <div class="mypage">
+                <img src="/public/img/꽃.png" /> <span id="name">OOO</span>님&nbsp;&nbsp;<button
+                    type="button"
+                    class="mypageBtn"
+                >
+                    마이페이지
+                </button>
+            </div>
+        </header>
+        <div class="resumeBox">
+            <div class="resumehead">이력서 등록</div>
+            <div class="notice">
+                <div>인적사항</div>
+                <div><span style="color: red">*</span>&nbsp;표시는 필수항목입니다</div>
+            </div>
+            <div class="mypageBox">
+                <div class="inputMypage">
+                    <div class="inputMypage1">
+                        <span style="color: red">*</span><input type="text" placeholder="이름" id="name" />
+                        <span style="color: red">*</span><input type="date" placeholder="생년월일" id="birth" />
+                        <span style="color: red">*</span
+                        ><select id="gender">
+                            <option>성별</option>
+                            <option>남자</option>
+                            <option>여자</option>
+                        </select>
+                        <span style="color: red">*</span><input type="email" placeholder="이메일" id="email" />
+                    </div>
+                    <div class="inputMypage2">
+                        <input type="tel" id="tel" placeholder="전화번호" />
+                        <span style="color: red">*</span><input type="tel" id="phone" placeholder="휴대폰번호" />
+                        <span style="color: red">*</span
+                        ><input type="text" id="adress" placeholder="주소" style="width: 30%" />
+                    </div>
+                </div>
+                <div>사진</div>
+            </div>
+            <div class="mypageBox2">
+                <div class="mypageBox2-title">
+                    <div>
+                        <span class="edutitle"><span style="color: red">*</span>&nbsp; 학력</span>
+                        <span class="careertitle"><span style="color: red">*</span>&nbsp; 경력</span>
+                    </div>
+                    <div class="comwaytitle"><span style="color: red">*</span>&nbsp;<span>연락방법</span></div>
+                </div>
+                <div class="mypageBox2-select">
+                    <div>
+                        <select id="eduselect">
+                            <option>학력 선택</option>
+                            <option>고등학교 졸</option>
+                            <option>대학교(2,3년 졸)</option>
+                            <option>대학교(4년 졸)</option>
+                            <option>대학원 졸</option>
+                            <option>기타</option>
+                        </select>
+                        <select id="careerselect">
+                            <option>경력 선택</option>
+                            <option>신입</option>
+                            <option>1년 이상</option>
+                            <option>3년 이상</option>
+                            <option>5년 이상</option>
+                            <option>10년 이상</option>
+                            <option>15년 이상</option>
+                        </select>
+                    </div>
+                    <div class="comcheckBox">
+                        <label class="commucheck"
+                            ><input type="checkbox" name="commucheck" id="phonecheck" /> 휴대폰문자</label
+                        >
+                        <label class="commucheck"><input type="checkbox" name="commucheck" id="telcheck" /> 전화</label>
+                        <label class="commucheck"
+                            ><input type="checkbox" name="commucheck" id="emailcheck" /> 이메일</label
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="mypageBox3">
+                <div class="licensetitle">보유 자격증</div>
+                <table class="licensetable">
+                    <thead>
+                        <th>자격증(면허)명 및 등급</th>
+                        <th>취득일자</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mypageBox4">
+                <div class="emptitle">구직형태&nbsp;<span style="color: red">*</span></div>
+                <div class="regcheckBox">
+                    <div class="regularBox"><input type="checkbox" id="regularcheck" /> 정규직</div>
+                    <div class="irregularBox">
+                        비정규직 ( <input type="checkbox" id="contractcheck" /> 계약직
+                        <input type="checkbox" id="replacecheck" /> 대체교사
+                        <input type="checkbox" id="partcheck" />파트타임
+                        <input type="checkbox" id="traincheck" />실습교사
+                        <input type="checkbox" id="interncheck" /> 인턴직 )
+                    </div>
+                </div>
+            </div>
+            <div class="mypageBox5">
+                <div class="hopeworktitle">희망시설 &nbsp;<span style="color: red">* (3개 중복 선택 가능)</span></div>
+                <div class="hopeworkBox">
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 유치원</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 어린이집</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 가정어린이집</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 놀이학원</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 미술학원</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 영어학원</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 음악학원</label
+                    ><label class="hopwork"><input type="checkbox" name="hopework" /> 체육학원</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 보습학원</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 방과후교실</label>
+                    <label class="hopework"><input type="checkbox" name="hopework" /> 기타</label>
+                </div>
+            </div>
+            <div class="mypageBox6">
+                <div class="hopejobtitle">
+                    희망직종 &nbsp;<span style="color: red">* (10개까지 중복 선택 가능)</span>
+                </div>
+                <div class="hopejobBox">
+                    <div>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 원장</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 시설장</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 부원장</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 원감</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 부장교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 주임교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 정교사</label
+                        ><label class="hopejob"><input type="checkbox" name="hopejob" /> 보육교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 보조교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 종일반교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 반일반교사</label>
+                    </div>
+                    <div>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 실습교사 </label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 야간교사 </label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 미술교사 </label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 영어교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 피아노교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 방과후교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 한글교사</label
+                        ><label class="hopejob"><input type="checkbox" name="hopejob" />중국어교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 수학교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 체육교사</label>
+                    </div>
+                    <div>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 특수교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 특기교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 보습교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 학습지교사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 보육도우미</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 하모니</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 베이비시터</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 차량안전원</label
+                        ><label class="hopejob"><input type="checkbox" name="hopejob" /> 조리사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 간호사</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 운전기사</label>
+                    </div>
+                    <div>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 사무직원</label>
+                        <label class="hopejob"><input type="checkbox" name="hopejob" /> 기타</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mypageBox7">
+                <div class="hopesaletitle">
+                    <span>희망 급여</span>
+                    <span class="hopeareatitle">
+                        희망 지역 선택 <span style="color: red">* &nbsp;(5개 이하 중복 선택 가능)</span>&nbsp;</span
+                    >
+                </div>
+                <div class="hopesalearea">
+                    <div class="hopesaleBox">
+                        <select>
+                            <option>급여 선택</option>
+                            <option>2500만 이상</option>
+                            <option>2600만 이상</option>
+                            <option>2700만 이상</option>
+                            <option>2800만 이상</option>
+                            <option>2900만 이상</option>
+                            <option>3000만 이상</option>
+                            <option>3100만 이상</option>
+                            <option>3200만 이상</option>
+                            <option>3300만 이상</option>
+                            <option>3400만 이상</option>
+                            <option>3500만 이상</option>
+                            <option>4000만 이상</option>
+                            <option>4500만 이상</option>
+                            <option>5000만 이상</option>
+                        </select>
+                    </div>
+                    <div class="hopeareaBox">
+                        <div>
+                            <select class="waselect1">
+                                <option>지역 선택</option>
+                                <option>서울</option>
+                                <option>경기</option>
+                                <option>인천</option>
+                                <option>부산</option>
+                                <option>대전</option>
+                                <option>대구</option>
+                                <option>광주</option>
+                                <option>울산</option>
+                                <option>세종시</option>
+                                <option>강원</option>
+                                <option>경남</option>
+                                <option>경북</option>
+                                <option>전남</option>
+                                <option>전북</option>
+                                <option>충남</option>
+                                <option>충북</option>
+                                <option>제주</option>
+                                <option>해외</option>
+                            </select>
+                        </div>
+
+                        <div class="waselect2box" style="display: none"><select class="waselect2"></select></div>
+                    </div>
+                    <div class="selectedBox">
+                        <textarea class="selectedresult" rows="3" cols="30" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mypageBox8">
+                <div class="resumetitle">제목 <span style="color: red">*</span></div>
+                <div class="resumetitleBox"><input type="text" id="resumetitle" /></div>
+            </div>
+            <div class="mypageBox9">
+                <div class="contenttitle">상세내용<span style="color: red">*</span></div>
+                <textarea cols="140" rows="8" id="detailcontent"></textarea>
+            </div>
+            <div class="mypageBox10">
+                <div class="filetitle">파일첨부</div>
+                <div class="fileBox">파일</div>
+            </div>
+            <div class="agreeBox">
+                <div>
+                    <label class="agree"
+                        ><input type="checkbox" name="agree" /> 필수 동의 항목 및 개인 정보 수집 및 이용 동의에 모두
+                        동의합니다.</label
+                    >
+                </div>
+            </div>
+            <div class="buttonBox">
+                <button type="button" class="listBtn">목록</button>
+                <button type="button" class="registBtn">등록</button>
+            </div>
+        </div>
+
+        <%- include('sidebar.ejs') %> <%- include('footer.ejs') %>
+        <script>
+            // 체크박스 3개, 10개 이상 못선택하게 하기
+            function limitCheckboxSelection(checkboxName, maxCount) {
+                var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]');
+                var checkedCount = 0;
+
+                // 체크된 체크박스 개수 세기
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        checkedCount++;
+                    }
+                });
+
+                // 체크된 체크박스가 maxCount 이상이라면, 체크되지 않은 체크박스 비활성화
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.disabled = checkbox.checked ? false : checkedCount < maxCount ? false : true;
+                });
+            }
+
+            // 체크박스 그룹에 대한 이벤트 리스너 추가
+            function addCheckboxListener(groupName, maxCount) {
+                var checkboxes = document.querySelectorAll('input[name="' + groupName + '"]');
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.addEventListener('change', function () {
+                        limitCheckboxSelection(groupName, maxCount);
+                    });
+                });
+            }
+
+            // 각 체크박스 그룹에 대한 이벤트 리스너 추가
+            addCheckboxListener('hopework', 3); // 최대 3개 선택
+            addCheckboxListener('hopejob', 10); // 최대 10개 선택
+        </script>
+        <script src="/public/js/resume.js"></script>
+    </body>
+</html>

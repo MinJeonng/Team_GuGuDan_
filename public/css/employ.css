@@ -88,13 +88,19 @@ header {
 }
 .selectedbox {
     /* background-color: wheat; */
-    border-bottom: 2px solid gray;
+    border: 2px solid #c08fff;
     margin-bottom: 50px;
+    display: flex;
+    height: 40px;
+    line-height: 40px;
 }
 .sbfont {
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 .selectedresult {
+    margin-left: 20px;
+
     display: flex;
 }
 .selectedresult > div {
