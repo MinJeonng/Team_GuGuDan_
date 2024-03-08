@@ -8,7 +8,7 @@ exports.member = (req, res) => {
     res.render('user/index');
 };
 exports.login = (req, res) => {
-    res.render('user/login2');
+    res.render('user/login');
 };
 exports.signup = (req, res) => {
     res.render('user/signup');

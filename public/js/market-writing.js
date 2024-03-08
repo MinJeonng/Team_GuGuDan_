@@ -318,37 +318,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-document.addEventListener('DOMContentLoaded', function () {
-    var waselect1 = document.querySelector('.waselect1');
-    var waselect2 = document.querySelector('.waselect2');
-    var detailAddressInput = document.querySelector('.detailadress');
-    var selectedResult = document.querySelector('.selectedresult');
+// 안쓴다.( 보여지는 칸 없음.)
+// document.addEventListener('DOMContentLoaded', function () {
+//     var waselect1 = document.querySelector('.waselect1');
+//     var waselect2 = document.querySelector('.waselect2');
+//     var detailAddressInput = document.querySelector('.detailadress');
+//     var selectedResult = document.querySelector('.selectedresult');
 
-    // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
-    waselect1.addEventListener('change', updateSelected);
-    waselect2.addEventListener('change', updateSelected);
-    detailAddressInput.addEventListener('input', updateSelected);
+//     // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
+//     waselect1.addEventListener('change', updateSelected);
+//     waselect2.addEventListener('change', updateSelected);
+//     detailAddressInput.addEventListener('input', updateSelected);
 
-    function updateSelected() {
-        var selectedValues = [];
+// function updateSelected() {
+//     var selectedValues = [];
 
-        if (waselect1.value !== '지역 선택') {
-            selectedValues.push(waselect1.value);
-        }
-        if (waselect2.value !== '시/군/구 선택') {
-            selectedValues.push(waselect2.value);
-        }
+//     if (waselect1.value !== '지역 선택') {
+//         selectedValues.push(waselect1.value);
+//     }
+//     if (waselect2.value !== '시/군/구 선택') {
+//         selectedValues.push(waselect2.value);
+//     }
 
-        var detailAddress = detailAddressInput.value.trim();
-        if (detailAddress !== '') {
-            selectedValues.push(detailAddress);
-        }
+//     var detailAddress = detailAddressInput.value.trim();
+//     if (detailAddress !== '') {
+//         selectedValues.push(detailAddress);
+//     }
 
-        selectedResult.value = selectedValues.join(' '); //
-    }
-});
+//     selectedResult.value = selectedValues.join(' '); //
+// }
+// });
 
-async function register() {
+async function mWriting() {
     const res = await axios({
         method: 'POST',
         url: '/api/market/write',
@@ -362,6 +363,7 @@ async function register() {
             pd_price: document.querySelector('#pd_price').value,
             pd_mail: document.querySelector('#pd_mail').value,
             location_city: document.querySelector('.waselect1').value,
+            location_town: document.querySelector('.waselect2').value,
             location_detail: document.querySelector('.detailadress').value,
             pd_content: document.querySelector('#pd_content').value,
             // pd_picture

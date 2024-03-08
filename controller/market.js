@@ -12,6 +12,20 @@ exports.boardAll = async (req, res) => {
     }
 };
 
+//1개 조회
+exports.boardDetail = async (req, res) => {
+    try {
+        //req.params.id = 작성자
+        console.log('req.params.id', req.params.id);
+        //content 모델 내용 가져오기
+        const result = await Market.findByPk(req.params.id);
+        res.json({ success: true, result: result }); //result.userId를 가지고 프론트에서
+    } catch {
+        console.log(error);
+        res.json({ success: false, result: error });
+    }
+};
+
 //글 하나 생성 (버튼클릭)
 exports.marketWrite = async (req, res) => {
     const id = req.userId;
@@ -27,6 +41,7 @@ exports.marketWrite = async (req, res) => {
             pd_price,
             pd_mail,
             location_city,
+            location_town,
             location_detail,
             pd_content,
             // pd_picture
@@ -44,6 +59,7 @@ exports.marketWrite = async (req, res) => {
             pd_price,
             pd_mail,
             location_city,
+            location_town,
             location_detail,
             pd_content,
         });
