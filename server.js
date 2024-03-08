@@ -12,6 +12,12 @@ app.get('/', function (req, res) {
     res.render('employ');
 });
 
+app.get('/market', (req, res) => {
+    res.render('market');
+});
+app.get('/employ-writing', (req, res) => {
+    res.render('employ-writing');
+});
 app.get('/market/market', (req, res) => {
     res.render('market/market');
 });
