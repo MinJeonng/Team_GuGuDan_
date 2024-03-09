@@ -6,6 +6,7 @@
         <title>아이디/비밀번호 찾기</title>
         <link rel="stylesheet" href="/public/css/font.css" />
         <link rel="stylesheet" href="/public/css/findIDPW.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <div class="find"><span> + 회원아이디/비밀번호 찾기</span></div>
@@ -32,10 +33,11 @@
                         <div class="id_check">회원가입시 등록하신 아이디 입력</div>
                     </div>
 
-                    <button class="pwcheck" type="submit">확인</button>
+                    <button class="pwcheck" type="button" onclick="findIDPW()">확인</button>
                 </form>
             </div>
         </div>
+        <script src="/public/js/find_IdPw.js"></script>
         <script>
             function showIDconatainer() {
                 var findIDcontainer = document.querySelector('#findIDcontainer');

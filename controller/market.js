@@ -1,4 +1,5 @@
 const { Market } = require('../models');
+const { User } = require('../models');
 
 //게시글 전체 조회  => 경로 ?
 exports.boardAll = async (req, res) => {
@@ -70,3 +71,17 @@ exports.marketWrite = async (req, res) => {
         res.json({ success: false, result: error });
     }
 };
+
+// // 회원조회
+// exports.find = async (req, res) => {
+//     const { id } = req.user;
+//     const result = await User.findOne({ where: { id } });
+//     res.json({ success: true, result });
+// };
+
+// // 채팅 추가
+// exports.chat = async (req, res) => {
+//     const { userId, username, chatMsg, groupId } = req.body;
+//     const result = await Chat.create({ userId, username, chatMsg, groupId });
+//     res.json({ success: true, result, message: '채팅 추가 완료' });
+// };
