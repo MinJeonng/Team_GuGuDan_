@@ -1,0 +1,142 @@
+body {
+    padding: 0 200px;
+}
+/* 헤더 */
+header {
+    padding-bottom: 50px;
+}
+.headbtn {
+    position: absolute;
+    right: 200px;
+    display: flex;
+}
+.headbtn > div {
+    cursor: pointer;
+}
+.sign {
+    margin: 0 20px;
+}
+.headertitle {
+    font-weight: bold;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.headertitle > img {
+    width: 20px;
+    height: 20px;
+}
+.banner {
+    background-color: blueviolet;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    line-height: 40px;
+}
+.bannerleft > span {
+    margin-left: 30px;
+    cursor: pointer;
+}
+.bannerright > span {
+    margin-right: 30px;
+    cursor: pointer;
+}
+.manageBox {
+    display: flex;
+    margin-bottom: 50px;
+}
+.sidetable {
+    width: 200px;
+
+    border: 1px solid #c08fff;
+}
+.employinfo {
+    background-color: #edd6ef;
+    margin-left: 5px;
+    text-align: center;
+    color: blue;
+}
+.sidetable tr,
+.sidetable td {
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+}
+.manageline {
+    border-bottom: 1px solid gray;
+    font-weight: bolder;
+    font-size: 18px;
+}
+.managebtn {
+    font-size: 14px;
+    cursor: pointer;
+}
+.contenttitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.content {
+    margin-left: 50px;
+    width: 70%;
+}
+.contenttable {
+    width: 100%;
+    margin-bottom: 50px;
+}
+.contenttable > thead {
+    background-color: #edd6ef;
+}
+.contenttable th,
+.contenttable td {
+    border-bottom: 0.1px solid gray;
+}
+.contenttable tbody td:nth-child(1) {
+    width: 60%;
+}
+.resumelogo {
+    border: 1px solid blue;
+    color: blue;
+    width: 50px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.maincontent,
+.interview {
+    text-align: center;
+}
+.resumedateBox {
+    color: gray;
+    margin-top: 10px;
+}
+.resumeTitle {
+    margin-bottom: 10px;
+}
+.btnBox {
+    text-align: center;
+}
+.btnBox button {
+    border: 1px solid #c08fff;
+    background-color: #c08fff;
+    color: #fff;
+    margin: 10px;
+}
+.registerBtn {
+    border: 1px solid lightsalmon;
+    color: white;
+    background-color: lightsalmon;
+    border-radius: 5px;
+}
+
+.titlefont {
+    font-weight: bold;
+}
+.notice {
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+}
