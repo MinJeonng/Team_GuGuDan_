@@ -14,7 +14,8 @@ exports.signup = (req, res) => {
     res.render('user/signup');
 };
 exports.info = (req, res) => {
-    res.render('user/profile');
+    //마이 구인구직, 사용자 정보 조회 및 수정 탈퇴
+    res.render('user/myPage_revise');
 };
 exports.board_main = (req, res) => {
     res.render('employ/employ_main'); //이게 board의 메인화면

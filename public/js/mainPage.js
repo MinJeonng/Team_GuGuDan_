@@ -44,6 +44,7 @@ function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user_name');
     alert('로그아웃 되었습니다.');
+    window.location.href = '/';
 
-    window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
+    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
 }

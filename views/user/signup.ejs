@@ -9,6 +9,11 @@
         <link rel="icon" href="/public/img/icon/logoico.ico" />
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"
+        ></script>
     </head>
 
     <body>
@@ -68,11 +73,13 @@
                         <input type="url" id="user_website" placeholder="홈페이지" /><br />
                         <div class="button2">
                             <input type="email" id="user_email" placeholder="이메일 *" required />
-                            <button type="button" id="send_email_verification">인증메일 전송</button><br />
+                            <button type="button" id="send_email_verification" onclick="sendEmail()">
+                                인증메일 전송</button
+                            ><br />
                         </div>
                         <div class="button2">
-                            <input type="text" id="verification_code" placeholder="인증번호 입력 *" required />
-                            <button type="button" id="confirm_verification">확인</button>
+                            <input type="number" id="verification_code" placeholder="인증번호 입력 *" required />
+                            <button type="button" id="confirm_verification" onclick="confirmEmail()">확인</button>
                             <button type="button" id="resend_verification">재전송</button><br />
                         </div>
                         <div class="button2">

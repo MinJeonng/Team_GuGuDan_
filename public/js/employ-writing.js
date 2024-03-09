@@ -1,3 +1,10 @@
+//토큰 없으면 들어가지 못하게 예외처리
+(function () {
+    if (localStorage.getItem('token') === null) {
+        alert('로그인 후 이용가능합니다.');
+        document.location.href = '/employ/board';
+    }
+})();
 // 1. 지역 선택 select 누르면 시군구 선택 select 나오게 하기
 document.addEventListener('DOMContentLoaded', function () {
     // waselect1 요소 선택
@@ -345,8 +352,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-const [_, url] = document.location.href.split('board/');
-console.log(url); // 이 두줄 필요한가요?
 async function register() {
     const res = await axios({
         method: 'POST',

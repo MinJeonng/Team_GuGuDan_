@@ -18,6 +18,8 @@ async function loginFunc() {
         document.location.href = '/';
         // 수정해야함 페이지 이동.
     } else {
-        alert('아이디와 비밀번호가 일치하지 않습니다.');
+        alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+        document.querySelector('#user_id').value = '';
+        document.querySelector('#user_pw').value = '';
     }
 }

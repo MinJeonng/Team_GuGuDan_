@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>커뮤니티 글쓰는 페이지</title>
+        <title>커뮤니티 작성</title>
+        <link rel="icon" href="/public/img/icon/logoico.ico" />
         <link rel="stylesheet" href="/public/css/community-writing.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -11,13 +12,13 @@
     <body>
         <header>
             <div class="headbtn">
-                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <!-- <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
                 <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
-                <div class="mypage">마이페이지</div>
+                <div class="mypage">마이페이지</div> -->
             </div>
             <div class="headertitle">
                 <img src="/public/img/꽃.png" alt="꽃" />
-                글 등록
+                커뮤니티 글 작성
             </div>
             <div class="banner">
                 <div class="bannerleft">
@@ -86,6 +87,13 @@
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
         <script>
+            //토큰 없으면 들어가지 못하게 예외처리
+            (function () {
+                if (localStorage.getItem('token') === null) {
+                    alert('로그인 후 이용가능합니다.');
+                    document.location.href = '/community/board';
+                }
+            })();
             async function submit() {
                 const res = await axios({
                     method: 'POST',
@@ -109,6 +117,32 @@
                     alert('등록되었습니다');
                     document.location.href = '/community/board';
                 }
+            }
+            //모든 페이지에 추가!
+            window.onload = function () {
+                const token = localStorage.getItem('token');
+                const userName = localStorage.getItem('user_name');
+                if (token) {
+                    document.querySelector(
+                        '.headbtn'
+                    ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+                } else {
+                    document.querySelector(
+                        '.headbtn'
+                    ).innerHTML = `<a href="/user/login" class="login btn-gradient">로그인</a>
+             <a href="/user/signup" class="sign btn-gradient">회원가입</a>
+             `;
+                }
+                //<a href="" class="mypage">마이페이지</a>
+            };
+            function logout() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user_name');
+                alert('로그아웃 되었습니다.');
+                window.location.href = '/';
+
+                // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
             }
         </script>
     </body>

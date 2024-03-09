@@ -1,5 +1,5 @@
 const { User } = require('../models');
-// , Profile
+const { smtpTransport } = require('../config/email');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt'); //비밀번호를 암호화 시키면서 가입하기 연습.
 
@@ -122,21 +122,25 @@ exports.findUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     try {
         const user_id = req.userId;
+        console.log(user_id);
         const {
+            // user_id,
             currentPassword,
             newPassword,
             userName,
-            userAge,
+            userWebsite,
+            userPhonenum,
+            // userAge,
             userEmail,
-            userGender,
+            // userGender,
             userNick,
             postcode,
             roadAddress,
-            jibunAddress,
+            // jibunAddress,
             detailAddress,
         } = req.body;
 
-        const user = await User.findOne({ where: { user_id } });
+        const user = await User.findOne({ where: { id: user_id } });
         if (!user) {
             res.status(404).json({ success: false, message: '사용자를 찾을 수 없습니다' });
             return;
@@ -150,13 +154,15 @@ exports.updateUser = async (req, res) => {
 
         let updateData = {
             userName,
-            userAge,
+            // userAge,
             userEmail,
-            userGender,
+            userWebsite,
+            userPhonenum,
+            // userGender,
             userNick,
             postcode,
             roadAddress,
-            jibunAddress,
+            // jibunAddress,
             detailAddress,
         };
 
@@ -190,5 +196,40 @@ exports.deleteUser = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, error: 'Server Error' });
+    }
+};
+var gernerateRandomNum = function (min, max) {
+    var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randNum;
+};
+
+exports.emailAuth = (req, res) => {
+    const number = gernerateRandomNum(111111, 999999);
+
+    const { user_email } = req.body; //사용자가 입력한 이메일
+    try {
+        const mailOptions = {
+            from: `고가네 <sally3921@naver.com>`, // 발신자 이메일 주소.
+            to: user_email, //사용자가 입력한 이메일 -> 목적지 주소 이메일
+            subject: '고가네🧸 인증 관련 메일 입니다.',
+            html:
+                '<h2>고가네 사이트 입니다🧸</h2><br /><h3>오른쪽 숫자 6자리를 입력해주세요 :  \n\n\n\n\n\n</h3>' +
+                number,
+        };
+        smtpTransport.sendMail(mailOptions, (err, response) => {
+            console.log('response', response);
+            //첫번째 인자는 위에서 설정한 mailOption을 넣어주고 두번째 인자로는 콜백함수.
+            if (err) {
+                res.json({ ok: false, msg: ' 메일 전송에 실패하였습니다. ' });
+                smtpTransport.close(); //전송종료
+                return;
+            } else {
+                res.json({ ok: true, msg: ' 메일 전송에 성공하였습니다. ', authNum: number });
+                smtpTransport.close(); //전송종료
+                return;
+            }
+        });
+    } catch (error) {
+        console.log(error);
     }
 };
