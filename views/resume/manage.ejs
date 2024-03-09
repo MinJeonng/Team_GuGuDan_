@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>이력서 관리</title>
+        <title>My 구인 구직</title>
         <link rel="stylesheet" href="/public/css/manage.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
+        <link rel="icon" href="/public/img/icon/logoico.ico" />
     </head>
     <body>
         <header>
@@ -16,15 +17,15 @@
             </div>
             <div class="headertitle">
                 <img src="/public/img/꽃.png" alt="꽃" />
-                이력서 관리
+                My 구인구직
             </div>
             <div class="banner">
                 <div class="bannerleft">
                     <span>채용정보</span>
-                    <span class="marketBtn" onclick="window.location.href = '/market/market';">벼룩시장</span>
+                    <span class="marketBtn" onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
-                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
+                    <span onclick="window.location.href = '/community/board';">커뮤니티</span>
                     <span>My 구인구직</span>
                 </div>
             </div>
@@ -57,7 +58,11 @@
             <div class="content">
                 <div class="contenttitle">
                     <div class="titlefont">내 이력서 관리</div>
-                    <div><button type="button" class="registerBtn">이력서 등록</button></div>
+                    <div>
+                        <button type="button" class="registerBtn" onclick="window.location.href = '/resume/register';">
+                            이력서 등록
+                        </button>
+                    </div>
                 </div>
                 <table class="contenttable">
                     <thead>
@@ -110,6 +115,7 @@
             </div>
         </div>
 
-        <%- include('sidebar.ejs') %> <%- include('footer.ejs') %>
+        <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
     </body>
+    <script src="/public/js/manage.js"></script>
 </html>
