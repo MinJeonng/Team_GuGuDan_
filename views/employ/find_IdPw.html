@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디/비밀번호 찾기</title>
+    <link rel="stylesheet" href="/public/css/find_IdPw.css">
+</head>
+
+<body>
+    <div class="find"><span> + 회원아이디/비밀번호 찾기</span></div>
+    <div class="container_box">
+        <div class="container">
+            <form id="forgotForm">
+                <div class="form-group">
+                    <label for="email">이메일 주소 <input type="email" id="email" name="email" required></label>
+                    <div class="email_check">회원가입시 등록하신 이메일주소 입력</div>
+                </div>
+                <button class="check" type="submit" value="확인">전송</button>
+            </form>
+        </div>
+    </div>
+    <script src="/controller/find_IdPw/find_IdPw.js"></script>
+</body>
+
+</html>
