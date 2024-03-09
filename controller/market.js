@@ -49,7 +49,7 @@ exports.marketWrite = async (req, res) => {
         console.log(req.body); //이걸로 프론트에서 주는값 받아오는지 확인가능
         const result = await Market.create({
             //boardId: Number(boardId),
-            id: Number(id),
+            userid: Number(id),
             seller_id,
             seller_ph,
             pd_status,
