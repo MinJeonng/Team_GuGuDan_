@@ -17,9 +17,13 @@ header {
     right: 200px;
     display: flex;
 }
-.headbtn > div {
+.headbtn > a {
     cursor: pointer;
+    color: black;
+    /* background: #f0d264; */
+    /* text-decoration: none; */
 }
+
 .sign {
     margin: 0 20px;
 }

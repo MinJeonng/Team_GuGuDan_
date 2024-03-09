@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원정보 수정</title>
+        <link rel="icon" href="/public/img/icon/logoico.ico" />
+        <link rel="stylesheet" href="/public/css/myPage_revise.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="headbtn">
+                <!-- <div class="login">로그인</div>
+                <div class="sign">회원가입</div>
+                <div class="mypage">마이페이지</div> -->
+            </div>
+            <div class="headertitle">
+                <img src="/public/img/꽃.png" alt="꽃" />
+                회원정보 수정
+            </div>
+            <div class="banner">
+                <div class="bannerleft">
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
+                    <span class="marketBtn" onclick="window.location.href = '/market/market';">벼룩시장</span>
+                </div>
+                <div class="bannerright">
+                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
+                    <span onclick="window.location.href = '/';">홈</span>
+                </div>
+            </div>
+        </header>
+        <div class="notiffont"><span style="color: red">*</span>&nbsp;표시는 필수항목입니다.</div>
+        <div class="loginrevisetable">
+            <form name="myProfile-form">
+                <table class="loginresume">
+                    <caption>
+                        로그인정보
+                    </caption>
+
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;아이디</td>
+                        <td id="id">
+                            <input type="text" id="user_id" style="width: 40%" readonly />&nbsp;&nbsp;<span
+                                style="color: red"
+                                >[변경 불가]</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;현재 비밀번호</td>
+                        <td id="pw">
+                            <input
+                                type="password"
+                                id="current-password"
+                                pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$"
+                                placeholder="비밀번호(8~16자의 영문, 숫자, 특수기호) *"
+                                oninput="maxLengthCheckPW(this)"
+                                style="width: 60%"
+                                required
+                            />
+                        </td>
+                        <!-- id="user_pw" -->
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;새 비밀번호</td>
+                        <td id="pw">
+                            <input
+                                type="password"
+                                id="new-password"
+                                pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$"
+                                placeholder="비밀번호(8~16자의 영문, 숫자, 특수기호) *"
+                                oninput="maxLengthCheckPW(this)"
+                                style="width: 60%"
+                                required
+                            />
+                        </td>
+                        <!-- id="user_pw_new" -->
+                    </tr>
+
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;새 비밀번호 확인</td>
+                        <td id="pw2">
+                            <input
+                                type="password"
+                                id="confirm-new-password"
+                                style="width: 60%"
+                                oninput="checkPassword()"
+                                required
+                            />
+                            <p id="pw_message"></p>
+                        </td>
+                        <!-- id="check_pw" -->
+                    </tr>
+                </table>
+
+                <table class="mynamerevise">
+                    <caption>
+                        개인정보
+                    </caption>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;이름</td>
+                        <td id="name">
+                            <input type="text" id="user_name" style="width: 30%" readonly />&nbsp;&nbsp;<span
+                                style="color: red"
+                                >[변경 불가]</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;닉네임</td>
+                        <td id="nickname">
+                            <input type="text" id="user_nick" style="width: 30%" readonly />&nbsp;&nbsp;<span
+                                style="color: red"
+                                >[변경 불가]</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;E-mail</td>
+                        <td id="email">
+                            <input type="email" id="user_email" style="width: 50%" readonly />&nbsp;&nbsp;<span
+                                style="color: red"
+                                >[변경 불가]</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;휴대폰 번호</td>
+                        <td id="phone">
+                            <input
+                                type="number"
+                                id="user_phoneNum"
+                                oninput="maxLengthCheckNum(this)"
+                                style="width: 40%"
+                                required
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>홈페이지</td>
+                        <td id="webSite"><input type="url" id="user_website" /></td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: red">*</span>&nbsp;주소</td>
+                        <td>
+                            <div class="adress">
+                                <input type="text" id="sample4_postcode" required /><button
+                                    type="button"
+                                    onclick="address_DaumPostcode()"
+                                    id="search_zipcode"
+                                >
+                                    우편번호 검색
+                                </button>
+                            </div>
+                            <div>
+                                <input type="text" id="sample4_roadAddress" placeholder="도로명주소" />
+                            </div>
+                            <div><input type="text" id="sample4_detailAddress" placeholder="상세주소" /><br /></div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <!-- <table class="etcrevise">
+                <caption>
+                    기타정보
+                </caption>
+                <tr>
+                    <td>SMS 수신여부</td>
+                    <td><input type="checkbox" id="sms" /> 핸드폰 문자메세지를 받겠습니다.</td>
+                </tr>
+                 <tr>
+                    <td><span style="color: red">*</span>&nbsp;자동등록방지</td>
+                    <td id="autoregist"><input type="text" /></td>
+                </tr> 
+            </table> -->
+        </div>
+        <div class="btnBox">
+            <button type="button" class="inputBtn" onclick="updateFunc()">수정하기</button>
+            <button type="button" class="delBtn" onclick="deleteFunc()">탈퇴하기</button>
+        </div>
+        <%- include('../footer.ejs') %>
+        <script src="/public/js/myPage_revise.js"></script>
+    </body>
+</html>

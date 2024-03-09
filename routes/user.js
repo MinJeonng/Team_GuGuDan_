@@ -21,4 +21,7 @@ router.patch('/update', middleware.auth, controller.updateUser); // /info/update
 //유저 탈퇴
 router.delete('/delete', middleware.auth, controller.deleteUser);
 
+//이메일 전송
+router.post('/email', controller.emailAuth);
+
 module.exports = router;
