@@ -148,7 +148,8 @@ exports.boardWrite = async (req, res) => {
         console.log(req.body); //이걸로 프론트에서 주는값 받아오는지 확인가능
         const result = await Content.create({
             //boardId: Number(boardId),
-            user_id,
+
+            userId: Number(id),
             title,
             place_name,
             city_name,

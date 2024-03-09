@@ -24,7 +24,7 @@ exports.board_write = (req, res) => {
     res.render('employ/employ_writing');
 };
 exports.board_detail = (req, res) => {
-    res.render('employ/board_detail');
+    res.render('employ/employ_detail');
 };
 
 exports.market_main = (req, res) => {
