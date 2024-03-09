@@ -52,7 +52,7 @@ header {
 .loginrevisetable {
     margin-bottom: 50px;
 }
-.loginrevisetable > table {
+.loginrevisetable > form > table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #000;
@@ -70,7 +70,7 @@ caption {
     height: 40px;
     line-height: 40px;
 }
-.loginrevisetable > table > tbody td:nth-child(1) {
+.loginrevisetable > form > table > tbody td:nth-child(1) {
     width: 20%;
     text-align: center;
 }

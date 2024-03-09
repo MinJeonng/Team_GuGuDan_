@@ -1,4 +1,5 @@
 async function signupFunc() {
+    const token = localStorage.getItem('token');
     var pw1 = document.getElementById('user_pw').value;
     var pw2 = document.getElementById('check_pw').value;
     if (pw1 != pw2) {
@@ -149,5 +150,36 @@ function checkPassword() {
     } else {
         message.textContent = '비밀번호가 일치하지 않습니다.';
         message.style.color = 'red'; // 일치하지 않는 경우, 메시지 색상을 빨간색으로 변경
+    }
+}
+let authNum = 0;
+let isChecked = false;
+async function sendEmail() {
+    // 메일 전송 요청
+    const respnose = await axios({
+        method: 'POST',
+        url: '/api/user/email',
+        data: {
+            user_email: $('#user_email').val(),
+        },
+    });
+    console.log('이메일확인', respnose);
+    // $.post('/api/user/email', { user_email: $('#user_email').val() }, function (data) {
+    //     if (data.ok) {
+    //         alert('인증 메일이 전송되었습니다. 이메일을 확인해주세요.');
+    //         authNum = data.authNum;
+    //         console.log(data.authNum);
+    //     } else {
+    //         alert('메일 전송에 실패하였습니다. 이메일 주소를 확인해주세요.');
+    //     }
+    // });
+}
+function confirmEmail() {
+    const getUserAuthNum = document.getElementById('verification_code').value;
+    if (authNum === getUserAuthNum) {
+        alert('인증에 성공하였습니다.');
+        isChecked = true;
+    } else {
+        alert('인증번호가 일치하지 않습니다. 다시 확인해주세요.');
     }
 }
