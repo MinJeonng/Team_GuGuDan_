@@ -16,8 +16,10 @@ body {
 .main {
     text-align: center;
 }
-.user-options {
+.user_type {
+    padding: 0 10;
 }
+
 .container {
     width: 600px;
     border: 2px solid #ccc;
@@ -26,20 +28,46 @@ body {
     border-radius: 10px;
     background-color: #edd6ef;
 }
+<<<<<<<< HEAD:public/css/memberJoin.css
+
+.container input {
+    width: 75%;
+========
 .container input[type='text'],
 .container input[type='password'],
 .container input[type='email'],
-.container input[type='tel'],
+.container input[type='number'],
 .container input[type='url'] {
     width: 500px;
+>>>>>>>> 826b573bc0269c9331a467b521f53287a9096f1f:public/css/signup.css
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
     border-radius: 10px;
     border-color: #c08fff;
 }
+
+.container input[type='email'],
+.container input#address {
+    width: 54%;
+    margin-right: 12px;
+}
+.container input#verification_code {
+    width: 53%;
+    margin-right: 7px;
+}
 .button2 {
     display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.button2 button {
+    border-radius: 5px;
+    background-color: #673ab7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
 }
 button {
     border-radius: 5px;
@@ -47,16 +75,15 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
+    padding: 6px 12px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Square+Round&display=swap');
+button#confirm_verification {
+    margin-right: 5px;
+}
+button#complete_registration {
+    padding: 10px;
+}
 
-body {
-    font-family: 'Nanum Square Round', sans-serif;
-}
-
-.container {
-    font-family: 'Nanum Square Round', sans-serif;
-}
 /* .links2 a img {
     font-size: 24px;
     margin-right: 10px;

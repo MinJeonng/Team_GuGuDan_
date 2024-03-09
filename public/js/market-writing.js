@@ -318,58 +318,79 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-document.addEventListener('DOMContentLoaded', function () {
-    var waselect1 = document.querySelector('.waselect1');
-    var waselect2 = document.querySelector('.waselect2');
-    var detailAddressInput = document.querySelector('.detailadress');
-    var selectedResult = document.querySelector('.selectedresult');
+// 안쓴다.( 보여지는 칸 없음.)
+// document.addEventListener('DOMContentLoaded', function () {
+//     var waselect1 = document.querySelector('.waselect1');
+//     var waselect2 = document.querySelector('.waselect2');
+//     var detailAddressInput = document.querySelector('.detailadress');
+//     var selectedResult = document.querySelector('.selectedresult');
 
-    // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
-    waselect1.addEventListener('change', updateSelected);
-    waselect2.addEventListener('change', updateSelected);
-    detailAddressInput.addEventListener('input', updateSelected);
+//     // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
+//     waselect1.addEventListener('change', updateSelected);
+//     waselect2.addEventListener('change', updateSelected);
+//     detailAddressInput.addEventListener('input', updateSelected);
 
-    function updateSelected() {
-        var selectedValues = [];
+// function updateSelected() {
+//     var selectedValues = [];
 
-        if (waselect1.value !== '지역 선택') {
-            selectedValues.push(waselect1.value);
-        }
-        if (waselect2.value !== '시/군/구 선택') {
-            selectedValues.push(waselect2.value);
-        }
+//     if (waselect1.value !== '지역 선택') {
+//         selectedValues.push(waselect1.value);
+//     }
+//     if (waselect2.value !== '시/군/구 선택') {
+//         selectedValues.push(waselect2.value);
+//     }
 
-        var detailAddress = detailAddressInput.value.trim();
-        if (detailAddress !== '') {
-            selectedValues.push(detailAddress);
-        }
+//     var detailAddress = detailAddressInput.value.trim();
+//     if (detailAddress !== '') {
+//         selectedValues.push(detailAddress);
+//     }
 
-        selectedResult.value = selectedValues.join(' '); //
+//     selectedResult.value = selectedValues.join(' '); //
+// }
+// });
+
+async function mWriting() {
+    const data = {
+        seller_id: document.querySelector('#seller_id').value,
+        seller_ph: document.querySelector('#phoneNum').value,
+        pd_status: document.querySelector('#pd_status').value,
+        category: document.querySelector('#category').value,
+        pd_title: document.querySelector('#pd_title').value,
+        pd_division: document.querySelector('#pd_division').value,
+        pd_price: document.querySelector('#pd_price').value,
+        pd_mail: document.querySelector('#pd_mail').value,
+        location_city: document.querySelector('.waselect1').value,
+        location_town: document.querySelector('.waselect2').value,
+        location_detail: document.querySelector('.detailadress').value,
+        pd_content: document.querySelector('#pd_content').value,
+    };
+    if (
+        !data.seller_id ||
+        !data.seller_ph ||
+        !data.pd_status ||
+        !data.category ||
+        !data.pd_title ||
+        !data.pd_division ||
+        !data.pd_price ||
+        !data.location_city ||
+        !data.location_town ||
+        !data.location_detail ||
+        !data.pd_content
+    ) {
+        alert('입력값을 모두 채워주세요.');
+        return;
     }
-});
 
-async function register() {
     const res = await axios({
         method: 'POST',
         url: '/api/market/write',
-        data: {
-            seller_id: document.querySelector('#seller_id').value,
-            seller_ph: document.querySelector('#phoneNum"').value,
-            pd_status: document.querySelector('#pd_status').value,
-            category: document.querySelector('#category').value,
-            pd_title: document.querySelector('#pd_title').value,
-            pd_division: document.querySelector('#pd_division').value,
-            pd_price: document.querySelector('#pd_price').value,
-            pd_mail: document.querySelector('#pd_mail').value,
-            location_city: document.querySelector('.waselect1').value,
-            location_detail: document.querySelector('.detailadress').value,
-            pd_content: document.querySelector('#pd_content').value,
-            // pd_picture
-        },
+        data,
+
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
     });
+
     console.log('res', res);
     const { success, result } = res.data;
     console.log(res.data);

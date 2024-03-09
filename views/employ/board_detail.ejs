@@ -72,6 +72,7 @@
                 document.querySelector('#place_address').value = place_address;
                 console.log(res.data.result);
 
+                // 인풋 요소 편집 막기.
                 const inputs = document.querySelectorAll('input');
                 inputs.forEach((input) => input.setAttribute('readonly', true));
             })();

@@ -28,9 +28,18 @@ body {
     border-radius: 10px;
     background-color: #edd6ef;
 }
+<<<<<<<< HEAD:public/css/memberJoin.css
 
 .container input {
     width: 75%;
+========
+.container input[type='text'],
+.container input[type='password'],
+.container input[type='email'],
+.container input[type='number'],
+.container input[type='url'] {
+    width: 500px;
+>>>>>>>> 826b573bc0269c9331a467b521f53287a9096f1f:public/css/signup.css
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
@@ -74,15 +83,7 @@ button#confirm_verification {
 button#complete_registration {
     padding: 10px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Square+Round&display=swap');
 
-body {
-    font-family: 'Nanum Square Round', sans-serif;
-}
-
-.container {
-    font-family: 'Nanum Square Round', sans-serif;
-}
 /* .links2 a img {
     font-size: 24px;
     margin-right: 10px;

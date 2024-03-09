@@ -13,7 +13,7 @@ const CommunityModel = (sequelize) => {
         com_division: { type: DataTypes.STRING(20), allowNull: false },
         com_title: { type: DataTypes.STRING(20), allowNull: false },
 
-        con_content: { type: DataTypes.STRING(150), allowNull: false },
+        com_content: { type: DataTypes.STRING(150), allowNull: false },
         // con_file
     });
 };

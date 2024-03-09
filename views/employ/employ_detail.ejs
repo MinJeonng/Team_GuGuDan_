@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>구인 상세 페이지</title>
         <link rel="stylesheet" href="/public/css/employ-detail.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <header>
@@ -25,53 +26,75 @@
             </tr>
             <tr>
                 <td>시설명</td>
-                <td>ABC 요양원</td>
+                <td id="place_name">ABC 요양원</td>
             </tr>
             <tr>
                 <td>주소</td>
-                <td>서울시 강남구</td>
+                <td id="address">서울시 강남구</td>
             </tr>
             <tr>
                 <td>전화번호</td>
-                <td>02-1234-5678</td>
+                <td id="phoneNum">02-1234-5678</td>
             </tr>
             <tr>
                 <td>구인직종</td>
-                <td>간호사</td>
+                <td id="job">간호사</td>
             </tr>
             <tr>
                 <td>경력</td>
-                <td>경력무관</td>
+                <td id="career">경력무관</td>
             </tr>
             <tr>
                 <td>급여정도</td>
-                <td>300만원 이상</td>
+                <td id="salary">300만원 이상</td>
             </tr>
             <tr>
                 <td>학력정도</td>
-                <td>대졸이상</td>
+                <td id="education">대졸이상</td>
             </tr>
             <tr>
                 <td>마감일</td>
-                <td>2024-03-15</td>
+                <td id="deadline">2024-03-15</td>
             </tr>
             <tr>
                 <td>첨부파일</td>
                 <td>이력서.pdf</td>
             </tr>
         </table>
-        <textarea rows="30" cols="100" placeholder="내용을 입력하세요"></textarea>
+        <textarea id="content" rows="30" cols="100" placeholder="내용을 입력하세요"></textarea>
         <div class="fivebtn">
             <div class="leftbtn">
-                <button type="button" class="prebtn">이전글</button>
-                <button type="button" class="nextbtn">다음글</button>
+                <button type="button" class="prebtn" onclick="backPage()">이전글</button>
+                <button type="button" class="nextbtn" onclick="nextPage()">다음글</button>
             </div>
             <div class="centerbtn">
                 <button type="button" class="revisebtn">수정</button>
                 <button type="button" class="delbtn">삭제</button>
             </div>
-            <div><button type="button" class="listbtn">목록</button></div>
+            <div>
+                <button type="button" class="listbtn" onclick="window.location.href = '/employ/board';">목록</button>
+            </div>
         </div>
         <%- include('../footer.ejs') %>
+        <script src="/public/js/employ_detail.js"></script>
+        <script>
+            function backPage() {
+                const [_, url] = document.location.href.split('board/'); // url은 문자열로 추출된다.
+                const currentPage = parseInt(url); // 현재 페이지 번호 추출
+                if (!isNaN(currentPage) && currentPage > 1) {
+                    // 현재 페이지가 숫자이고 1보다 큰지 확인
+                    const previousPage = currentPage - 1;
+                    window.location.href = `/employ/board/${previousPage}`;
+                } else {
+                    alert('페이지가 존재하지 않습니다.');
+                }
+            }
+            function nextPage() {
+                const [_, url] = document.location.href.split('board/');
+                const currentPage = parseInt(url);
+                const nextPage = currentPage + 1;
+                window.location.href = `/employ/board/${nextPage}`;
+            }
+        </script>
     </body>
 </html>

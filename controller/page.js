@@ -8,7 +8,7 @@ exports.member = (req, res) => {
     res.render('user/index');
 };
 exports.login = (req, res) => {
-    res.render('user/login2');
+    res.render('user/login');
 };
 exports.signup = (req, res) => {
     res.render('user/signup');
@@ -23,7 +23,7 @@ exports.board_write = (req, res) => {
     res.render('employ/employ_writing');
 };
 exports.board_detail = (req, res) => {
-    res.render('employ/board_detail');
+    res.render('employ/employ_detail');
 };
 
 exports.market_main = (req, res) => {

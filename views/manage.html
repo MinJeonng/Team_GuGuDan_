@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이력서 관리</title>
+        <link rel="stylesheet" href="/public/css/manage.css" />
+        <link rel="stylesheet" href="/public/css/font.css" />
+    </head>
+    <body>
+        <header>
+            <div class="headbtn">
+                <div class="login">로그인</div>
+                <div class="sign">회원가입</div>
+                <div class="mypage">마이페이지</div>
+            </div>
+            <div class="headertitle">
+                <img src="/public/img/꽃.png" alt="꽃" />
+                이력서 관리
+            </div>
+            <div class="banner">
+                <div class="bannerleft">
+                    <span>채용정보</span>
+                    <span class="marketBtn" onclick="window.location.href = '/market/market';">벼룩시장</span>
+                </div>
+                <div class="bannerright">
+                    <span onclick="window.location.href = '/community/community';">커뮤니티</span>
+                    <span>My 구인구직</span>
+                </div>
+            </div>
+        </header>
+        <div class="manageBox">
+            <div class="side">
+                <table class="sidetable">
+                    <thead>
+                        <th class="employinfo">채용정보 &nbsp;&nbsp; ></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="manageline">이력서 관리</td>
+                        </tr>
+                        <tr>
+                            <td class="managebtn">이력서 등록</td>
+                        </tr>
+                        <tr>
+                            <td class="managebtn">내 이력서 관리</td>
+                        </tr>
+                        <tr>
+                            <td class="manageline">개인정보 관리</td>
+                        </tr>
+                        <tr>
+                            <td class="managebtn">회원정보 수정</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content">
+                <div class="contenttitle">
+                    <div class="titlefont">내 이력서 관리</div>
+                    <div><button type="button" class="registerBtn">이력서 등록</button></div>
+                </div>
+                <table class="contenttable">
+                    <thead>
+                        <th>이력서</th>
+                        <th>이력서 관리</th>
+                        <th>입사지원 관리</th>
+                    </thead>
+                    <tbody>
+                        <td class="maincontentBox">
+                            <div class="resumelogo">이력서</div>
+                            <div class="maincontent">
+                                <div class="resumeTitle">...</div>
+                                <div>
+                                    <span>내 이력서 상태: <span style="color: blue">이직희망(재직중)</span></span>
+                                </div>
+                                <div class="resumedateBox">
+                                    등록일 : <span class="regDate">2024.03.05</span>&nbsp;|&nbsp;수정일 :
+                                    <span class="repDate">2024.03.05</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="btnBox">
+                            <div><button type="button">보기</button><button type="button">수정</button></div>
+                            <div><button type="button">복사</button><button type="button">삭제</button></div>
+                        </td>
+                        <td class="interview">
+                            <div>면접 요청 기관</div>
+                            <div><span class="reqcount">0</span>개</div>
+                        </td>
+                    </tbody>
+                </table>
+                <div class="notice">
+                    <div class="titlefont" style="text-align: center">이용안내</div>
+                    <ul>
+                        <li>
+                            이력서는
+                            <span style="font-weight: bold">총 <span style="color: red">5개</span>까지 </span>
+                            작성/관리하실 수 있습니다.
+                        </li>
+                        <li>온라인 입사지원시 완료된 이력서 중 하나를 선택하여 입사지원 하실 수 있습니다.</li>
+                        <li>
+                            온라인 입사지원시 연락처 공개 설정 여부와 관계없이 연락처 등 지원자의 개인정보가 열람됩니다.
+                        </li>
+                        <li>
+                            이력서를 삭제하시면, 온라인 입사지원하신 기관에서 입사지원자의 연락처 등의 정보를 열람할 수
+                            없으므로, 입사지원자에게 면접 요청한 모든 정보가 삭제되오니 참고하시기 바랍니다.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <%- include('sidebar.ejs') %> <%- include('footer.ejs') %>
+    </body>
+</html>

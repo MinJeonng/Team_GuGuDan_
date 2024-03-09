@@ -6,6 +6,7 @@
         <title>벼룩시장 상세페이지</title>
         <link rel="stylesheet" href="/public/css/market-detail.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <header>
@@ -44,7 +45,7 @@
                     <tr>
                         <td>메 일</td>
                         <td id="saleemail">aaaa@naver.com</td>
-                        <td>홈페이지</td>
+                        <td>분 류</td>
                         <td id="salepage">http://www.aaa.com</td>
                     </tr>
                     <tr>
@@ -73,13 +74,13 @@
         </div>
         <div class="btnCollect">
             <div>
-                <button type="button">이전글</button>
-                <button type="button">다음글</button>
+                <button type="button" onclick="backPage()">이전글</button>
+                <button type="button" onclick="nextPage()">다음글</button>
             </div>
             <div>
                 <button type="button">수정</button>
                 <button type="button">삭제</button>
-                <button type="button" onclick="window.location.href = '/market';">목록</button>
+                <button type="button" onclick="window.location.href = '/market/board';">목록</button>
             </div>
         </div>
         <div class="chat">
@@ -98,5 +99,25 @@
             </svg>
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
+        <script src="/public/js/market_detail.js"></script>
+        <script>
+            function backPage() {
+                const [_, url] = document.location.href.split('board/'); // url은 문자열로 추출된다.
+                const currentPage = parseInt(url); // 현재 페이지 번호 추출
+                if (!isNaN(currentPage) && currentPage > 1) {
+                    // 현재 페이지가 숫자이고 1보다 큰지 확인
+                    const previousPage = currentPage - 1;
+                    window.location.href = `/market/board/${previousPage}`;
+                } else {
+                    alert('페이지가 존재하지 않습니다.');
+                }
+            }
+            function nextPage() {
+                const [_, url] = document.location.href.split('board/');
+                const currentPage = parseInt(url);
+                const nextPage = currentPage + 1;
+                window.location.href = `/market/board/${nextPage}`;
+            }
+        </script>
     </body>
 </html>

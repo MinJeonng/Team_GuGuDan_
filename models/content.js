@@ -41,7 +41,7 @@ const ContentModel = (sequelize) => {
         },
         phoneNum: {
             //전화번호
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         homepage: {
