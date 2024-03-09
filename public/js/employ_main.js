@@ -487,6 +487,12 @@ async function searchEmploy() {
         //기존내용 삭제
         tbody.innerHTML = '';
 
+        if (result.length === 0) {
+            // 검색 결과가 없을 때 알림 표시
+            alert('검색 결과가 없습니다.');
+            return;
+        }
+
         // 검색 결과를 추가합니다.
         for (let i = 0; i < result.length; i++) {
             const html = `
@@ -528,6 +534,7 @@ window.onload = async function () {
 
     // 쿼리값에 따라 검색 결과 출력
     await searchMainEmploy(city_name, job);
+    console.log(searchMainEmploy(city_name, job));
 };
 
 async function searchMainEmploy(city_name, job) {

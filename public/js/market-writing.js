@@ -350,28 +350,47 @@ document.addEventListener('DOMContentLoaded', function () {
 // });
 
 async function mWriting() {
+    const data = {
+        seller_id: document.querySelector('#seller_id').value,
+        seller_ph: document.querySelector('#phoneNum').value,
+        pd_status: document.querySelector('#pd_status').value,
+        category: document.querySelector('#category').value,
+        pd_title: document.querySelector('#pd_title').value,
+        pd_division: document.querySelector('#pd_division').value,
+        pd_price: document.querySelector('#pd_price').value,
+        pd_mail: document.querySelector('#pd_mail').value,
+        location_city: document.querySelector('.waselect1').value,
+        location_town: document.querySelector('.waselect2').value,
+        location_detail: document.querySelector('.detailadress').value,
+        pd_content: document.querySelector('#pd_content').value,
+    };
+    if (
+        !data.seller_id ||
+        !data.seller_ph ||
+        !data.pd_status ||
+        !data.category ||
+        !data.pd_title ||
+        !data.pd_division ||
+        !data.pd_price ||
+        !data.location_city ||
+        !data.location_town ||
+        !data.location_detail ||
+        !data.pd_content
+    ) {
+        alert('입력값을 모두 채워주세요.');
+        return;
+    }
+
     const res = await axios({
         method: 'POST',
         url: '/api/market/write',
-        data: {
-            seller_id: document.querySelector('#seller_id').value,
-            seller_ph: document.querySelector('#phoneNum').value,
-            pd_status: document.querySelector('#pd_status').value,
-            category: document.querySelector('#category').value,
-            pd_title: document.querySelector('#pd_title').value,
-            pd_division: document.querySelector('#pd_division').value,
-            pd_price: document.querySelector('#pd_price').value,
-            pd_mail: document.querySelector('#pd_mail').value,
-            location_city: document.querySelector('.waselect1').value,
-            location_town: document.querySelector('.waselect2').value,
-            location_detail: document.querySelector('.detailadress').value,
-            pd_content: document.querySelector('#pd_content').value,
-            // pd_picture
-        },
+        data,
+
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
     });
+
     console.log('res', res);
     const { success, result } = res.data;
     console.log(res.data);
