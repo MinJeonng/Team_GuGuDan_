@@ -17,6 +17,9 @@ exports.info = (req, res) => {
     //마이 구인구직, 사용자 정보 조회 및 수정 탈퇴
     res.render('user/myPage_revise');
 };
+exports.findInfo = (req, res) => {
+    res.render('user/findIDPW');
+};
 exports.board_main = (req, res) => {
     res.render('employ/employ_main'); //이게 board의 메인화면
 };
@@ -39,6 +42,10 @@ exports.market_write = (req, res) => {
     res.render('market/market-writing');
 };
 
+// exports.chat = (req, res) => {
+//     res.render('market/chat');
+// };
+
 exports.community_main = (req, res) => {
     res.render('community/community');
 };
@@ -51,7 +58,7 @@ exports.community_write = (req, res) => {
 };
 
 exports.mypage = (req, res) => {
-    res.render('resume/resume-mypage');
+    res.render('resume/manage');
 };
 
 exports.resume_register = (req, res) => {

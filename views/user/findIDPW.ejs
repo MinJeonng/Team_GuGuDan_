@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>아이디/비밀번호 찾기</title>
+        <link rel="stylesheet" href="/public/css/font.css" />
+        <link rel="stylesheet" href="/public/css/findIDPW.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="find"><span> + 회원아이디/비밀번호 찾기</span></div>
+        <div class="findheader">
+            <div class="findidtitle" onclick="showIDconatainer()">아이디 찾기</div>
+            <div class="findpwtitle" onclick="showPWcontainer()">비밀번호 찾기</div>
+        </div>
+        <div class="container_box" id="findIDcontainer">
+            <div class="container">
+                <form id="forgotForm">
+                    <div class="form-group">
+                        <label for="email">이메일 주소 <input type="email" id="email" name="email" required /></label>
+                        <div class="email_check">회원가입시 등록하신 이메일주소 입력</div>
+                    </div>
+                    <button class="idcheck" type="submit">확인</button>
+                </form>
+            </div>
+        </div>
+        <div class="container_box hidden" id="findPWcontainer">
+            <div class="container">
+                <form id="password-reset-form" class="forgotForm">
+                    <div class="form-group">
+                        <label for="id">아이디 <input type="text" id="id" name="id" required /><br /></label>
+                        <div class="id_check">회원가입시 등록하신 아이디 입력</div>
+                    </div>
+
+                    <button class="pwcheck" type="button" onclick="findIDPW()">확인</button>
+                </form>
+            </div>
+        </div>
+        <script src="/public/js/find_IdPw.js"></script>
+        <script>
+            function showIDconatainer() {
+                var findIDcontainer = document.querySelector('#findIDcontainer');
+                var findPWcontainer = document.querySelector('#findPWcontainer');
+
+                findIDcontainer.classList.remove('hidden');
+
+                findPWcontainer.classList.add('hidden');
+            }
+
+            function showPWcontainer() {
+                var findIDcontainer = document.querySelector('#findIDcontainer');
+                var findPWcontainer = document.querySelector('#findPWcontainer');
+
+                findIDcontainer.classList.add('hidden');
+
+                findPWcontainer.classList.remove('hidden');
+            }
+        </script>
+    </body>
+</html>

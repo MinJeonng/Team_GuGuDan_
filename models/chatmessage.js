@@ -25,3 +25,10 @@ const ChatMessageModel = (sequelize) => {
 };
 
 module.exports = ChatMessageModel;
+
+// // 채팅 조회
+// exports.findChat = async (req, res) => {
+//     const { groupId } = req.query;
+//     const result = await Chat.findAll({ where: { groupId } });
+//     res.json({ success: true, result, message: '채팅 목록 조회 완료' });
+// };

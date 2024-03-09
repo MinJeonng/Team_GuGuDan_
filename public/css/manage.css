@@ -130,6 +130,7 @@ header {
     color: white;
     background-color: lightsalmon;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .titlefont {
