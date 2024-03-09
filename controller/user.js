@@ -79,7 +79,7 @@ exports.login = async (req, res) => {
         // 비밀번호 일치 시
         if (password) {
             // jwt토큰 발행
-            const token = jwt.sign({ id: loginResult.id }, process.env.SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ id: loginResult.id }, process.env.SECRET, { expiresIn: '24h' });
             res.json({ success: true, token, user_name: loginResult.user_name });
         } else {
             res.json({ success: false, message: '비밀번호가 틀립니다.' });
@@ -109,6 +109,44 @@ exports.findUser = async (req, res) => {
     // console.log('result', result);
     // res.json({ success: true, result });
 };
+
+//닉네임 중복확인
+exports.checkDuplicateNick = async (req, res) => {
+    try {
+        const { user_nick } = req.body;
+        // 데이터베이스에서 닉네임 검색
+        const user = await User.findOne({ user_nick: user_nick });
+        if (user) {
+            // 사용자가 발견되면 닉네임이 중복됨
+            res.json({ isDuplicate: true });
+        } else {
+            // 사용자가 발견되지 않으면 닉네임이 중복되지 않음
+            res.json({ isDuplicate: false });
+        }
+    } catch (error) {
+        // 오류 처리
+        res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+    }
+};
+
+exports.checkDuplicateId = async (req, res) => {
+    try {
+        const { user_id } = req.body;
+        // 데이터베이스에서 닉네임 검색
+        const user = await User.findOne({ user_id: user_id });
+        if (user) {
+            // 사용자가 발견되면 닉네임이 중복됨
+            res.json({ isDuplicate: true });
+        } else {
+            // 사용자가 발견되지 않으면 닉네임이 중복되지 않음
+            res.json({ isDuplicate: false });
+        }
+    } catch (error) {
+        // 오류 처리
+        res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+    }
+};
+
 //정보수정
 // exports.updateUser = async (req, res) => {
 //     const user_id = req.userId;
@@ -198,13 +236,9 @@ exports.deleteUser = async (req, res) => {
         res.status(500).json({ success: false, error: 'Server Error' });
     }
 };
-var gernerateRandomNum = function (min, max) {
-    var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    return randNum;
-};
 
-exports.emailAuth = (req, res) => {
-    const number = gernerateRandomNum(111111, 999999);
+exports.emailAuth = async (req, res) => {
+    const number = generateRandomNumber(111111, 999999);
 
     const { user_email } = req.body; //사용자가 입력한 이메일
     try {
@@ -212,9 +246,7 @@ exports.emailAuth = (req, res) => {
             from: `고가네 <sally3921@naver.com>`, // 발신자 이메일 주소.
             to: user_email, //사용자가 입력한 이메일 -> 목적지 주소 이메일
             subject: '고가네🧸 인증 관련 메일 입니다.',
-            html:
-                '<h2>고가네 사이트 입니다🧸</h2><br /><h3>오른쪽 숫자 6자리를 입력해주세요 :  \n\n\n\n\n\n</h3>' +
-                number,
+            html: '<h2>고가네 사이트 입니다🧸</h2><br /><h3>아래의 숫자 6자리를 입력해주세요 : </h3>' + number,
         };
         smtpTransport.sendMail(mailOptions, (err, response) => {
             console.log('response', response);
@@ -233,5 +265,12 @@ exports.emailAuth = (req, res) => {
         console.log(error);
     }
 };
+<<<<<<< HEAD
+const generateRandomNumber = function (min, max) {
+    var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randNum;
+};
+=======
 
 exports.findIDPW = (req, res) => {};
+>>>>>>> devel

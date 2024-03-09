@@ -1,3 +1,35 @@
+// 체크박스 3개, 10개 이상 못선택하게 하기
+function limitCheckboxSelection(checkboxName, maxCount) {
+    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]');
+    var checkedCount = 0;
+
+    // 체크된 체크박스 개수 세기
+    checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    });
+
+    // 체크된 체크박스가 maxCount 이상이라면, 체크되지 않은 체크박스 비활성화
+    checkboxes.forEach(function (checkbox) {
+        checkbox.disabled = checkbox.checked ? false : checkedCount < maxCount ? false : true;
+    });
+}
+
+// 체크박스 그룹에 대한 이벤트 리스너 추가
+function addCheckboxListener(groupName, maxCount) {
+    var checkboxes = document.querySelectorAll('input[name="' + groupName + '"]');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            limitCheckboxSelection(groupName, maxCount);
+        });
+    });
+}
+
+// 각 체크박스 그룹에 대한 이벤트 리스너 추가
+addCheckboxListener('hopework', 3); // 최대 3개 선택
+addCheckboxListener('hopejob', 10); // 최대 10개 선택
+
 // 1. 지역 선택 select 누르면 시군구 선택 select 나오게 하기
 document.addEventListener('DOMContentLoaded', function () {
     // waselect1 요소 선택

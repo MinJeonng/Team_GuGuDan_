@@ -1,3 +1,23 @@
+$(document).ready(function () {
+    $('.wrtable tbody td:nth-child(4)').click(function () {
+        // 여기에 클릭했을 때 실행할 함수를 작성합니다.
+        var width = 400; // 팝업 창의 너비
+        var height = 400; // 팝업 창의 높이
+        var left = (window.innerWidth - width) / 2; // 화면 가운데 정렬을 위한 left 값
+        var top = (window.innerHeight - height) / 2; // 화면 가운데 정렬을 위한 top 값
+
+        var calculatorWindow = window.open(
+            '../../public/marketpopup.html',
+            '_blank',
+            'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top
+        );
+
+        // 팝업 창이 차단되었는지 확인
+        if (!calculatorWindow) {
+            alert('팝업이 차단되었습니다. 팝업 차단을 해제하고 다시 시도하세요.');
+        }
+    });
+});
 const tbody = document.querySelector('tbody');
 (async function () {
     try {
@@ -87,103 +107,27 @@ const tbody = document.querySelector('tbody');
     }
     // <td><a href="/employ/${res.data.result[i].employ_id}">${res.data.result[i].title}</a></td>
 })();
+//모든 페이지에 추가!
+window.onload = function () {
+    const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('user_name');
+    if (token) {
+        document.querySelector(
+            '.headbtn'
+        ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+    } else {
+        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+             <a href="/user/signup" class="sign">회원가입</a>
+             `;
+    }
+    //<a href="" class="mypage">마이페이지</a>
+};
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_name');
+    alert('로그아웃 되었습니다.');
+    window.location.href = '/';
 
-// //검색하기 함수  (프론트가 없어서 우선 주석 처리)
-
-// // 페이지 번호 변수 추가
-// // let currentPage = 1;
-// async function searchEmploy() {
-//     const res = await axios({
-//         method: 'GET',
-//         url: '/api/employ/board/search',
-//         params: {
-//             // page,
-//             city_name: document.querySelector('.waselect1').value,
-//             town_name: document.querySelector('.waselect2').value,
-//             career: document.querySelector('input[name="radiocareer"]:checked').value,
-//             job: document.querySelector('.recselect').value,
-//         },
-//     });
-//     console.log('res', res);
-//     const { success, result } = res.data;
-//     console.log(res.data);
-//     if (success) {
-//         //기존내용 삭제
-//         tbody.innerHTML = '';
-
-//         // 검색 결과를 추가합니다.
-//         for (let i = 0; i < result.length; i++) {
-//             const html = `
-//             <tr>
-//                 <td>${result[i].city_name.substring(0, 2)} ${result[i].town_name.substring(0, 2)}</td>
-//                 <td>${result[i].job}</td>
-//                 <td class = "title-td" ><a href="/employ/board/${result[i].id}" class="title-link">${
-//                 result[i].title
-//             }</a></td>
-//                 <td>${result[i].place_name}</td>
-//                 <td>${result[i].career}</td>
-//                 <td>${result[i].createdAt.substring(5, 10)}</td>
-//             </tr>
-//             `;
-//             tbody.insertAdjacentHTML('beforeend', html);
-//         }
-//     }
-// }
-// window.onload = async function () {
-//     // URL의 쿼리 문자열 파싱
-//     const urlParams = new URLSearchParams(window.location.search);
-
-//     // city_name, job 값 가져오기
-//     const city_name = urlParams.get('city-name');
-//     const job = urlParams.get('job');
-
-//     // 가져온 값으로 select box 설정
-//     if (city_name) {
-//         document.querySelector('.waselect1').value = city_name;
-//     }
-//     if (job) {
-//         document.querySelector('.recselect').value = job;
-//     }
-
-//     // 선택된 결과를 selectedresult에 표시
-//     if (city_name || job) {
-//         document.querySelector('.selectedresult').innerText = ` ${city_name}, ${job}`;
-//     }
-
-//     // 쿼리값에 따라 검색 결과 출력
-//     await searchMainEmploy(city_name, job);
-// };
-
-// async function searchMainEmploy(city_name, job) {
-//     const res = await axios({
-//         method: 'GET',
-//         url: '/api/employ/board/search',
-//         params: {
-//             city_name: city_name,
-//             job: job,
-//         },
-//     });
-
-//     const { success, result } = res.data;
-//     if (success) {
-//         // 기존내용 삭제
-//         tbody.innerHTML = '';
-
-//         // 검색 결과를 추가합니다.
-//         for (let i = 0; i < result.length; i++) {
-//             const html = `
-//             <tr>
-//                 <td>${result[i].city_name.substring(0, 2)} ${result[i].town_name.substring(0, 2)}</td>
-//                 <td>${result[i].job}</td>
-//                 <td class = "title-td" ><a href="/employ/board/${result[i].id}" class="title-link">${
-//                 result[i].title
-//             }</a></td>
-//                 <td>${result[i].place_name}</td>
-//                 <td>${result[i].career}</td>
-//                 <td>${result[i].createdAt.substring(5, 10)}</td>
-//             </tr>
-//             `;
-//             tbody.insertAdjacentHTML('beforeend', html);
-//         }
-//     }
-// }
+    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
+}

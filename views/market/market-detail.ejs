@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>벼룩시장 상세페이지</title>
+        <title>벼룩시장 상세 페이지</title>
+        <link rel="icon" href="/public/img/icon/logoico.ico" />
         <link rel="stylesheet" href="/public/css/market-detail.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -11,9 +12,9 @@
     <body>
         <header>
             <div class="headbtn">
-                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <!-- <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
                 <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
-                <div class="mypage">마이페이지</div>
+                <div class="mypage">마이페이지</div> -->
             </div>
             <div class="headertitle">
                 <img src="/public/img/꽃.png" alt="꽃" />
@@ -101,24 +102,5 @@
         </div>
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
         <script src="/public/js/market_detail.js"></script>
-        <script>
-            function backPage() {
-                const [_, url] = document.location.href.split('board/'); // url은 문자열로 추출된다.
-                const currentPage = parseInt(url); // 현재 페이지 번호 추출
-                if (!isNaN(currentPage) && currentPage > 1) {
-                    // 현재 페이지가 숫자이고 1보다 큰지 확인
-                    const previousPage = currentPage - 1;
-                    window.location.href = `/market/board/${previousPage}`;
-                } else {
-                    alert('페이지가 존재하지 않습니다.');
-                }
-            }
-            function nextPage() {
-                const [_, url] = document.location.href.split('board/');
-                const currentPage = parseInt(url);
-                const nextPage = currentPage + 1;
-                window.location.href = `/market/board/${nextPage}`;
-            }
-        </script>
     </body>
 </html>

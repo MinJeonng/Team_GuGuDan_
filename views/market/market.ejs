@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>벼룩시장</title>
         <link rel="stylesheet" href="/public/css/market.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
         <link rel="icon" href="/public/img/icon/logoico.ico" />
@@ -13,9 +13,9 @@
     <body>
         <header>
             <div class="headbtn">
-                <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
+                <!-- <div class="login" onclick="window.location.href = '/user/login';">로그인</div>
                 <div class="sign" onclick="window.location.href = '/user/signup';">회원가입</div>
-                <div class="mypage">마이페이지</div>
+                <div class="mypage">마이페이지</div> -->
             </div>
             <div class="headertitle">
                 <img src="/public/img/꽃.png" alt="꽃" />
@@ -61,34 +61,12 @@
             </thead>
             <tbody></tbody>
         </table>
-        <div style="text-align: center">페이지네이션</div>
+        <!-- <div style="text-align: center">페이지네이션</div> -->
         <div class="markwrBtn">
             <button type="button" onclick="window.location.href = '/market/write';">글쓰기</button>
         </div>
 
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>
         <script src="/public/js/market_main.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.wrtable tbody td:nth-child(4)').click(function () {
-                    // 여기에 클릭했을 때 실행할 함수를 작성합니다.
-                    var width = 400; // 팝업 창의 너비
-                    var height = 400; // 팝업 창의 높이
-                    var left = (window.innerWidth - width) / 2; // 화면 가운데 정렬을 위한 left 값
-                    var top = (window.innerHeight - height) / 2; // 화면 가운데 정렬을 위한 top 값
-
-                    var calculatorWindow = window.open(
-                        '../../public/marketpopup.html',
-                        '_blank',
-                        'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top
-                    );
-
-                    // 팝업 창이 차단되었는지 확인
-                    if (!calculatorWindow) {
-                        alert('팝업이 차단되었습니다. 팝업 차단을 해제하고 다시 시도하세요.');
-                    }
-                });
-            });
-        </script>
     </body>
 </html>
