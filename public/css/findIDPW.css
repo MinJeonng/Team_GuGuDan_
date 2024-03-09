@@ -1,0 +1,105 @@
+/* 아이디 찾기 css */
+.find {
+    margin-bottom: 70px;
+    border: 3px solid #8a2fff;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+}
+.find span {
+    margin-left: 20px;
+}
+.container_box {
+    text-align: center;
+}
+.container {
+    margin-left: 300px;
+    width: 500px;
+    border: 3px solid #8a2fff;
+    padding: 100px;
+    border-radius: 10px;
+    background-color: #edd6ef;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+div.email_check,
+div.id_check {
+    font-weight: bold;
+}
+input[type='email'],
+input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    margin: 0 30px;
+    border: 2px solid #edd6ef;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+input#email,
+input[type='text'] {
+    margin-top: 30px;
+}
+.email_check,
+.id_check {
+    margin-top: 20px;
+}
+button.idcheck,
+button.pwcheck {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #8a2fff;
+    padding: 10px 20px;
+    color: #edd6ef;
+    margin-top: 10px;
+}
+
+/* 비번 찾기 css */
+
+/* */
+.findheader {
+    margin-bottom: 50px;
+    border: 2px solid teal;
+    width: 700px;
+    margin-left: 300px;
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+}
+.findidtitle {
+    margin-left: 150px;
+    border: 1px solid lightsalmon;
+    color: white;
+    background-color: lightsalmon;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 30px;
+}
+.findpwtitle {
+    margin-left: 200px;
+    border: 1px solid lightseagreen;
+    color: white;
+    background-color: lightseagreen;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 30px;
+}
+.hidden {
+    display: none;
+}
