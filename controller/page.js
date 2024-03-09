@@ -51,7 +51,7 @@ exports.community_write = (req, res) => {
 };
 
 exports.mypage = (req, res) => {
-    res.render('resume/resume-mypage');
+    res.render('resume/manage');
 };
 
 exports.resume_register = (req, res) => {
