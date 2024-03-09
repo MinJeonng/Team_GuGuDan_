@@ -1,5 +1,5 @@
 const { Resume } = require('../models');
-const { User } = require('../models');
+// const { User } = require('../models');
 
 exports.resumeRegister = async (req, res) => {
     //왜래키 가져오기.

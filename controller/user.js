@@ -233,3 +233,5 @@ exports.emailAuth = (req, res) => {
         console.log(error);
     }
 };
+
+exports.findIDPW = (req, res) => {};

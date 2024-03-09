@@ -9,6 +9,9 @@ router.post('/signup', controller.signup);
 //POST /login 로그인
 router.post('/login', controller.login);
 
+// 비밀번호 아이디 찾기
+router.post('/findIDPW', controller.findIDPW);
+
 //유저 프로필 조회
 router.post('/info', middleware.auth, controller.findUser);
 
