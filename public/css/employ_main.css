@@ -202,3 +202,19 @@ tr {
 .title-td {
     cursor: pointer;
 }
+select {
+    width: 200px;
+    padding: 0.5em 0.5em;
+    border: 1px solid #999;
+    font-family: inherit;
+    background: url('/public/img/icon/arrow.jpeg') no-repeat 95% 50%, white; /* 흰색 배경으로 변경 */
+    border-radius: 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: gray;
+    margin-top: -5px;
+}
+select::-ms-expand {
+    display: none;
+}
