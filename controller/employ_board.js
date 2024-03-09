@@ -125,7 +125,7 @@ exports.boardDetail = async (req, res) => {
 
 //하나 생성
 exports.boardWrite = async (req, res) => {
-    const user_id = req.userId; //이게 말그대로 content db에 있는 id를 외래키 userId로 하겠다는 의미!
+    const id = req.userId; //이게 말그대로 content db에 있는 id를 외래키 userId로 하겠다는 의미!
     // console.log('write_id', write_id);
     try {
         const {

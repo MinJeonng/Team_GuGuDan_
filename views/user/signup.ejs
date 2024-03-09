@@ -21,69 +21,93 @@
             <div class="main">
                 <h1 class="member">회원가입</h1>
                 <div class="main_top">
+                    <p><span style="color: red">*</span>표시는 필수항목입니다.</p>
                     <form name="signup-form">
                         <label for="personal">
                             <input type="radio" id="personal" name="personal_type" value="0" />개인
                         </label>
                         <label for="company">
-                            <input type="radio" id="company" name="personal_type" value="1" />기업
-                        </label>
+                            <input type="radio" id="company" name="personal_type" value="1" />기업 </label
+                        ><br />
 
-                        <input type="text" id="user_name" placeholder="이름(실명) *" required /><br />
-
-                        <input
+                        <span style="color: red">*</span>&nbsp;&nbsp;<input
+                            type="text"
+                            id="user_name"
+                            placeholder="이름(실명)"
+                            required
+                        /><br />
+                        <span style="color: red">*</span>&nbsp;&nbsp;<input
                             type="text"
                             id="user_nick"
                             pattern="[가-힣]{3,10}"
-                            placeholder="닉네임(3~10자의 한글) *"
+                            placeholder="닉네임(3~10자의 한글)"
                             oninput="maxLengthCheckNick(this)"
+                            onblur="checkDuplicateNick()"
                             required
                         /><br />
-                        <input
+                        <p id="nick_message" style="font-size: 14px"></p>
+                        <span style="color: red">*</span>&nbsp;&nbsp;<input
                             type="text"
                             id="user_id"
                             pattern="^[a-zA-Z0-9]+${5,10}"
-                            placeholder="아이디(5~10자의 영문, 숫자) *"
+                            placeholder="아이디(5~10자의 영문, 숫자)"
                             oninput="maxLengthCheckId(this)"
+                            onblur="checkDuplicateId()"
                             required
                         /><br />
-                        <input
+                        <p id="id_message" style="font-size: 14px"></p>
+                        <span style="color: red">*</span>&nbsp;&nbsp;<input
                             type="password"
                             id="user_pw"
                             pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$"
-                            placeholder="비밀번호(8~16자의 영문, 숫자, 특수기호) *"
+                            placeholder="비밀번호(8~16자의 영문, 숫자, 특수기호)"
                             oninput="maxLengthCheckPW(this)"
                             required
                         /><br />
-                        <input
+                        <span style="color: red">*</span>&nbsp;&nbsp;<input
                             type="password"
                             id="check_pw"
-                            placeholder="비밀번호 확인 *"
+                            placeholder="비밀번호 확인"
                             oninput="checkPassword()"
                             required
                         /><br />
                         <p id="pw_message"></p>
-                        <input
+                        <span style="color: red">*</span>&nbsp;&nbsp;<input
                             type="number"
                             id="user_phoneNum"
-                            placeholder="휴대폰 번호 *"
+                            placeholder="휴대폰 번호"
                             oninput="maxLengthCheckNum(this)"
                             required
                         /><br />
                         <input type="url" id="user_website" placeholder="홈페이지" /><br />
                         <div class="button2">
-                            <input type="email" id="user_email" placeholder="이메일 *" required />
+                            <span style="color: red">*</span>&nbsp;&nbsp;<input
+                                type="email"
+                                id="user_email"
+                                placeholder="이메일"
+                                required
+                            />
                             <button type="button" id="send_email_verification" onclick="sendEmail()">
                                 인증메일 전송</button
                             ><br />
                         </div>
                         <div class="button2">
-                            <input type="number" id="verification_code" placeholder="인증번호 입력 *" required />
+                            <span style="color: red">*</span>&nbsp;&nbsp;<input
+                                type="number"
+                                id="verification_code"
+                                placeholder="인증번호 입력"
+                                required
+                            />
                             <button type="button" id="confirm_verification" onclick="confirmEmail()">확인</button>
-                            <button type="button" id="resend_verification">재전송</button><br />
+                            <!-- <button type="button" id="resend_verification">재전송</button><br /> -->
                         </div>
                         <div class="button2">
-                            <input type="text" id="sample4_postcode" placeholder="우편번호 *" required />
+                            <span style="color: red">*</span>&nbsp;&nbsp;<input
+                                type="text"
+                                id="sample4_postcode"
+                                placeholder="우편번호"
+                                required
+                            />
                             <button type="button" onclick="address_DaumPostcode()" id="search_zipcode">
                                 우편번호 검색
                             </button>

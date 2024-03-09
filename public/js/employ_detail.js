@@ -32,3 +32,44 @@ console.log(url);
     const inputs = document.querySelectorAll('input');
     inputs.forEach((input) => input.setAttribute('readonly', true));
 })();
+function backPage() {
+    const [_, url] = document.location.href.split('board/'); // url은 문자열로 추출된다.
+    const currentPage = parseInt(url); // 현재 페이지 번호 추출
+    if (!isNaN(currentPage) && currentPage > 1) {
+        // 현재 페이지가 숫자이고 1보다 큰지 확인
+        const previousPage = currentPage - 1;
+        window.location.href = `/employ/board/${previousPage}`;
+    } else {
+        alert('페이지가 존재하지 않습니다.');
+    }
+}
+function nextPage() {
+    const [_, url] = document.location.href.split('board/');
+    const currentPage = parseInt(url);
+    const nextPage = currentPage + 1;
+    window.location.href = `/employ/board/${nextPage}`;
+}
+//모든 페이지에 추가!
+window.onload = function () {
+    const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('user_name');
+    if (token) {
+        document.querySelector(
+            '.headbtn'
+        ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+    } else {
+        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+             <a href="/user/signup" class="sign">회원가입</a>
+             `;
+    }
+    //<a href="" class="mypage">마이페이지</a>
+};
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_name');
+    alert('로그아웃 되었습니다.');
+    window.location.href = '/';
+
+    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
+}

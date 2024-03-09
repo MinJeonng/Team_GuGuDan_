@@ -24,4 +24,9 @@ router.delete('/delete', middleware.auth, controller.deleteUser);
 //이메일 전송
 router.post('/email', controller.emailAuth);
 
+//닉네임 중복확인
+router.post('/check-nick', controller.checkDuplicateNick);
+//아이디 중복확인
+router.post('/check-id', controller.checkDuplicateId);
+
 module.exports = router;

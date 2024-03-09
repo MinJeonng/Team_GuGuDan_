@@ -1,5 +1,4 @@
 async function signupFunc() {
-    const token = localStorage.getItem('token');
     var pw1 = document.getElementById('user_pw').value;
     var pw2 = document.getElementById('check_pw').value;
     if (pw1 != pw2) {
@@ -152,34 +151,88 @@ function checkPassword() {
         message.style.color = 'red'; // 일치하지 않는 경우, 메시지 색상을 빨간색으로 변경
     }
 }
-let authNum = 0;
+async function checkDuplicateNick() {
+    const nick = document.getElementById('user_nick').value;
+
+    if (nick) {
+        const response = await axios.post('/api/user/check-nick', { user_nick: nick });
+        if (response.data.isDuplicate) {
+            document.getElementById('nick_message').innerText = '이미 사용중인 닉네임입니다.';
+        } else {
+            document.getElementById('nick_message').innerText = '사용 가능한 닉네임입니다.';
+        }
+    }
+}
+
+async function checkDuplicateId() {
+    const userId = document.getElementById('user_id').value;
+    if (userId) {
+        const response = await axios.post('/api/user/check-id', { user_id: userId });
+        if (response.data.isDuplicate) {
+            document.getElementById('id_message').innerText = '이미 사용중인 아이디입니다.';
+        } else {
+            document.getElementById('id_message').innerText = '사용 가능한 아이디입니다.';
+        }
+    }
+}
+
+// async function sendEmail() {
+//     //이메일 칸에 아무값없이 전송 버튼 누르면 에러처리
+//     var userEmail = document.getElementById('user_email').value;
+//     if (!userEmail) {
+//         alert('이메일을 입력해주세요.');
+//         return;
+//     }
+//     // 메일 전송 요청
+//     const respnose = await axios({
+//         method: 'POST',
+//         url: '/api/user/email',
+//         data: {
+//             user_email: $('#user_email').val(),
+//         },
+//     });
+//     console.log('이메일확인', respnose);
+
+// }
+
+let authNum = '';
 let isChecked = false;
 async function sendEmail() {
-    // 메일 전송 요청
-    const respnose = await axios({
-        method: 'POST',
-        url: '/api/user/email',
-        data: {
-            user_email: $('#user_email').val(),
-        },
-    });
-    console.log('이메일확인', respnose);
-    // $.post('/api/user/email', { user_email: $('#user_email').val() }, function (data) {
-    //     if (data.ok) {
-    //         alert('인증 메일이 전송되었습니다. 이메일을 확인해주세요.');
-    //         authNum = data.authNum;
-    //         console.log(data.authNum);
-    //     } else {
-    //         alert('메일 전송에 실패하였습니다. 이메일 주소를 확인해주세요.');
-    //     }
-    // });
+    var userEmail = document.getElementById('user_email').value;
+    const emailAuthBtn = document.querySelector('#confirm_verification');
+    if (!userEmail) {
+        alert('이메일을 입력해주세요.');
+        return;
+    }
+    try {
+        const response = await axios.post('/api/user/email', { user_email: userEmail });
+
+        if (response.data.ok) {
+            // console.log(response.data.authNum); -> 잘 받아오는거 확인용
+            authNum = response.data.authNum;
+            alert('인증 메일이 전송되었습니다. 이메일을 확인해주세요.');
+            emailAuthBtn.classList.remove('hidden');
+        } else {
+            alert('메일 전송에 실패하였습니다. 이메일 주소를 확인해주세요.');
+        }
+    } catch (error) {
+        console.error(error);
+        alert('오류가 발생했습니다. 다시 시도해주세요.');
+    }
 }
+
 function confirmEmail() {
     const getUserAuthNum = document.getElementById('verification_code').value;
-    if (authNum === getUserAuthNum) {
+    console.log('getUserAuthNum', typeof getUserAuthNum, getUserAuthNum);
+    console.log('auth', typeof authNum, authNum);
+    // console.log(getUserAuthNum === authNum);
+    if (authNum === Number(getUserAuthNum)) {
         alert('인증에 성공하였습니다.');
         isChecked = true;
     } else {
+        // console.log('number', number);
+
         alert('인증번호가 일치하지 않습니다. 다시 확인해주세요.');
+        isChecked = false;
     }
 }

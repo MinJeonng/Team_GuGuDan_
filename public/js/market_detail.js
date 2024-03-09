@@ -30,109 +30,44 @@ console.log(url);
     const inputs = document.querySelectorAll('input');
     inputs.forEach((input) => input.setAttribute('readonly', true));
 })();
+function backPage() {
+    const [_, url] = document.location.href.split('board/'); // url은 문자열로 추출된다.
+    const currentPage = parseInt(url); // 현재 페이지 번호 추출
+    if (!isNaN(currentPage) && currentPage > 1) {
+        // 현재 페이지가 숫자이고 1보다 큰지 확인
+        const previousPage = currentPage - 1;
+        window.location.href = `/market/board/${previousPage}`;
+    } else {
+        alert('페이지가 존재하지 않습니다.');
+    }
+}
+function nextPage() {
+    const [_, url] = document.location.href.split('board/');
+    const currentPage = parseInt(url);
+    const nextPage = currentPage + 1;
+    window.location.href = `/market/board/${nextPage}`;
+}
+//모든 페이지에 추가!
+window.onload = function () {
+    const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('user_name');
+    if (token) {
+        document.querySelector(
+            '.headbtn'
+        ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+    } else {
+        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+             <a href="/user/signup" class="sign">회원가입</a>
+             `;
+    }
+    //<a href="" class="mypage">마이페이지</a>
+};
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_name');
+    alert('로그아웃 되었습니다.');
+    window.location.href = '/';
 
-//수정
-// async function updateFunc() {
-//     //const form = document.forms['post-form'];
-//     try {
-//         const res = await axios({
-//             method: 'PATCH',
-//             url: `/api/employ/board/${url}/update`,
-//             data: {
-//                 city_name: document.querySelector('#city_name').value,
-//                 town_name: document.querySelector('#town_name').value,
-//                 place_address: document.querySelector('#place_address').value,
-//                 deadline: document.querySelector('#deadline').value,
-//                 homepage: document.querySelector('#homepage').value,
-//                 job: document.querySelector('#job').value,
-//                 title: document.querySelector('#title').value,
-//                 place_name: document.querySelector('#place_name').value,
-//                 career: document.querySelector('#career').value,
-//                 // password: document.querySelector('#password').value,
-//                 salary: document.querySelector('#salary').value,
-//             },
-//             headers: {
-//                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-//             },
-//         });
-//         console.log('res', res);
-
-//         if (res.data.success) {
-//             //document.location.reload();
-//             // '수정' 버튼 숨기기
-//             document.querySelector('button[onclick="updateFunc()"]').style.display = 'none';
-//             // '확인' 버튼 보이기
-//             document.querySelector('button[onclick="confirmFunc()"]').style.display = 'inline-block'; // 또는 'block';
-//             // '삭제' 버튼 숨기기
-//             document.querySelector('button[onclick="deleteFunc()"]').style.display = 'none';
-//             const inputs = document.querySelectorAll('input');
-//             inputs.forEach((input) => input.removeAttribute('readonly'));
-//         }
-//     } catch (err) {
-//         alert('작성자가 아니어서 수정이 불가합니다.');
-//         console.log(err);
-//     }
-// }
-//확인
-// async function confirmFunc() {
-//     try {
-//         const res = await axios({
-//             method: 'PATCH',
-//             url: `/api/employ/board/${url}/update`,
-//             data: {
-//                 city_name: document.querySelector('#city_name').value,
-//                 town_name: document.querySelector('#town_name').value,
-//                 place_address: document.querySelector('#place_address').value,
-//                 deadline: document.querySelector('#deadline').value,
-//                 homepage: document.querySelector('#homepage').value,
-//                 job: document.querySelector('#job').value,
-//                 title: document.querySelector('#title').value,
-//                 place_name: document.querySelector('#place_name').value,
-//                 career: document.querySelector('#career').value,
-//                 // password: document.querySelector('#password').value,
-//                 salary: document.querySelector('#salary').value,
-//             },
-//             headers: {
-//                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-//             },
-//         });
-
-//         if (res.data.success) {
-//             alert('수정이 완료되었습니다.');
-
-//             // 페이지 새로고침
-//             document.location.reload();
-//         } else {
-//             alert('수정이 실패하였습니다. 다시 시도해 주세요.');
-//         }
-//     } catch (err) {
-//         alert('오류가 발생했습니다. 다시 시도해 주세요.');
-//         console.log(err);
-//     }
-// }
-
-//삭제
-// async function deleteFunc() {
-//     try {
-//         const res = await axios({
-//             method: 'DELETE',
-//             url: `/api/employ/board/${url}/delete`,
-//             data: {
-//                 id: document.querySelector('#index').value,
-//             },
-
-//             headers: {
-//                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-//             },
-//         });
-//         if (res.data.success) {
-//             if (!confirm('삭제하시겠습니까?')) {
-//                 return;
-//             }
-//             document.location.href = '/employ/board';
-//         }
-//     } catch (err) {
-//         alert('작성자가 아니어서 수정이 불가합니다.');
-//         console.log(err);
-//     }
-// }
+    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
+}
