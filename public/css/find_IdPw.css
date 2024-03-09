@@ -1,0 +1,82 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+} */
+/* h3.find {
+    position: absolute;
+    top: 120px;
+    border: 3px solid #edd6ef;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+    color: gray;
+} */
+.find {
+    margin-bottom: 100px;
+    border: 3px solid #8a2fff;
+    height: 50px;
+    line-height: 50px;
+    font-weight: b;
+}
+.find span {
+    margin-left: 20px;
+}
+.container_box {
+    text-align: center;
+}
+.container {
+    margin-left: 100px;
+    width: 500px;
+    border: 3px solid #8a2fff;
+    padding: 100px;
+    border-radius: 10px;
+    background-color: #edd6ef;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+div.email_check {
+    font-weight: bold;
+}
+input[type='email'] {
+    width: 100%;
+    padding: 10px;
+    margin: 0 30px;
+    border: 2px solid #edd6ef;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+input#email {
+    margin-top: 30px;
+}
+.email_check {
+    margin-top: 20px;
+}
+button.check {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #8a2fff;
+    padding: 15px 25x;
+    color: #edd6ef;
+    margin-top: 10px;
+}

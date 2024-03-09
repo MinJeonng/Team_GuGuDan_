@@ -19,9 +19,6 @@ body {
 .user_type {
     padding: 0 10;
 }
-.main_top {
-    padding: 0 30px;
-}
 
 .container {
     width: 600px;
@@ -31,20 +28,37 @@ body {
     border-radius: 10px;
     background-color: #edd6ef;
 }
-.container input[type='text'],
-.container input[type='password'],
-.container input[type='email'],
-.container input[type='tel'],
-.container input[type='url'] {
-    width: 500px;
+
+.container input {
+    width: 75%;
     padding: 8px;
     margin-bottom: 10px;
     box-sizing: border-box;
     border-radius: 10px;
     border-color: #c08fff;
 }
+
+.container input[type='email'],
+.container input#address {
+    width: 54%;
+    margin-right: 12px;
+}
+.container input#verification_code {
+    width: 53%;
+    margin-right: 7px;
+}
 .button2 {
     display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.button2 button {
+    border-radius: 5px;
+    background-color: #673ab7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
 }
 button {
     border-radius: 5px;
@@ -52,6 +66,13 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
+    padding: 6px 12px;
+}
+button#confirm_verification {
+    margin-right: 5px;
+}
+button#complete_registration {
+    padding: 10px;
 }
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Square+Round&display=swap');
 
