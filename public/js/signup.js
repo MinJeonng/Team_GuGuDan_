@@ -23,6 +23,7 @@ async function signupFunc() {
         //sample4_jibunAddress: form.sample4_jibunAddress.value,
         user_detailAddress: form.sample4_detailAddress.value,
     };
+    // console.log(form.sample4_roadAddress.value, form.sample4_detailAddress.value);
     // 입력값이 없는 경우 팝업 경고창을 띄우고 함수 종료 // 'user_website', sample4_detailAddress는 제외
     for (const key in data) {
         if (key !== 'user_website' && key !== 'sample4_detailAddress' && !data[key]) {
@@ -89,28 +90,6 @@ function address_DaumPostcode() {
             document.getElementById('sample4_postcode').value = data.zonecode;
             document.getElementById('sample4_roadAddress').value = roadAddr;
             // document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
-
-            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-            // if (roadAddr !== '') {
-            //     document.getElementById('sample4_extraAddress').value = extraRoadAddr;
-            // } else {
-            //     document.getElementById('sample4_extraAddress').value = '';
-            // }
-
-            // var guideTextBox = document.getElementById('guide');
-            // // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-            // if (data.autoRoadAddress) {
-            //     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-            //     guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-            //     guideTextBox.style.display = 'block';
-            // } else if (data.autoJibunAddress) {
-            //     var expJibunAddr = data.autoJibunAddress;
-            //     guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-            //     guideTextBox.style.display = 'block';
-            // } else {
-            //     guideTextBox.innerHTML = '';
-            //     guideTextBox.style.display = 'none';
-            // }
         },
     }).open();
 }
@@ -151,6 +130,7 @@ function checkPassword() {
         message.style.color = 'red'; // 일치하지 않는 경우, 메시지 색상을 빨간색으로 변경
     }
 }
+//닉네임 중복확인
 async function checkDuplicateNick() {
     const nick = document.getElementById('user_nick').value;
 
@@ -163,7 +143,7 @@ async function checkDuplicateNick() {
         }
     }
 }
-
+//id 중복확인
 async function checkDuplicateId() {
     const userId = document.getElementById('user_id').value;
     if (userId) {
@@ -175,25 +155,6 @@ async function checkDuplicateId() {
         }
     }
 }
-
-// async function sendEmail() {
-//     //이메일 칸에 아무값없이 전송 버튼 누르면 에러처리
-//     var userEmail = document.getElementById('user_email').value;
-//     if (!userEmail) {
-//         alert('이메일을 입력해주세요.');
-//         return;
-//     }
-//     // 메일 전송 요청
-//     const respnose = await axios({
-//         method: 'POST',
-//         url: '/api/user/email',
-//         data: {
-//             user_email: $('#user_email').val(),
-//         },
-//     });
-//     console.log('이메일확인', respnose);
-
-// }
 
 let authNum = '';
 let isChecked = false;

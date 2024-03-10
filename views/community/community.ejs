@@ -54,22 +54,14 @@
                     <th>번호</th>
                     <th>분류</th>
                     <th>제목</th>
-                    <th>답변</th>
                     <th>글쓴이</th>
                     <th>날짜</th>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
-        <div class="btnCollect">
-            <div>
-                <button type="button">내글조회</button>
-            </div>
-            <div>
-                <button type="button">수정</button>
-                <button type="button">삭제</button>
-                <button type="button" onclick="window.location.href = '/community/write';">글쓰기</button>
-            </div>
+        <div class="wrbtn">
+            <button type="button" class="writebtn" onclick="window.location.href = '/community/write';">글쓰기</button>
         </div>
         <!-- <div style="margin-bottom: 50px">페이지네이션</div> -->
         <%- include('../sidebar.ejs') %> <%- include('../footer.ejs') %>

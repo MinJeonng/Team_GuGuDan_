@@ -4,12 +4,12 @@ window.onload = function () {
     if (token) {
         document.querySelector(
             '.headbtn'
-        ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
-      &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+        ).innerHTML = `<span><a href="/resume/mypage" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
     } else {
         document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
-           <a href="/user/signup" class="sign">회원가입</a>
-           `;
+             <a href="/user/signup" class="sign">회원가입</a>
+             `;
     }
     //<a href="" class="mypage">마이페이지</a>
 };
@@ -17,8 +17,9 @@ function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user_name');
     alert('로그아웃 되었습니다.');
+    window.location.href = '/';
 
-    window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
+    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
 }
 //새 비밀번호 일치, 불일치 확인
 function checkPassword() {
@@ -94,24 +95,21 @@ function address_DaumPostcode() {
         // user_gender,
         user_website,
         user_nick,
-        sample4_postcode,
-        sample4_roadAddress,
+        user_postCode,
+        user_roadAddress,
         // sample4_jibunAddress,
-        sample4_detailAddress,
+        user_detailAddress,
     } = res.data.result;
-
+    // console.log(res.data.result);
     document.querySelector('#user_id').value = user_id;
     document.querySelector('#user_name').value = user_name;
     document.querySelector('#user_phoneNum').value = user_phoneNum;
     document.querySelector('#user_website').value = user_website;
-    // document.querySelector('#user_age').value = user_age;
     document.querySelector('#user_email').value = user_email;
-    // document.querySelector('#user_gender').value = user_gender;
     document.querySelector('#user_nick').value = user_nick;
-    document.querySelector('#sample4_postcode').value = sample4_postcode;
-    document.querySelector('#sample4_roadAddress').value = sample4_roadAddress;
-    // document.querySelector('#sample4_jibunAddress').value = sample4_jibunAddress;
-    document.querySelector('#sample4_detailAddress').value = sample4_detailAddress;
+    document.querySelector('#sample4_postcode').value = user_postCode;
+    document.querySelector('#sample4_roadAddress').value = user_roadAddress;
+    document.querySelector('#sample4_detailAddress').value = user_detailAddress;
 })();
 
 //이떄 수정하기했을때 현재 비밀번호가 user_pw즉 db에 있는거랑 다르면 현재 비번 다르다 alert 뜨가
@@ -194,6 +192,9 @@ async function deleteFunc() {
     });
     if (res.data.success) {
         alert('탈퇴 완료되었습니다');
+        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+             <a href="/user/signup" class="sign">회원가입</a>
+             `;
         document.location.href = '/';
     }
 }

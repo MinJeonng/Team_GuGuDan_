@@ -14,7 +14,7 @@ const ResumeModel = (sequelize) => {
         },
         phone_num: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
         },
         contact_method: {
             type: DataTypes.STRING(40),

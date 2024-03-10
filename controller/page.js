@@ -17,7 +17,7 @@ exports.info = (req, res) => {
     //마이 구인구직, 사용자 정보 조회 및 수정 탈퇴
     res.render('user/myPage_revise');
 };
-exports.findInfo = (req, res) => {
+exports.findIdPw = (req, res) => {
     res.render('user/findIDPW');
 };
 exports.board_main = (req, res) => {
@@ -63,4 +63,7 @@ exports.mypage = (req, res) => {
 
 exports.resume_register = (req, res) => {
     res.render('resume/resume'); //이력서 등록페이지
+};
+exports.resume_detail = (req, res) => {
+    res.render('resume/resume-detail');
 };

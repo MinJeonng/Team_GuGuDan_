@@ -9,8 +9,10 @@ router.post('/signup', controller.signup);
 //POST /login 로그인
 router.post('/login', controller.login);
 
-// 비밀번호 아이디 찾기
-router.post('/findIDPW', controller.findIDPW);
+// 아이디 찾기
+router.post('/find-id', controller.findID);
+//비밀번호 찾기에서 아이디 존재여부 확인
+router.post('/find-pw', controller.sendEmail);
 
 //유저 프로필 조회
 router.post('/info', middleware.auth, controller.findUser);
@@ -24,8 +26,10 @@ router.patch('/update', middleware.auth, controller.updateUser); // /info/update
 //유저 탈퇴
 router.delete('/delete', middleware.auth, controller.deleteUser);
 
-//이메일 전송
+//회원가입 시 이메일 전송
 router.post('/email', controller.emailAuth);
+//비밀번호 찾기 시 이메일 전송
+router.post('/email_pw', controller.emailAuth_pw);
 
 //닉네임 중복확인
 router.post('/check-nick', controller.checkDuplicateNick);

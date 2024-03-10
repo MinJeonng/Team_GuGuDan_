@@ -1,10 +1,34 @@
-//토큰 없으면 들어가지 못하게 예외처리
-(function () {
-    if (localStorage.getItem('token') === null) {
-        alert('로그인 후 이용가능합니다.');
-        document.location.href = '/market/board';
-    }
-})();
+// 체크박스 3개, 10개 이상 못선택하게 하기
+function limitCheckboxSelection(checkboxName, maxCount) {
+    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]');
+    var checkedCount = 0;
+
+    // 체크된 체크박스 개수 세기
+    checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    });
+
+    // 체크된 체크박스가 maxCount 이상이라면, 체크되지 않은 체크박스 비활성화
+    checkboxes.forEach(function (checkbox) {
+        checkbox.disabled = checkbox.checked ? false : checkedCount < maxCount ? false : true;
+    });
+}
+
+// 체크박스 그룹에 대한 이벤트 리스너 추가
+function addCheckboxListener(groupName, maxCount) {
+    var checkboxes = document.querySelectorAll('input[name="' + groupName + '"]');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            limitCheckboxSelection(groupName, maxCount);
+        });
+    });
+}
+
+// 각 체크박스 그룹에 대한 이벤트 리스너 추가
+addCheckboxListener('hopework', 3); // 최대 3개 선택
+addCheckboxListener('hopejob', 10); // 최대 10개 선택
 
 // 1. 지역 선택 select 누르면 시군구 선택 select 나오게 하기
 document.addEventListener('DOMContentLoaded', function () {
@@ -326,113 +350,113 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-// 안쓴다.( 보여지는 칸 없음.)
-// document.addEventListener('DOMContentLoaded', function () {
-//     var waselect1 = document.querySelector('.waselect1');
-//     var waselect2 = document.querySelector('.waselect2');
-//     var detailAddressInput = document.querySelector('.detailadress');
-//     var selectedResult = document.querySelector('.selectedresult');
+document.addEventListener('DOMContentLoaded', function () {
+    var waselect1 = document.querySelector('.waselect1');
+    var waselect2 = document.querySelector('.waselect2');
 
-//     // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
-//     waselect1.addEventListener('change', updateSelected);
-//     waselect2.addEventListener('change', updateSelected);
-//     detailAddressInput.addEventListener('input', updateSelected);
+    var selectedResult = document.querySelector('.selectedresult');
 
-// function updateSelected() {
-//     var selectedValues = [];
+    // 선택된 값이 변경될 때마다 updateSelected 함수를 호출합니다.
+    waselect1.addEventListener('change', updateSelected);
+    waselect2.addEventListener('change', updateSelected);
+    var selectedResult = document.querySelector('.selectedresult');
+    var selectedValues = [];
 
-//     if (waselect1.value !== '지역 선택') {
-//         selectedValues.push(waselect1.value);
-//     }
-//     if (waselect2.value !== '시/군/구 선택') {
-//         selectedValues.push(waselect2.value);
-//     }
+    function updateSelected() {
+        if (waselect1.value !== '지역 선택' && waselect2.value === '시/군/구 선택') {
+            selectedResult.value = '';
+        }
+        if (waselect1.value !== '지역 선택') {
+            selectedValues.push(waselect1.value);
+            if (waselect2.value !== '시/군/구 선택') {
+                selectedValues.push(waselect2.value);
+            }
+        }
+        if (selectedValues.length > 10) {
+            // 5개 이상 선택 시 마지막 항목을 제거합니다.
+            selectedValues.pop();
+            selectedValues.pop();
+            alert('최대 5개까지 선택할 수 있습니다.');
+        }
 
-//     var detailAddress = detailAddressInput.value.trim();
-//     if (detailAddress !== '') {
-//         selectedValues.push(detailAddress);
-//     }
-
-//     selectedResult.value = selectedValues.join(' '); //
-// }
-// });
-
-async function mWriting() {
-    const data = {
-        seller_id: document.querySelector('#seller_id').value,
-        seller_ph: document.querySelector('#phoneNum').value,
-        pd_status: document.querySelector('#pd_status').value,
-        category: document.querySelector('#category').value,
-        pd_title: document.querySelector('#pd_title').value,
-        pd_division: document.querySelector('#pd_division').value,
-        pd_price: document.querySelector('#pd_price').value,
-        pd_mail: document.querySelector('#pd_mail').value,
-        location_city: document.querySelector('.waselect1').value,
-        location_town: document.querySelector('.waselect2').value,
-        location_detail: document.querySelector('.detailadress').value,
-        pd_content: document.querySelector('#pd_content').value,
-    };
-    if (
-        !data.seller_id ||
-        !data.seller_ph ||
-        !data.pd_status ||
-        !data.category ||
-        !data.pd_title ||
-        !data.pd_division ||
-        !data.pd_price ||
-        !data.location_city ||
-        !data.location_town ||
-        !data.location_detail ||
-        !data.pd_content
-    ) {
-        alert('입력값을 모두 채워주세요.');
-        return;
+        selectedResult.value = selectedValues.join(' '); //
     }
+});
 
+(async function () {
     const res = await axios({
-        method: 'POST',
-        url: '/api/market/write',
-        data,
+        method: 'GET',
+        url: `/api/resume/userInfo/`,
 
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
     });
+    const { user_name, user_email, user_phoneNum, user_roadAddress, user_detailAddress } = res.data.result;
+    const address = `${user_roadAddress} ${user_detailAddress}`;
 
-    console.log('res', res);
-    const { success, result } = res.data;
-    console.log(res.data);
-    if (success) {
-        alert('등록되었습니다');
-        document.location.href = '/market/board';
-    }
-}
+    document.querySelector('#name').innerText = user_name;
+    document.querySelector('#resume_name').value = user_name;
+    // document.querySelector('#birth').innerText = address;
+    // document.querySelector('#gender').innerText = phoneNum;
+    document.querySelector('#email').value = user_email;
+    document.querySelector('#adress').value = address;
+    // document.querySelector('#tel').innerText = salary;
+    document.querySelector('#phone').value = user_phoneNum;
+    console.log(res.data.result);
+})();
 
-//전화번호 11자로 제한  (우선 주석처리)
-// function maxLengthCheck(object) {
-//     if (object.value.length > 11) object.value = object.value.slice(0, 11);
-// }
-//모든 페이지에 추가!
-window.onload = function () {
-    const token = localStorage.getItem('token');
-    const userName = localStorage.getItem('user_name');
-    if (token) {
-        document.querySelector(
-            '.headbtn'
-        ).innerHTML = `<span><a href="/resume/mypage" class="mypage">${userName}</a>님 환영합니다💛</span>
-        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
-    } else {
-        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
-             <a href="/user/signup" class="sign">회원가입</a>
-             `;
-    }
-    //<a href="" class="mypage">마이페이지</a>
-};
-function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user_name');
-    alert('로그아웃 되었습니다.');
-    window.location.href = '/';
+const [_, url] = document.location.href.split('register/');
+console.log(url);
 
-    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
-}
+(async function () {
+    const res = await axios({
+        method: 'GET',
+        url: `/api/resume/${url}`,
+
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+    });
+    console.log(res);
+    const {
+        // gender,
+        // birth,
+        // phone_num,
+        home_num,
+        carrer,
+        edu,
+        wish_salary,
+        contact_method,
+        wish_form,
+        wish_category,
+        wish_occupation,
+        wish_city,
+        wish_town,
+        resume_title,
+        resume_detail,
+    } = res.data.result;
+    // document.querySelector('#gender').value = gender;
+    // document.querySelector('#birth').value = birth;
+    document.querySelector('#tel').value = home_num;
+    document.querySelector('#careerselect').value = carrer;
+    document.querySelector('#eduselect').value = edu;
+    document.querySelector('#hopesaleselect').value = wish_salary;
+    //중복 체크박스 단일형태로로 받기.
+    concatenatedCommu = contact_method;
+    concatenatedForm = wish_form;
+    concatenatedWork = wish_category;
+    concatenatedJob = wish_occupation;
+    //
+    document.querySelector('.waselect1').value = wish_city;
+    document.querySelector('.waselect2').value = wish_town;
+    document.querySelector('#resumetitle').value = resume_title;
+    document.querySelector('#detailcontent').innerText = resume_detail;
+
+    //document.querySelector('#password').value = password;
+    console.log(res.data.result);
+
+    // 인풋 요소 편집 막기.
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach((input) => input.setAttribute('readonly', true));
+})();

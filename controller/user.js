@@ -20,11 +20,6 @@ exports.signup = async (req, res) => {
         user_detailAddress,
     } = req.body;
 
-    // // 입력값이 없는 경우 처리
-    // if (!user_id || !user_pw || !user_name || !user_age || !user_email || !user_gender) {
-    //     return res.status(400).json({ success: false, message: '입력값을 모두 채워주세요.' });
-    // }
-
     //존재여부확인
     const find = await User.findOne({ where: { user_id } });
     console.log('find', find);
@@ -53,13 +48,7 @@ exports.signup = async (req, res) => {
                 // UserId: result.id,
             });
             console.log('signup', result);
-            // const result2 = await Profile.create({
-            //     user_name,
-            //     user_age,
-            //     user_email,
-            //     UserId: result.id,
-            // });
-            // console.log('profile', result2);
+
             res.json({ success: true, result });
         }
     } catch (error) {
@@ -115,7 +104,26 @@ exports.checkDuplicateNick = async (req, res) => {
     try {
         const { user_nick } = req.body;
         // 데이터베이스에서 닉네임 검색
-        const user = await User.findOne({ user_nick: user_nick });
+        const user = await User.findOne({ where: { user_nick: user_nick } });
+        if (user) {
+            // console.log()
+            // 사용자가 발견되면 닉네임이 중복됨
+            res.json({ isDuplicate: true });
+        } else {
+            // 사용자가 발견되지 않으면 닉네임이 중복되지 않음
+            res.json({ isDuplicate: false });
+        }
+    } catch (error) {
+        // 오류 처리
+        res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+    }
+};
+//아이디 중복 확인
+exports.checkDuplicateId = async (req, res) => {
+    try {
+        const { user_id } = req.body;
+        // 데이터베이스에서 닉네임 검색
+        const user = await User.findOne({ where: { user_id: user_id } });
         if (user) {
             // 사용자가 발견되면 닉네임이 중복됨
             res.json({ isDuplicate: true });
@@ -129,23 +137,148 @@ exports.checkDuplicateNick = async (req, res) => {
     }
 };
 
-exports.checkDuplicateId = async (req, res) => {
+// //비밀번호 찾기에서 아이디와 이메일 존재여부 확인
+// exports.sendEmail = async (req, res) => {
+//     try {
+//         const { user_id, user_email } = req.body;
+//         const user = await User.findOne({ where: { user_id, user_email } });
+
+//         console.log('user', user);
+//         if (user) {
+//             // console.log('userid', req.body);
+//             res.json({ findUser: true, message: '존재하고 있는 회원' });
+//         } else {
+//             res.json({ findUser: false });
+//         }
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+//     }
+// };
+
+exports.sendEmail = async (req, res) => {
     try {
-        const { user_id } = req.body;
-        // 데이터베이스에서 닉네임 검색
-        const user = await User.findOne({ user_id: user_id });
+        const { user_id, user_email } = req.body;
+        const user = await User.findOne({ where: { user_id, user_email } });
+
+        console.log('user', user);
         if (user) {
-            // 사용자가 발견되면 닉네임이 중복됨
-            res.json({ isDuplicate: true });
+            const temporaryPassword = generateRandomPassword();
+            const hashedPassword = await bcrypt.hash(String(temporaryPassword), 10);
+
+            await User.update({ where: { user_pw: hashedPassword } });
+            // res.json({ success: true });
+            // 비밀번호를 새로운 DB에 업데이트
+            // await user.update({ user_pw: hashedPassword });
+
+            res.json({ findUser: true, message: '존재하고 있는 회원' });
         } else {
-            // 사용자가 발견되지 않으면 닉네임이 중복되지 않음
-            res.json({ isDuplicate: false });
+            res.json({ findUser: false });
         }
     } catch (error) {
-        // 오류 처리
+        console.log(error);
         res.status(500).send({ message: '서버 오류가 발생했습니다.' });
     }
 };
+
+exports.emailAuth_pw = async (req, res) => {
+    const number = generateRandomPassword(111111, 999999);
+
+    const { user_email } = req.body;
+    try {
+        const mailOptions = {
+            from: `고가네 <sally3921@naver.com>`,
+            to: user_email,
+            subject: '고가네🧸 임시 비밀번호 인증메일 입니다.',
+            html: `<h2>고가네 사이트 입니다🧸</h2><br /><h3>아래의 임시 비밀번호 6자리를 입력해주세요. 반드시 비밀번호를 변경해주세요 : </h3>${number}`,
+        };
+        smtpTransport.sendMail(mailOptions, (err, response) => {
+            console.log('response', response);
+            if (err) {
+                res.json({ ok: false, msg: '메일 전송에 실패하였습니다.' });
+                smtpTransport.close();
+                return;
+            } else {
+                res.json({ ok: true, msg: '메일 전송에 성공하였습니다.', authNum: number });
+                smtpTransport.close();
+                return;
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+    }
+};
+
+// 랜덤한 비밀번호 생성 함수
+function generateRandomPassword(min = 111111, max = 999999) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// 랜덤한 비밀번호 생성 함수
+// function generateRandomPassword() {
+//     const length = 8;
+//     const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+//     let password = '';
+//     for (let i = 0; i < length; i++) {
+//         const randomIndex = Math.floor(Math.random() * charset.length);
+//         password += charset[randomIndex];
+//     }
+//     return password;
+// }
+
+//아이디 찾기
+exports.findID = async (req, res) => {
+    const { user_email } = req.body;
+    try {
+        const user = await User.findOne({ where: { user_email } });
+        console.log('user', user);
+        if (user) {
+            res.json({ isID: true, result: user.user_id }); // 유저 ID만 전송
+            console.log('result', user.user_id);
+        } else {
+            res.json({ isID: false });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+    }
+};
+
+//비밀번호 찾기에서 각각 아이디, 이메일 존재여부 확인
+/*
+exports.confirmFindPw = async (req, res) => {
+    try {
+        const { user_id, user_email } = req.body;
+
+        // 먼저 user_id를 기준으로 사용자를 찾습니다.
+        const userById = await User.findOne({ where: { user_id } });
+
+        // user_id로 찾은 결과가 없다면, user_email을 기준으로 사용자를 찾습니다.
+        // const userByEmail = userById ? null : await User.findOne({ where: { user_email } });
+        const userByEmail = await User.findOne({ where: { user_email } });
+        // 둘 다 없는 경우
+        if (!userById && !userByEmail) {
+            res.json({ isId: false, isEmail: false, message: '아이디와 이메일 모두 존재하지 않습니다.' });
+        }
+        // user_id는 존재하지만, user_email은 존재하지 않는 경우
+        else if (userById && !userByEmail) {
+            res.json({ isId: true, isEmail: false, message: '아이디는 존재하지만 이메일은 존재하지 않습니다.' });
+        }
+        // user_id는 없고, user_email만 존재하는 경우
+        else if (!userById && userByEmail) {
+            res.json({ isId: false, isEmail: true, message: '이메일은 존재하지만 아이디는 존재하지 않습니다.' });
+        }
+        // 둘 다 존재하는 경우 (이 경우는 user_id로 이미 조회했기 때문에 자동적으로 이메일도 일치한다고 볼 수 있습니다.)
+        else if (userById && userByEmail) {
+            res.json({ isId: true, isEmail: true, message: '아이디와 이메일 모두 존재합니다.' });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: '서버 오류가 발생했습니다.' });
+    }
+};
+*/
 
 //정보수정
 // exports.updateUser = async (req, res) => {
@@ -237,6 +370,7 @@ exports.deleteUser = async (req, res) => {
     }
 };
 
+//이메일 인증
 exports.emailAuth = async (req, res) => {
     const number = generateRandomNumber(111111, 999999);
 
@@ -270,5 +404,4 @@ const generateRandomNumber = function (min, max) {
     var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
     return randNum;
 };
-exports.findIDPW = (req, res) => {};
 

@@ -369,7 +369,7 @@ async function register() {
             deadline: document.querySelector('#deadline').value,
             education: document.querySelector('#education').value,
             homepage: document.querySelector('#homepage').value,
-            contents: document.querySelector('#contents').value,
+            // content: document.querySelector('#content').innerText,
         },
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -388,13 +388,46 @@ async function register() {
     }
 }
 //급여 정규표현식으로 세 자 마다 , 표신
-function addCommaToSalary(input) {
-    let salary = input.value;
-    salary = salary.replace(/,/g, ''); // 기존에 찍힌 콤마를 모두 제거
-    salary = salary.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 천 단위로 콤마 추가
-    input.value = salary;
-}
+// function addCommaToSalary(input) {
+//     let salary = input.value;
+//     salary = salary.replace(/,/g, ''); // 기존에 찍힌 콤마를 모두 제거
+//     salary = salary.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 천 단위로 콤마 추가
+//     input.value = salary;
+// }
+// function removeCommaFromSalary(salaryWithComma) {
+//     return salaryWithComma.replace(/,/g, '');
+// }
+
+// document.getElementById('salaryForm').addEventListener('submit', function (event) {
+//     event.preventDefault(); // 폼 기본 제출 동작 방지
+//     var salaryInput = document.getElementById('salary');
+//     salaryInput.value = removeCommaFromSalary(salaryInput.value); // 콤마 제거
+//     // 이제 콤마가 제거된 데이터를 서버로 전송할 수 있습니다.
+// });
 //전화번호 11자로 제한
 function maxLengthCheck(object) {
     if (object.value.length > 11) object.value = object.value.slice(0, 11);
+}
+window.onload = function () {
+    const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('user_name');
+    if (token) {
+        document.querySelector(
+            '.headbtn'
+        ).innerHTML = `<span><a href="/resume/mypage" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+    } else {
+        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+             <a href="/user/signup" class="sign">회원가입</a>
+             `;
+    }
+    //<a href="" class="mypage">마이페이지</a>
+};
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_name');
+    alert('로그아웃 되었습니다.');
+    window.location.href = '/';
+
+    // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
 }

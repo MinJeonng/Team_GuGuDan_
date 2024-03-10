@@ -7,13 +7,14 @@
         <link rel="stylesheet" href="/public/css/manage.css" />
         <link rel="stylesheet" href="/public/css/font.css" />
         <link rel="icon" href="/public/img/icon/logoico.ico" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <header>
             <div class="headbtn">
-                <div class="login">로그인</div>
+                <!-- <div class="login">로그인</div>
                 <div class="sign">회원가입</div>
-                <div class="mypage">마이페이지</div>
+                <div class="mypage">마이페이지</div> -->
             </div>
             <div class="headertitle">
                 <img src="/public/img/꽃.png" alt="꽃" />
@@ -21,12 +22,12 @@
             </div>
             <div class="banner">
                 <div class="bannerleft">
-                    <span>채용정보</span>
+                    <span onclick="window.location.href = '/employ/board';">채용정보</span>
                     <span class="marketBtn" onclick="window.location.href = '/market/board';">벼룩시장</span>
                 </div>
                 <div class="bannerright">
                     <span onclick="window.location.href = '/community/board';">커뮤니티</span>
-                    <span>My 구인구직</span>
+                    <span class="homeBtn" onclick="window.location.href = '/';">홈</span>
                 </div>
             </div>
         </header>
@@ -41,7 +42,7 @@
                             <td class="manageline">이력서 관리</td>
                         </tr>
                         <tr>
-                            <td class="managebtn">이력서 등록</td>
+                            <td class="managebtn" onclick="window.location.href = '/resume/register';">이력서 등록</td>
                         </tr>
                         <tr>
                             <td class="managebtn">내 이력서 관리</td>
@@ -50,7 +51,7 @@
                             <td class="manageline">개인정보 관리</td>
                         </tr>
                         <tr>
-                            <td class="managebtn">회원정보 수정</td>
+                            <td class="managebtn" onclick="window.location.href = '/user/info';">회원정보 수정</td>
                         </tr>
                     </tbody>
                 </table>
@@ -70,7 +71,8 @@
                         <th>이력서 관리</th>
                         <th>입사지원 관리</th>
                     </thead>
-                    <tbody>
+                    <tbody id="second"></tbody>
+                    <!-- <tbody>
                         <td class="maincontentBox">
                             <div class="resumelogo">이력서</div>
                             <div class="maincontent">
@@ -92,7 +94,7 @@
                             <div>면접 요청 기관</div>
                             <div><span class="reqcount">0</span>개</div>
                         </td>
-                    </tbody>
+                    </tbody> -->
                 </table>
                 <div class="notice">
                     <div class="titlefont" style="text-align: center">이용안내</div>
