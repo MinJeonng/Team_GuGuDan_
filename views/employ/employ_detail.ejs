@@ -26,6 +26,10 @@
                 <th>내용</th>
             </tr>
             <tr>
+                <td>제목</td>
+                <td id="title">제목</td>
+            </tr>
+            <tr>
                 <td>시설명</td>
                 <td id="place_name">ABC 요양원</td>
             </tr>
@@ -57,20 +61,23 @@
                 <td>마감일</td>
                 <td id="deadline">2024-03-15</td>
             </tr>
-            <tr>
+            <!-- <textarea id="content" cols="30" rows="10"></textarea> -->
+            <!-- <tr>
                 <td>첨부파일</td>
                 <td>이력서.pdf</td>
-            </tr>
+            </tr> -->
+            <!-- <textarea id="content" rows="30" cols="100" placeholder="내용을 입력하세요"></textarea> -->
         </table>
-        <textarea id="content" rows="30" cols="100" placeholder="내용을 입력하세요"></textarea>
+        <input type="hidden" id="index" />
         <div class="fivebtn">
             <div class="leftbtn">
                 <button type="button" class="prebtn" onclick="backPage()">이전글</button>
                 <button type="button" class="nextbtn" onclick="nextPage()">다음글</button>
             </div>
             <div class="centerbtn">
-                <button type="button" class="revisebtn">수정</button>
-                <button type="button" class="delbtn">삭제</button>
+                <button type="button" class="revisebtn" onclick="updateFunc()">수정</button>
+                <button type="button" class="delbtn" onclick="deleteFunc()">삭제</button>
+                <button type="button" onclick="confirmFunc()" hidden>확인</button>
             </div>
             <div>
                 <button type="button" class="listbtn" onclick="window.location.href = '/employ/board';">목록</button>

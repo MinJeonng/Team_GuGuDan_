@@ -146,37 +146,23 @@
                     <tr>
                         <td><span style="color: red">*</span>&nbsp;주소</td>
                         <td>
-                            <div class="adress">
-                                <input type="text" id="sample4_postcode" required /><button
+                            <div class="address">
+                                <input type="text" id="sample4_postcode" required />&nbsp;&nbsp;<button
                                     type="button"
                                     onclick="address_DaumPostcode()"
                                     id="search_zipcode"
                                 >
                                     우편번호 검색
                                 </button>
+                                <div>
+                                    <input type="text" id="sample4_roadAddress" placeholder="도로명주소" />
+                                </div>
+                                <div><input type="text" id="sample4_detailAddress" placeholder="상세주소" /></div>
                             </div>
-                            <div>
-                                <input type="text" id="sample4_roadAddress" placeholder="도로명주소" />
-                            </div>
-                            <div><input type="text" id="sample4_detailAddress" placeholder="상세주소" /><br /></div>
                         </td>
                     </tr>
                 </table>
             </form>
-
-            <!-- <table class="etcrevise">
-                <caption>
-                    기타정보
-                </caption>
-                <tr>
-                    <td>SMS 수신여부</td>
-                    <td><input type="checkbox" id="sms" /> 핸드폰 문자메세지를 받겠습니다.</td>
-                </tr>
-                 <tr>
-                    <td><span style="color: red">*</span>&nbsp;자동등록방지</td>
-                    <td id="autoregist"><input type="text" /></td>
-                </tr> 
-            </table> -->
         </div>
         <div class="btnBox">
             <button type="button" class="inputBtn" onclick="updateFunc()">수정하기</button>

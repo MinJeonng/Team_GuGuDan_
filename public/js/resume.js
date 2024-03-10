@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateSelected() {
         if (waselect1.value !== '지역 선택' && waselect2.value === '시/군/구 선택') {
-            selectedResult.push('');
+            selectedResult.value = '';
         }
         if (waselect1.value !== '지역 선택') {
             selectedValues.push(waselect1.value);
@@ -382,3 +382,108 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedResult.value = selectedValues.join(' '); //
     }
 });
+
+(async function () {
+    const res = await axios({
+        method: 'GET',
+        url: `/api/resume/userInfo/`,
+
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+    });
+    const { user_name, user_email, user_phoneNum, user_roadAddress, user_detailAddress } = res.data.result;
+    const address = `${user_roadAddress} ${user_detailAddress}`;
+
+    document.querySelector('#name').innerText = user_name;
+    document.querySelector('#resume_name').value = user_name;
+    // document.querySelector('#birth').innerText = address;
+    // document.querySelector('#gender').innerText = phoneNum;
+    document.querySelector('#email').value = user_email;
+    document.querySelector('#adress').value = address;
+    // document.querySelector('#tel').innerText = salary;
+    document.querySelector('#phone').value = user_phoneNum;
+    console.log(res.data.result);
+})();
+
+async function resumRegiter() {
+    //배열로 받아오기.
+    const checkedCommu = Array.from(document.querySelectorAll('input[name="commucheck"]:checked')).map(
+        (checkbox) => checkbox.value
+    );
+    //배열을 단일값으로
+    const concatenatedCommu = checkedCommu.join(', ');
+    const checkedForm = Array.from(document.querySelectorAll('.checkform:checked')).map((checkbox) => checkbox.value);
+    const concatenatedForm = checkedForm.join(', ');
+    const checkedHopeworks = Array.from(document.querySelectorAll('input[name="hopework"]:checked')).map(
+        (checkbox) => checkbox.value
+    );
+    const concatenatedWork = checkedHopeworks.join(', ');
+    const checkedHopejob = Array.from(document.querySelectorAll('input[name="hopejob"]:checked')).map(
+        (checkbox) => checkbox.value
+    );
+    const concatenatedJob = checkedHopejob.join(', ');
+    const data = {
+        // gender: document.querySelector('#gender').value,
+        // birth: document.querySelector('#birth').value,
+        home_num: document.querySelector('#tel').value,
+        carrer: document.querySelector('#careerselect').value,
+        edu: document.querySelector('#eduselect').value,
+        wish_salary: document.querySelector('#hopesaleselect').value,
+        //중복 체크박스 단일형태로로 받기.
+        contact_method: concatenatedCommu,
+        wish_form: concatenatedForm,
+        wish_category: concatenatedWork,
+        wish_occupation: concatenatedJob,
+        //
+        wish_city: document.querySelector('.waselect1').value,
+        wish_town: document.querySelector('.waselect2').value,
+        resume_title: document.querySelector('#resumetitle').value,
+        resume_detail: document.querySelector('#detailcontent').value,
+    };
+
+    const res = await axios({
+        method: 'POST',
+        url: '/api/resume/register',
+        data,
+
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+    });
+
+    console.log('res', res);
+    const { success, result } = res.data;
+    console.log(res.data);
+    if (success) {
+        alert('등록되었습니다');
+        document.location.href = '/resume/mypage';
+    }
+}
+// window.onload = function () {
+//     const token = localStorage.getItem('token');
+//     const userName = localStorage.getItem('user_name');
+//     if (token) {
+//         document.querySelector(
+//             '.headbtn'
+//         ).innerHTML = `<span><a href="/resume/mypage" class="mypage">${userName}</a>님 환영합니다💛</span>
+//         &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+//     } else {
+//         document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+//              <a href="/user/signup" class="sign">회원가입</a>
+//              `;
+//     }
+//     //<a href="" class="mypage">마이페이지</a>
+// };
+// function logout() {
+//     localStorage.removeItem('token');
+//     localStorage.removeItem('user_name');
+//     alert('로그아웃 되었습니다.');
+//     window.location.href = '/';
+
+//     // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
+// }
+//전화번호 11자로 제한
+function maxLengthCheck(object) {
+    if (object.value.length > 11) object.value = object.value.slice(0, 11);
+}

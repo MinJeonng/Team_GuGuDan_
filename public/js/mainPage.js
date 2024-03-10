@@ -31,7 +31,7 @@ window.onload = function () {
     if (token) {
         document.querySelector(
             '.headbtn'
-        ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
+        ).innerHTML = `<span><a href="/resume/mypage" class="mypage">${userName}</a>님 환영합니다💛</span>
         &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
     } else {
         document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>

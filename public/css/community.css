@@ -106,3 +106,18 @@ select {
 select::-ms-expand {
     display: none;
 }
+
+.wrbtn {
+    margin-bottom: 50px;
+}
+.writebtn {
+    position: absolute;
+    right: 240px;
+    cursor: pointer;
+    border: 1px solid #c08fff;
+    background: pink;
+    color: #fff;
+    width: 75px;
+    height: 30px;
+    border-radius: 5px;
+}

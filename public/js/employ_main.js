@@ -421,42 +421,6 @@ const tbody = document.querySelector('tbody');
         `;
             tbody.insertAdjacentHTML('beforeend', html);
         }
-        // // 페이지네이션 만들기
-        // const { startPage, lastPage, currentPage } = res.data;
-        // const paginationArea = document.querySelector('nav[aria-label="board page navigation"] ul');
-
-        // // 이전 페이지
-        // const prevPage = startPage - 1;
-        // if (startPage > 1) {
-        //     paginationArea.insertAdjacentHTML(
-        //         'beforeend',
-        //         `<li class="page-item"><a class="page-link" href="/employ/board/${prevPage}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>`
-        //     );
-        // }
-
-        // // 페이지 번호
-        // for (let i = startPage; i <= lastPage; i++) {
-        //     if (i === currentPage) {
-        //         paginationArea.insertAdjacentHTML(
-        //             'beforeend',
-        //             `<li class="page-item active"><a class="page-link" href="/employ/board/${i}"><b>${i}</b></a></li>`
-        //         );
-        //     } else {
-        //         paginationArea.insertAdjacentHTML(
-        //             'beforeend',
-        //             `<li class="page-item"><a class="page-link" href="/employ/board/${i}">${i}</a></li>`
-        //         );
-        //     }
-        // }
-
-        // // 다음 페이지
-        // const nextPage = startPage + 10;
-        // if (nextPage <= lastPage) {
-        //     paginationArea.insertAdjacentHTML(
-        //         'beforeend',
-        //         `<li class="page-item"><a class="page-link" href="/employ/board/${nextPage}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>`
-        //     );
-        // }
     } catch (error) {
         console.log(error);
         //document.location.href = '/login';
@@ -511,31 +475,6 @@ async function searchEmploy() {
         }
     }
 }
-window.onload = async function () {
-    // URL의 쿼리 문자열 파싱
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // city_name, job 값 가져오기
-    const city_name = urlParams.get('city-name');
-    const job = urlParams.get('job');
-
-    // 가져온 값으로 select box 설정
-    if (city_name) {
-        document.querySelector('.waselect1').value = city_name;
-    }
-    if (job) {
-        document.querySelector('.recselect').value = job;
-    }
-
-    // 선택된 결과를 selectedresult에 표시
-    if (city_name || job) {
-        document.querySelector('.selectedresult').innerText = ` ${city_name}, ${job}`;
-    }
-
-    // 쿼리값에 따라 검색 결과 출력
-    await searchMainEmploy(city_name, job);
-    console.log(searchMainEmploy(city_name, job));
-};
 
 async function searchMainEmploy(city_name, job) {
     const res = await axios({
@@ -575,22 +514,44 @@ async function searchMainEmploy(city_name, job) {
         }
     }
 }
-//모든 페이지에 추가!
-window.onload = function () {
+window.onload = async function () {
+    // 첫 번째 기능: 로컬 스토리지에서 사용자 정보 가져오기 및 UI 업데이트
     const token = localStorage.getItem('token');
     const userName = localStorage.getItem('user_name');
     if (token) {
         document.querySelector(
             '.headbtn'
-        ).innerHTML = `<span><a href="" class="mypage">${userName}</a>님 환영합니다💛</span>
-        &nbsp;&nbsp;<button type = "button" onclick = "logout()" class = "logout">로그아웃</button>`;
+        ).innerHTML = `<span><a href="/resume/mypage" class="mypage">${userName}</a>님 환영합니다💛</span>
+        &nbsp;&nbsp;<button type="button" onclick="logout()" class="logout">로그아웃</button>`;
     } else {
-        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login btn-gradient">로그인</a>
-             <a href="/user/signup" class="sign btn-gradient">회원가입</a>
+        document.querySelector('.headbtn').innerHTML = `<a href="/user/login" class="login">로그인</a>
+             <a href="/user/signup" class="sign">회원가입</a>
              `;
     }
-    //<a href="" class="mypage">마이페이지</a>
+
+    // 두 번째 기능: URL의 쿼리 문자열 파싱 및 페이지에 반영
+    const urlParams = new URLSearchParams(window.location.search);
+    const city_name = urlParams.get('city-name');
+    const job = urlParams.get('job');
+
+    // 가져온 값으로 select box 설정
+    if (city_name) {
+        document.querySelector('.waselect1').value = city_name;
+    }
+    if (job) {
+        document.querySelector('.recselect').value = job;
+    }
+
+    // 선택된 결과를 selectedresult에 표시
+    if (city_name || job) {
+        document.querySelector('.selectedresult').innerText = ` ${city_name}, ${job}`;
+    }
+
+    // 쿼리값에 따라 검색 결과 출력
+    await searchMainEmploy(city_name, job);
+    console.log(await searchMainEmploy(city_name, job));
 };
+
 function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user_name');
