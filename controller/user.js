@@ -166,7 +166,7 @@ exports.sendEmail = async (req, res) => {
             const temporaryPassword = generateRandomPassword();
             const hashedPassword = await bcrypt.hash(String(temporaryPassword), 10);
 
-            await User.update({ where: { user_pw: hashedPassword } });
+            await User.update({ where: { id: user_id } }, { user_pw: hashedPassword });
             // res.json({ success: true });
             // 비밀번호를 새로운 DB에 업데이트
             // await user.update({ user_pw: hashedPassword });

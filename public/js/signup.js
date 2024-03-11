@@ -167,6 +167,7 @@ async function sendEmail() {
     }
     try {
         const response = await axios.post('/api/user/email', { user_email: userEmail });
+        console.log('response', response);
 
         if (response.data.ok) {
             // console.log(response.data.authNum); -> 잘 받아오는거 확인용
