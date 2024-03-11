@@ -178,7 +178,7 @@ async function updateFunc() {
         confirmNewPassword1.value = '';
     }
 }
-//이때도 본인 비번 한번만 치게 하고 맞으면 탈퇴하게 하자
+//이때도 본인 비번 한번만 치게 하고 맞으면 탈퇴하게 하자ㅇ
 async function deleteFunc() {
     if (!confirm('탈퇴하시겠습니까?')) {
         return;

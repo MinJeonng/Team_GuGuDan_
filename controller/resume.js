@@ -4,7 +4,7 @@ const { User } = require('../models');
 
 exports.resumeRegister = async (req, res) => {
     //왜래키 가져오기.
-    id = req.userId;
+    const id = req.userId;
     // console.log('write_id', write_id);
     try {
         const {
@@ -25,7 +25,7 @@ exports.resumeRegister = async (req, res) => {
             resume_detail,
         } = req.body;
         const result = await Resume.create({
-            userid: Number(id),
+            userId: Number(id),
             phone_num,
             // gender,
             // birth,
@@ -76,8 +76,9 @@ exports.userInfo = async (req, res) => {
 // };
 
 exports.boardAll = async (req, res) => {
+    const userId = req.userId;
     try {
-        const result = await Resume.findAll({ order: [['id', 'desc']] });
+        const result = await Resume.findAll({ where: { userId } });
         console.log('all', result);
         res.json({ success: true, result: result });
     } catch (error) {

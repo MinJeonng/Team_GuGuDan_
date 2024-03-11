@@ -72,9 +72,9 @@ function logout() {
     // window.location.reload(); // 페이지를 새로고침하여 로그인 상태를 업데이트
 }
 //토큰 없으면 들어가지 못하게 예외처리
-(function () {
-    if (localStorage.getItem('token') === null) {
-        alert('로그인 후 이용가능합니다.');
-        document.location.href = '/employ/board';
-    }
-})();
+// (function () {
+//     if (localStorage.getItem('token') === null) {
+//         alert('로그인 후 이용가능합니다.');
+//         document.location.href = '/employ/board';
+//     }
+// })();

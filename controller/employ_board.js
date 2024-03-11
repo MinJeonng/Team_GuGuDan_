@@ -189,7 +189,7 @@ exports.boardUpdate = async (req, res) => {
         deadline,
         content,
         //password,
-    } = req.body; //프론트에서 받아오는 값.????
+    } = req.body;
     // 게시물의 작성자와 요청한 사용자가 일치하는지 확인
     const content_user = await Content.findOne({ where: { id } }); //작성자 id
     if (content_user.userId !== userId) {
